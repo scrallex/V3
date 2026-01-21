@@ -1,0 +1,4966 @@
+{
+  "generated_at": "2025-11-11T00:50:39.030674+00:00",
+  "lookback_minutes": 240,
+  "horizons": [
+    5,
+    15,
+    30,
+    60,
+    240
+  ],
+  "granularity": "M1",
+  "cost_model": "median_spread_plus_half_slip",
+  "commission_pips": 0.1,
+  "slippage_multiplier": 0.5,
+  "instruments": {
+    "AUD_USD": {
+      "5": {
+        "count": 443,
+        "avg_return_pct": -0.031113826638096188,
+        "median_return_pct": -0.03161238588698884,
+        "positive_pct": 0.11512415349887133,
+        "avg_positive_return_pct": 0.021395110795023365,
+        "avg_negative_return_pct": -0.037945346559241845,
+        "avg_hazard": 0.5000375575620768,
+        "avg_cost_pct": 0.03151932208905028,
+        "hazard_buckets": {
+          "< 0.60": {
+            "count": 443,
+            "avg_return_pct": -0.031113826638096188
+          }
+        },
+        "auroc_admit": 0.5153061224489796,
+        "hazard_deciles": [
+          {
+            "decile": 1,
+            "count": 44,
+            "avg_return_pct": -0.03772688676569516,
+            "lift_vs_overall": -0.0066130601275989735
+          },
+          {
+            "decile": 2,
+            "count": 44,
+            "avg_return_pct": -0.021362131246542678,
+            "lift_vs_overall": 0.00975169539155351
+          },
+          {
+            "decile": 3,
+            "count": 44,
+            "avg_return_pct": -0.03720326016609359,
+            "lift_vs_overall": -0.0060894335279974045
+          },
+          {
+            "decile": 4,
+            "count": 45,
+            "avg_return_pct": -0.03152617418674533,
+            "lift_vs_overall": -0.0004123475486491439
+          },
+          {
+            "decile": 5,
+            "count": 44,
+            "avg_return_pct": -0.027545545515814507,
+            "lift_vs_overall": 0.003568281122281681
+          },
+          {
+            "decile": 6,
+            "count": 44,
+            "avg_return_pct": -0.022503870879377066,
+            "lift_vs_overall": 0.008609955758719121
+          },
+          {
+            "decile": 7,
+            "count": 45,
+            "avg_return_pct": -0.03368748451528319,
+            "lift_vs_overall": -0.002573657877187
+          },
+          {
+            "decile": 8,
+            "count": 44,
+            "avg_return_pct": -0.034407916063308126,
+            "lift_vs_overall": -0.0032940894252119386
+          },
+          {
+            "decile": 9,
+            "count": 44,
+            "avg_return_pct": -0.03065255689863962,
+            "lift_vs_overall": 0.00046126973945656916
+          },
+          {
+            "decile": 10,
+            "count": 45,
+            "avg_return_pct": -0.03438033750054699,
+            "lift_vs_overall": -0.003266510862450802
+          }
+        ],
+        "overall_avg_return_pct": -0.031113826638096188,
+        "t_stat": -20.82235262039651,
+        "p_value": 0.0,
+        "samples": [
+          {
+            "ts": "2025-11-04T03:26:00+00:00",
+            "return_pct": -0.1952317515733322,
+            "hazard": 0.489237,
+            "coherence": 0.003569,
+            "admit": true,
+            "reasons": [],
+            "price_start": 0.65307,
+            "price_end": 0.652,
+            "cost_pct": 0.03139020319413619
+          },
+          {
+            "ts": "2025-11-06T14:59:00+00:00",
+            "return_pct": -0.19055113250631373,
+            "hazard": 0.422701,
+            "coherence": 0.00282,
+            "admit": true,
+            "reasons": [],
+            "price_start": 0.64812,
+            "price_end": 0.64709,
+            "cost_pct": 0.03162994507189181
+          },
+          {
+            "ts": "2025-11-06T15:31:00+00:00",
+            "return_pct": -0.15512610749235453,
+            "hazard": 0.426614,
+            "coherence": 0.000705,
+            "admit": true,
+            "reasons": [],
+            "price_start": 0.64786,
+            "price_end": 0.64706,
+            "cost_pct": 0.03164263884171661
+          },
+          {
+            "ts": "2025-11-05T01:14:00+00:00",
+            "return_pct": -0.15064662165292295,
+            "hazard": 0.452055,
+            "coherence": 0.001586,
+            "admit": true,
+            "reasons": [],
+            "price_start": 0.64721,
+            "price_end": 0.64644,
+            "cost_pct": 0.03167441788599453
+          },
+          {
+            "ts": "2025-11-06T13:55:00+00:00",
+            "return_pct": -0.14965004911589555,
+            "hazard": 0.477495,
+            "coherence": 0.001101,
+            "admit": true,
+            "reasons": [],
+            "price_start": 0.65152,
+            "price_end": 0.65075,
+            "cost_pct": 0.031464882121799057
+          }
+        ],
+        "median_spread": 0.00012999999999996348,
+        "p_value_holm": 0.0
+      },
+      "15": {
+        "count": 443,
+        "avg_return_pct": -0.03188743485560743,
+        "median_return_pct": -0.031502597043357596,
+        "positive_pct": 0.22573363431151242,
+        "avg_positive_return_pct": 0.03168527352623026,
+        "avg_negative_return_pct": -0.050421752168096544,
+        "avg_hazard": 0.5000375575620768,
+        "avg_cost_pct": 0.03151932208905028,
+        "hazard_buckets": {
+          "< 0.60": {
+            "count": 443,
+            "avg_return_pct": -0.03188743485560743
+          }
+        },
+        "auroc_admit": 0.5045772594752187,
+        "hazard_deciles": [
+          {
+            "decile": 1,
+            "count": 44,
+            "avg_return_pct": -0.03721932099808477,
+            "lift_vs_overall": -0.0053318861424773364
+          },
+          {
+            "decile": 2,
+            "count": 44,
+            "avg_return_pct": -0.011032833611160002,
+            "lift_vs_overall": 0.020854601244447428
+          },
+          {
+            "decile": 3,
+            "count": 44,
+            "avg_return_pct": -0.04610022433100262,
+            "lift_vs_overall": -0.014212789475395192
+          },
+          {
+            "decile": 4,
+            "count": 45,
+            "avg_return_pct": -0.03642429627505304,
+            "lift_vs_overall": -0.004536861419445606
+          },
+          {
+            "decile": 5,
+            "count": 44,
+            "avg_return_pct": -0.0320538105934204,
+            "lift_vs_overall": -0.00016637573781296683
+          },
+          {
+            "decile": 6,
+            "count": 44,
+            "avg_return_pct": -0.014818639169109344,
+            "lift_vs_overall": 0.017068795686498085
+          },
+          {
+            "decile": 7,
+            "count": 45,
+            "avg_return_pct": -0.03634927000041969,
+            "lift_vs_overall": -0.004461835144812257
+          },
+          {
+            "decile": 8,
+            "count": 44,
+            "avg_return_pct": -0.032646138094153454,
+            "lift_vs_overall": -0.0007587032385460227
+          },
+          {
+            "decile": 9,
+            "count": 44,
+            "avg_return_pct": -0.03594146124325721,
+            "lift_vs_overall": -0.004054026387649776
+          },
+          {
+            "decile": 10,
+            "count": 45,
+            "avg_return_pct": -0.03599058499710121,
+            "lift_vs_overall": -0.004103150141493782
+          }
+        ],
+        "overall_avg_return_pct": -0.03188743485560743,
+        "t_stat": -13.422041624597579,
+        "p_value": 0.0,
+        "samples": [
+          {
+            "ts": "2025-11-06T13:55:00+00:00",
+            "return_pct": -0.2893234282907601,
+            "hazard": 0.477495,
+            "coherence": 0.001101,
+            "admit": true,
+            "reasons": [],
+            "price_start": 0.65152,
+            "price_end": 0.64984,
+            "cost_pct": 0.031464882121799057
+          },
+          {
+            "ts": "2025-11-05T01:14:00+00:00",
+            "return_pct": -0.19390924120454578,
+            "hazard": 0.452055,
+            "coherence": 0.001586,
+            "admit": true,
+            "reasons": [],
+            "price_start": 0.64721,
+            "price_end": 0.64616,
+            "cost_pct": 0.03167441788599453
+          },
+          {
+            "ts": "2025-11-05T00:26:00+00:00",
+            "return_pct": -0.19051585832408235,
+            "hazard": 0.491194,
+            "coherence": 0.009929,
+            "admit": true,
+            "reasons": [],
+            "price_start": 0.64824,
+            "price_end": 0.64721,
+            "cost_pct": 0.03162408984325947
+          },
+          {
+            "ts": "2025-11-03T15:12:00+00:00",
+            "return_pct": -0.17839642288372937,
+            "hazard": 0.477495,
+            "coherence": 0.001101,
+            "admit": true,
+            "reasons": [],
+            "price_start": 0.65304,
+            "price_end": 0.65208,
+            "cost_pct": 0.03139164522846154
+          },
+          {
+            "ts": "2025-11-06T14:59:00+00:00",
+            "return_pct": -0.1766648151576864,
+            "hazard": 0.422701,
+            "coherence": 0.00282,
+            "admit": true,
+            "reasons": [],
+            "price_start": 0.64812,
+            "price_end": 0.64718,
+            "cost_pct": 0.03162994507189181
+          }
+        ],
+        "median_spread": 0.00012999999999996348,
+        "p_value_holm": 0.0
+      },
+      "30": {
+        "count": 443,
+        "avg_return_pct": -0.03311388308910889,
+        "median_return_pct": -0.02852297255626353,
+        "positive_pct": 0.2799097065462754,
+        "avg_positive_return_pct": 0.04087368985390104,
+        "avg_negative_return_pct": -0.061873942791093935,
+        "avg_hazard": 0.5000375575620768,
+        "avg_cost_pct": 0.03151932208905028,
+        "hazard_buckets": {
+          "< 0.60": {
+            "count": 443,
+            "avg_return_pct": -0.03311388308910889
+          }
+        },
+        "auroc_admit": 0.5076094650621903,
+        "hazard_deciles": [
+          {
+            "decile": 1,
+            "count": 44,
+            "avg_return_pct": -0.039821106793866544,
+            "lift_vs_overall": -0.006707223704757653
+          },
+          {
+            "decile": 2,
+            "count": 44,
+            "avg_return_pct": -0.008420104451586667,
+            "lift_vs_overall": 0.024693778637522222
+          },
+          {
+            "decile": 3,
+            "count": 44,
+            "avg_return_pct": -0.05742550703244764,
+            "lift_vs_overall": -0.024311623943338752
+          },
+          {
+            "decile": 4,
+            "count": 45,
+            "avg_return_pct": -0.04063138927606039,
+            "lift_vs_overall": -0.007517506186951496
+          },
+          {
+            "decile": 5,
+            "count": 44,
+            "avg_return_pct": -0.032260852199200406,
+            "lift_vs_overall": 0.0008530308899084849
+          },
+          {
+            "decile": 6,
+            "count": 44,
+            "avg_return_pct": -0.012198858735001022,
+            "lift_vs_overall": 0.02091502435410787
+          },
+          {
+            "decile": 7,
+            "count": 45,
+            "avg_return_pct": -0.035683332521407506,
+            "lift_vs_overall": -0.002569449432298615
+          },
+          {
+            "decile": 8,
+            "count": 44,
+            "avg_return_pct": -0.01775185325083263,
+            "lift_vs_overall": 0.01536202983827626
+          },
+          {
+            "decile": 9,
+            "count": 44,
+            "avg_return_pct": -0.04114636199688426,
+            "lift_vs_overall": -0.008032478907775371
+          },
+          {
+            "decile": 10,
+            "count": 45,
+            "avg_return_pct": -0.04529340825238088,
+            "lift_vs_overall": -0.01217952516327199
+          }
+        ],
+        "overall_avg_return_pct": -0.03311388308910889,
+        "t_stat": -10.501942958389675,
+        "p_value": 0.0,
+        "samples": [
+          {
+            "ts": "2025-11-06T13:55:00+00:00",
+            "return_pct": -0.30160240667975335,
+            "hazard": 0.477495,
+            "coherence": 0.001101,
+            "admit": true,
+            "reasons": [],
+            "price_start": 0.65152,
+            "price_end": 0.64976,
+            "cost_pct": 0.031464882121799057
+          },
+          {
+            "ts": "2025-11-06T14:43:00+00:00",
+            "return_pct": -0.2873474670282171,
+            "hazard": 0.44227,
+            "coherence": 0.000396,
+            "admit": true,
+            "reasons": [],
+            "price_start": 0.64904,
+            "price_end": 0.64738,
+            "cost_pct": 0.03158511031676711
+          },
+          {
+            "ts": "2025-11-06T14:27:00+00:00",
+            "return_pct": -0.2623884272083721,
+            "hazard": 0.44227,
+            "coherence": 0.0,
+            "admit": true,
+            "reasons": [],
+            "price_start": 0.6498,
+            "price_end": 0.6483,
+            "cost_pct": 0.03154816866727381
+          },
+          {
+            "ts": "2025-11-06T13:39:00+00:00",
+            "return_pct": -0.2586101049788173,
+            "hazard": 0.495108,
+            "coherence": 0.002158,
+            "admit": true,
+            "reasons": [],
+            "price_start": 0.65156,
+            "price_end": 0.65008,
+            "cost_pct": 0.031462950457355456
+          },
+          {
+            "ts": "2025-11-04T05:18:00+00:00",
+            "return_pct": -0.23047120258493944,
+            "hazard": 0.479452,
+            "coherence": 0.000176,
+            "admit": true,
+            "reasons": [],
+            "price_start": 0.65301,
+            "price_end": 0.65171,
+            "cost_pct": 0.03139308739528418
+          }
+        ],
+        "median_spread": 0.00012999999999996348,
+        "p_value_holm": 0.0
+      },
+      "60": {
+        "count": 443,
+        "avg_return_pct": -0.036421236167000305,
+        "median_return_pct": -0.033214379509046786,
+        "positive_pct": 0.33860045146726864,
+        "avg_positive_return_pct": 0.0593234496109475,
+        "avg_negative_return_pct": -0.08543728690656403,
+        "avg_hazard": 0.5000375575620768,
+        "avg_cost_pct": 0.03151932208905028,
+        "hazard_buckets": {
+          "< 0.60": {
+            "count": 443,
+            "avg_return_pct": -0.036421236167000305
+          }
+        },
+        "auroc_admit": 0.5003185437997725,
+        "hazard_deciles": [
+          {
+            "decile": 1,
+            "count": 44,
+            "avg_return_pct": -0.04174574977970969,
+            "lift_vs_overall": -0.005324513612709386
+          },
+          {
+            "decile": 2,
+            "count": 44,
+            "avg_return_pct": -0.0045915226814665635,
+            "lift_vs_overall": 0.03182971348553374
+          },
+          {
+            "decile": 3,
+            "count": 44,
+            "avg_return_pct": -0.0664724356151816,
+            "lift_vs_overall": -0.03005119944818129
+          },
+          {
+            "decile": 4,
+            "count": 45,
+            "avg_return_pct": -0.03634399324946992,
+            "lift_vs_overall": 7.72429175303832e-05
+          },
+          {
+            "decile": 5,
+            "count": 44,
+            "avg_return_pct": -0.033805421091396386,
+            "lift_vs_overall": 0.0026158150756039195
+          },
+          {
+            "decile": 6,
+            "count": 44,
+            "avg_return_pct": -0.025564128328288537,
+            "lift_vs_overall": 0.010857107838711768
+          },
+          {
+            "decile": 7,
+            "count": 45,
+            "avg_return_pct": -0.034441289884058764,
+            "lift_vs_overall": 0.0019799462829415415
+          },
+          {
+            "decile": 8,
+            "count": 44,
+            "avg_return_pct": -0.02047094098639634,
+            "lift_vs_overall": 0.015950295180603966
+          },
+          {
+            "decile": 9,
+            "count": 44,
+            "avg_return_pct": -0.0388923165584575,
+            "lift_vs_overall": -0.0024710803914571935
+          },
+          {
+            "decile": 10,
+            "count": 45,
+            "avg_return_pct": -0.061364427092730996,
+            "lift_vs_overall": -0.02494319092573069
+          }
+        ],
+        "overall_avg_return_pct": -0.036421236167000305,
+        "t_stat": -8.021737089049187,
+        "p_value": 9.992007221626409e-16,
+        "samples": [
+          {
+            "ts": "2025-11-06T13:55:00+00:00",
+            "return_pct": -0.4903916994105909,
+            "hazard": 0.477495,
+            "coherence": 0.001101,
+            "admit": true,
+            "reasons": [],
+            "price_start": 0.65152,
+            "price_end": 0.64853,
+            "cost_pct": 0.031464882121799057
+          },
+          {
+            "ts": "2025-11-06T14:11:00+00:00",
+            "return_pct": -0.3792424382288663,
+            "hazard": 0.457926,
+            "coherence": 0.001586,
+            "admit": true,
+            "reasons": [],
+            "price_start": 0.64998,
+            "price_end": 0.64772,
+            "cost_pct": 0.03153943198251411
+          },
+          {
+            "ts": "2025-11-05T00:26:00+00:00",
+            "return_pct": -0.3771751203257998,
+            "hazard": 0.491194,
+            "coherence": 0.009929,
+            "admit": true,
+            "reasons": [],
+            "price_start": 0.64824,
+            "price_end": 0.646,
+            "cost_pct": 0.03162408984325947
+          },
+          {
+            "ts": "2025-11-06T14:43:00+00:00",
+            "return_pct": -0.36746579563661796,
+            "hazard": 0.44227,
+            "coherence": 0.000396,
+            "admit": true,
+            "reasons": [],
+            "price_start": 0.64904,
+            "price_end": 0.64686,
+            "cost_pct": 0.03158511031676711
+          },
+          {
+            "ts": "2025-11-06T13:39:00+00:00",
+            "return_pct": -0.3384185646755398,
+            "hazard": 0.495108,
+            "coherence": 0.002158,
+            "admit": true,
+            "reasons": [],
+            "price_start": 0.65156,
+            "price_end": 0.64956,
+            "cost_pct": 0.031462950457355456
+          }
+        ],
+        "median_spread": 0.00012999999999996348,
+        "p_value_holm": 1.9984014443252818e-15
+      },
+      "240": {
+        "count": 443,
+        "avg_return_pct": -0.05419288795948213,
+        "median_return_pct": -0.051582902192644234,
+        "positive_pct": 0.3544018058690745,
+        "avg_positive_return_pct": 0.13749889049510053,
+        "avg_negative_return_pct": -0.15942229081741735,
+        "avg_hazard": 0.5000375575620768,
+        "avg_cost_pct": 0.03151932208905028,
+        "hazard_buckets": {
+          "< 0.60": {
+            "count": 443,
+            "avg_return_pct": -0.05419288795948213
+          }
+        },
+        "auroc_admit": 0.4864482651106855,
+        "hazard_deciles": [
+          {
+            "decile": 1,
+            "count": 44,
+            "avg_return_pct": 0.04719791349464881,
+            "lift_vs_overall": 0.10139080145413093
+          },
+          {
+            "decile": 2,
+            "count": 44,
+            "avg_return_pct": -0.01457232796864677,
+            "lift_vs_overall": 0.03962055999083536
+          },
+          {
+            "decile": 3,
+            "count": 44,
+            "avg_return_pct": -0.057391618300182,
+            "lift_vs_overall": -0.003198730340699875
+          },
+          {
+            "decile": 4,
+            "count": 45,
+            "avg_return_pct": -0.07583617560888582,
+            "lift_vs_overall": -0.021643287649403695
+          },
+          {
+            "decile": 5,
+            "count": 44,
+            "avg_return_pct": -0.10548605283212824,
+            "lift_vs_overall": -0.05129316487264611
+          },
+          {
+            "decile": 6,
+            "count": 44,
+            "avg_return_pct": -0.10699572800031856,
+            "lift_vs_overall": -0.052802840040836435
+          },
+          {
+            "decile": 7,
+            "count": 45,
+            "avg_return_pct": -0.09294027233001581,
+            "lift_vs_overall": -0.03874738437053368
+          },
+          {
+            "decile": 8,
+            "count": 44,
+            "avg_return_pct": -0.011104968590563806,
+            "lift_vs_overall": 0.04308791936891832
+          },
+          {
+            "decile": 9,
+            "count": 44,
+            "avg_return_pct": -0.045254845285439535,
+            "lift_vs_overall": 0.008938042674042593
+          },
+          {
+            "decile": 10,
+            "count": 45,
+            "avg_return_pct": -0.07763941332365075,
+            "lift_vs_overall": -0.02344652536416862
+          }
+        ],
+        "overall_avg_return_pct": -0.05419288795948213,
+        "t_stat": -5.808150360593946,
+        "p_value": 6.316677736428744e-09,
+        "samples": [
+          {
+            "ts": "2025-11-06T12:19:00+00:00",
+            "return_pct": -0.7683922869073894,
+            "hazard": 0.504892,
+            "coherence": 0.005334,
+            "admit": true,
+            "reasons": [],
+            "price_start": 0.65136,
+            "price_end": 0.64656,
+            "cost_pct": 0.03147261115204268
+          },
+          {
+            "ts": "2025-11-06T13:07:00+00:00",
+            "return_pct": -0.7588429371595047,
+            "hazard": 0.499022,
+            "coherence": 0.002478,
+            "admit": true,
+            "reasons": [],
+            "price_start": 0.65165,
+            "price_end": 0.64691,
+            "cost_pct": 0.03145860507940539
+          },
+          {
+            "ts": "2025-11-06T12:35:00+00:00",
+            "return_pct": -0.7410308391694332,
+            "hazard": 0.493151,
+            "coherence": 0.004859,
+            "admit": true,
+            "reasons": [],
+            "price_start": 0.65112,
+            "price_end": 0.6465,
+            "cost_pct": 0.03148421181962544
+          },
+          {
+            "ts": "2025-11-06T12:51:00+00:00",
+            "return_pct": -0.734481488303534,
+            "hazard": 0.502935,
+            "coherence": 0.003183,
+            "admit": true,
+            "reasons": [],
+            "price_start": 0.65148,
+            "price_end": 0.6469,
+            "cost_pct": 0.03146681402344588
+          },
+          {
+            "ts": "2025-11-06T13:23:00+00:00",
+            "return_pct": -0.733092807246474,
+            "hazard": 0.508806,
+            "coherence": 0.000892,
+            "admit": true,
+            "reasons": [],
+            "price_start": 0.65135,
+            "price_end": 0.64678,
+            "cost_pct": 0.03147309434251097
+          }
+        ],
+        "median_spread": 0.00012999999999996348,
+        "p_value_holm": 6.316677736428744e-09
+      }
+    },
+    "EUR_USD": {
+      "5": {
+        "count": 444,
+        "avg_return_pct": -0.02108501726998593,
+        "median_return_pct": -0.021735544315669084,
+        "positive_pct": 0.10135135135135136,
+        "avg_positive_return_pct": 0.010207994306074393,
+        "avg_negative_return_pct": -0.024614304289842362,
+        "avg_hazard": 0.5120237657657658,
+        "avg_cost_pct": 0.021706904869741795,
+        "hazard_buckets": {
+          "< 0.60": {
+            "count": 444,
+            "avg_return_pct": -0.02108501726998593
+          }
+        },
+        "auroc_admit": 0.5014202172096909,
+        "hazard_deciles": [
+          {
+            "decile": 1,
+            "count": 44,
+            "avg_return_pct": -0.022232178985523113,
+            "lift_vs_overall": -0.0011471617155371823
+          },
+          {
+            "decile": 2,
+            "count": 44,
+            "avg_return_pct": -0.018431640041441242,
+            "lift_vs_overall": 0.0026533772285446885
+          },
+          {
+            "decile": 3,
+            "count": 45,
+            "avg_return_pct": -0.019749200950589286,
+            "lift_vs_overall": 0.0013358163193966446
+          },
+          {
+            "decile": 4,
+            "count": 44,
+            "avg_return_pct": -0.02198979181630309,
+            "lift_vs_overall": -0.0009047745463171587
+          },
+          {
+            "decile": 5,
+            "count": 45,
+            "avg_return_pct": -0.02389282442886874,
+            "lift_vs_overall": -0.0028078071588828087
+          },
+          {
+            "decile": 6,
+            "count": 44,
+            "avg_return_pct": -0.024163268263937287,
+            "lift_vs_overall": -0.0030782509939513564
+          },
+          {
+            "decile": 7,
+            "count": 44,
+            "avg_return_pct": -0.021774871950074767,
+            "lift_vs_overall": -0.0006898546800888361
+          },
+          {
+            "decile": 8,
+            "count": 45,
+            "avg_return_pct": -0.020252410957652053,
+            "lift_vs_overall": 0.0008326063123338771
+          },
+          {
+            "decile": 9,
+            "count": 44,
+            "avg_return_pct": -0.020408618947699284,
+            "lift_vs_overall": 0.000676398322286647
+          },
+          {
+            "decile": 10,
+            "count": 45,
+            "avg_return_pct": -0.01801070561077187,
+            "lift_vs_overall": 0.0030743116592140615
+          }
+        ],
+        "overall_avg_return_pct": -0.02108501726998593,
+        "t_stat": -25.23012037572913,
+        "p_value": 0.0,
+        "samples": [
+          {
+            "ts": "2025-11-05T14:56:00+00:00",
+            "return_pct": -0.16016016016015036,
+            "hazard": 0.46771,
+            "coherence": 0.000705,
+            "admit": true,
+            "reasons": [],
+            "price_start": 1.14885,
+            "price_end": 1.14726,
+            "cost_pct": 0.021760891326100623
+          },
+          {
+            "ts": "2025-11-05T16:00:00+00:00",
+            "return_pct": -0.08015333681824843,
+            "hazard": 0.426614,
+            "coherence": 0.011301,
+            "admit": true,
+            "reasons": [],
+            "price_start": 1.1478,
+            "price_end": 1.14713,
+            "cost_pct": 0.021780798048432394
+          },
+          {
+            "ts": "2025-11-03T07:59:00+00:00",
+            "return_pct": -0.07192499003448344,
+            "hazard": 0.510763,
+            "coherence": 0.002158,
+            "admit": true,
+            "reasons": [],
+            "price_start": 1.15398,
+            "price_end": 1.1534,
+            "cost_pct": 0.021664153624838124
+          },
+          {
+            "ts": "2025-11-03T09:35:00+00:00",
+            "return_pct": -0.07031249999998272,
+            "hazard": 0.459883,
+            "coherence": 9.9e-05,
+            "admit": true,
+            "reasons": [],
+            "price_start": 1.152,
+            "price_end": 1.15144,
+            "cost_pct": 0.021701388888880815
+          },
+          {
+            "ts": "2025-11-04T11:36:00+00:00",
+            "return_pct": -0.06607546513647153,
+            "hazard": 0.524462,
+            "coherence": 0.001586,
+            "admit": true,
+            "reasons": [],
+            "price_start": 1.1502,
+            "price_end": 1.14969,
+            "cost_pct": 0.02173535037383994
+          }
+        ],
+        "median_spread": 0.00015999999999993797,
+        "p_value_holm": 0.0
+      },
+      "15": {
+        "count": 444,
+        "avg_return_pct": -0.020117221098705222,
+        "median_return_pct": -0.020029260191219103,
+        "positive_pct": 0.21171171171171171,
+        "avg_positive_return_pct": 0.01798118318303361,
+        "avg_negative_return_pct": -0.030349363962943653,
+        "avg_hazard": 0.5120237657657658,
+        "avg_cost_pct": 0.021706904869741795,
+        "hazard_buckets": {
+          "< 0.60": {
+            "count": 444,
+            "avg_return_pct": -0.020117221098705222
+          }
+        },
+        "auroc_admit": 0.49547112462006077,
+        "hazard_deciles": [
+          {
+            "decile": 1,
+            "count": 44,
+            "avg_return_pct": -0.013206491637625922,
+            "lift_vs_overall": 0.006910729461079301
+          },
+          {
+            "decile": 2,
+            "count": 44,
+            "avg_return_pct": -0.01607063295664064,
+            "lift_vs_overall": 0.004046588142064583
+          },
+          {
+            "decile": 3,
+            "count": 45,
+            "avg_return_pct": -0.015806239988889907,
+            "lift_vs_overall": 0.004310981109815315
+          },
+          {
+            "decile": 4,
+            "count": 44,
+            "avg_return_pct": -0.027705845095772418,
+            "lift_vs_overall": -0.007588623997067195
+          },
+          {
+            "decile": 5,
+            "count": 45,
+            "avg_return_pct": -0.02537136741771403,
+            "lift_vs_overall": -0.005254146319008807
+          },
+          {
+            "decile": 6,
+            "count": 44,
+            "avg_return_pct": -0.02252014997342512,
+            "lift_vs_overall": -0.0024029288747198993
+          },
+          {
+            "decile": 7,
+            "count": 44,
+            "avg_return_pct": -0.025326492409738225,
+            "lift_vs_overall": -0.005209271311033003
+          },
+          {
+            "decile": 8,
+            "count": 45,
+            "avg_return_pct": -0.01857743422165051,
+            "lift_vs_overall": 0.0015397868770547114
+          },
+          {
+            "decile": 9,
+            "count": 44,
+            "avg_return_pct": -0.02207716502796037,
+            "lift_vs_overall": -0.0019599439292551472
+          },
+          {
+            "decile": 10,
+            "count": 45,
+            "avg_return_pct": -0.014648246713389115,
+            "lift_vs_overall": 0.005468974385316107
+          }
+        ],
+        "overall_avg_return_pct": -0.020117221098705222,
+        "t_stat": -14.518479765830525,
+        "p_value": 0.0,
+        "samples": [
+          {
+            "ts": "2025-11-03T08:31:00+00:00",
+            "return_pct": -0.13014619756191753,
+            "hazard": 0.504892,
+            "coherence": 0.000892,
+            "admit": true,
+            "reasons": [],
+            "price_start": 1.15255,
+            "price_end": 1.1513,
+            "cost_pct": 0.021691032926979912
+          },
+          {
+            "ts": "2025-11-05T14:56:00+00:00",
+            "return_pct": -0.127083605344461,
+            "hazard": 0.46771,
+            "coherence": 0.000705,
+            "admit": true,
+            "reasons": [],
+            "price_start": 1.14885,
+            "price_end": 1.14764,
+            "cost_pct": 0.021760891326100623
+          },
+          {
+            "ts": "2025-11-03T23:52:00+00:00",
+            "return_pct": -0.1206701970657024,
+            "hazard": 0.506849,
+            "coherence": 0.025511,
+            "admit": true,
+            "reasons": [],
+            "price_start": 1.1519,
+            "price_end": 1.15076,
+            "cost_pct": 0.021703272853538243
+          },
+          {
+            "ts": "2025-11-07T18:05:00+00:00",
+            "return_pct": -0.11654609182103579,
+            "hazard": 0.540117,
+            "coherence": 0.004859,
+            "admit": true,
+            "reasons": [],
+            "price_start": 1.15834,
+            "price_end": 1.15724,
+            "cost_pct": 0.021582609596483504
+          },
+          {
+            "ts": "2025-11-03T07:59:00+00:00",
+            "return_pct": -0.11525329728417102,
+            "hazard": 0.510763,
+            "coherence": 0.002158,
+            "admit": true,
+            "reasons": [],
+            "price_start": 1.15398,
+            "price_end": 1.1529,
+            "cost_pct": 0.021664153624838124
+          }
+        ],
+        "median_spread": 0.00015999999999993797,
+        "p_value_holm": 0.0
+      },
+      "30": {
+        "count": 444,
+        "avg_return_pct": -0.019294681459758628,
+        "median_return_pct": -0.017768091296052967,
+        "positive_pct": 0.2882882882882883,
+        "avg_positive_return_pct": 0.026497982679862312,
+        "avg_negative_return_pct": -0.03784360870618736,
+        "avg_hazard": 0.5120237657657658,
+        "avg_cost_pct": 0.021706904869741795,
+        "hazard_buckets": {
+          "< 0.60": {
+            "count": 444,
+            "avg_return_pct": -0.019294681459758628
+          }
+        },
+        "auroc_admit": 0.5064280063291139,
+        "hazard_deciles": [
+          {
+            "decile": 1,
+            "count": 44,
+            "avg_return_pct": -0.00031313508231860135,
+            "lift_vs_overall": 0.018981546377440026
+          },
+          {
+            "decile": 2,
+            "count": 44,
+            "avg_return_pct": -0.019749708085131105,
+            "lift_vs_overall": -0.00045502662537247676
+          },
+          {
+            "decile": 3,
+            "count": 45,
+            "avg_return_pct": -0.016163715518642225,
+            "lift_vs_overall": 0.003130965941116403
+          },
+          {
+            "decile": 4,
+            "count": 44,
+            "avg_return_pct": -0.02548499923874332,
+            "lift_vs_overall": -0.0061903177789846935
+          },
+          {
+            "decile": 5,
+            "count": 45,
+            "avg_return_pct": -0.032382716649031605,
+            "lift_vs_overall": -0.013088035189272977
+          },
+          {
+            "decile": 6,
+            "count": 44,
+            "avg_return_pct": -0.020830040531380947,
+            "lift_vs_overall": -0.0015353590716223192
+          },
+          {
+            "decile": 7,
+            "count": 44,
+            "avg_return_pct": -0.030587710327855067,
+            "lift_vs_overall": -0.011293028868096439
+          },
+          {
+            "decile": 8,
+            "count": 45,
+            "avg_return_pct": -0.022581254513107323,
+            "lift_vs_overall": -0.0032865730533486945
+          },
+          {
+            "decile": 9,
+            "count": 44,
+            "avg_return_pct": -0.015427815793816047,
+            "lift_vs_overall": 0.003866865665942581
+          },
+          {
+            "decile": 10,
+            "count": 45,
+            "avg_return_pct": -0.009350725975353224,
+            "lift_vs_overall": 0.009943955484405404
+          }
+        ],
+        "overall_avg_return_pct": -0.019294681459758628,
+        "t_stat": -9.892403578222286,
+        "p_value": 0.0,
+        "samples": [
+          {
+            "ts": "2025-11-03T08:15:00+00:00",
+            "return_pct": -0.14659195392326846,
+            "hazard": 0.51272,
+            "coherence": 4.4e-05,
+            "admit": true,
+            "reasons": [],
+            "price_start": 1.15286,
+            "price_end": 1.15142,
+            "cost_pct": 0.021685200284501757
+          },
+          {
+            "ts": "2025-11-03T07:59:00+00:00",
+            "return_pct": -0.14644967850396148,
+            "hazard": 0.510763,
+            "coherence": 0.002158,
+            "admit": true,
+            "reasons": [],
+            "price_start": 1.15398,
+            "price_end": 1.15254,
+            "cost_pct": 0.021664153624838124
+          },
+          {
+            "ts": "2025-11-04T14:00:00+00:00",
+            "return_pct": -0.14357064545879547,
+            "hazard": 0.530333,
+            "coherence": 0.000892,
+            "admit": true,
+            "reasons": [],
+            "price_start": 1.14926,
+            "price_end": 1.14786,
+            "cost_pct": 0.02175312809981266
+          },
+          {
+            "ts": "2025-11-04T11:36:00+00:00",
+            "return_pct": -0.13997565640755633,
+            "hazard": 0.524462,
+            "coherence": 0.001586,
+            "admit": true,
+            "reasons": [],
+            "price_start": 1.1502,
+            "price_end": 1.14884,
+            "cost_pct": 0.02173535037383994
+          },
+          {
+            "ts": "2025-11-03T08:31:00+00:00",
+            "return_pct": -0.13795496941562654,
+            "hazard": 0.504892,
+            "coherence": 0.000892,
+            "admit": true,
+            "reasons": [],
+            "price_start": 1.15255,
+            "price_end": 1.15121,
+            "cost_pct": 0.021691032926979912
+          }
+        ],
+        "median_spread": 0.00015999999999993797,
+        "p_value_holm": 0.0
+      },
+      "60": {
+        "count": 444,
+        "avg_return_pct": -0.01824666957587818,
+        "median_return_pct": -0.014335596170225923,
+        "positive_pct": 0.35135135135135137,
+        "avg_positive_return_pct": 0.0369059383853783,
+        "avg_negative_return_pct": -0.048120998888225436,
+        "avg_hazard": 0.5120237657657658,
+        "avg_cost_pct": 0.021706904869741795,
+        "hazard_buckets": {
+          "< 0.60": {
+            "count": 444,
+            "avg_return_pct": -0.01824666957587818
+          }
+        },
+        "auroc_admit": 0.49933226495726496,
+        "hazard_deciles": [
+          {
+            "decile": 1,
+            "count": 44,
+            "avg_return_pct": 0.005277195711679696,
+            "lift_vs_overall": 0.023523865287557875
+          },
+          {
+            "decile": 2,
+            "count": 44,
+            "avg_return_pct": -0.019448835686731555,
+            "lift_vs_overall": -0.0012021661108533761
+          },
+          {
+            "decile": 3,
+            "count": 45,
+            "avg_return_pct": -0.01873030575135088,
+            "lift_vs_overall": -0.00048363617547270144
+          },
+          {
+            "decile": 4,
+            "count": 44,
+            "avg_return_pct": -0.02151954339816371,
+            "lift_vs_overall": -0.0032728738222855304
+          },
+          {
+            "decile": 5,
+            "count": 45,
+            "avg_return_pct": -0.02585426654977829,
+            "lift_vs_overall": -0.007607596973900111
+          },
+          {
+            "decile": 6,
+            "count": 44,
+            "avg_return_pct": -0.029231239730101777,
+            "lift_vs_overall": -0.010984570154223598
+          },
+          {
+            "decile": 7,
+            "count": 44,
+            "avg_return_pct": -0.03318018315021192,
+            "lift_vs_overall": -0.014933513574333743
+          },
+          {
+            "decile": 8,
+            "count": 45,
+            "avg_return_pct": -0.02303440177199447,
+            "lift_vs_overall": -0.004787732196116293
+          },
+          {
+            "decile": 9,
+            "count": 44,
+            "avg_return_pct": -0.01676355596919266,
+            "lift_vs_overall": 0.001483113606685519
+          },
+          {
+            "decile": 10,
+            "count": 45,
+            "avg_return_pct": -0.00010125156887960358,
+            "lift_vs_overall": 0.018145418006998575
+          }
+        ],
+        "overall_avg_return_pct": -0.01824666957587818,
+        "t_stat": -6.689957604045981,
+        "p_value": 2.2323476400742948e-11,
+        "samples": [
+          {
+            "ts": "2025-11-03T07:59:00+00:00",
+            "return_pct": -0.25043761590321173,
+            "hazard": 0.510763,
+            "coherence": 0.002158,
+            "admit": true,
+            "reasons": [],
+            "price_start": 1.15398,
+            "price_end": 1.15134,
+            "cost_pct": 0.021664153624838124
+          },
+          {
+            "ts": "2025-11-03T07:43:00+00:00",
+            "return_pct": -0.21750433275561834,
+            "hazard": 0.528376,
+            "coherence": 0.001586,
+            "admit": true,
+            "reasons": [],
+            "price_start": 1.154,
+            "price_end": 1.15174,
+            "cost_pct": 0.021663778162903553
+          },
+          {
+            "ts": "2025-11-05T13:04:00+00:00",
+            "return_pct": -0.1992690567351156,
+            "hazard": 0.524462,
+            "coherence": 0.006349,
+            "admit": true,
+            "reasons": [],
+            "price_start": 1.1492,
+            "price_end": 1.14716,
+            "cost_pct": 0.021754263835703707
+          },
+          {
+            "ts": "2025-11-04T11:36:00+00:00",
+            "return_pct": -0.1982263954094839,
+            "hazard": 0.524462,
+            "coherence": 0.001586,
+            "admit": true,
+            "reasons": [],
+            "price_start": 1.1502,
+            "price_end": 1.14817,
+            "cost_pct": 0.02173535037383994
+          },
+          {
+            "ts": "2025-11-04T08:24:00+00:00",
+            "return_pct": -0.17610826754576403,
+            "hazard": 0.483366,
+            "coherence": 9.9e-05,
+            "admit": true,
+            "reasons": [],
+            "price_start": 1.1527,
+            "price_end": 1.15092,
+            "cost_pct": 0.021688210288878892
+          }
+        ],
+        "median_spread": 0.00015999999999993797,
+        "p_value_holm": 4.4646952801485895e-11
+      },
+      "240": {
+        "count": 444,
+        "avg_return_pct": -0.01059138093209172,
+        "median_return_pct": -0.0038985505024921804,
+        "positive_pct": 0.4954954954954955,
+        "avg_positive_return_pct": 0.0719295796832903,
+        "avg_negative_return_pct": -0.0916387529650562,
+        "avg_hazard": 0.5120237657657658,
+        "avg_cost_pct": 0.021706904869741795,
+        "hazard_buckets": {
+          "< 0.60": {
+            "count": 444,
+            "avg_return_pct": -0.01059138093209172
+          }
+        },
+        "auroc_admit": 0.49752435064935063,
+        "hazard_deciles": [
+          {
+            "decile": 1,
+            "count": 44,
+            "avg_return_pct": -0.005145578482791906,
+            "lift_vs_overall": 0.005445802449299815
+          },
+          {
+            "decile": 2,
+            "count": 44,
+            "avg_return_pct": -0.004355308304177577,
+            "lift_vs_overall": 0.006236072627914144
+          },
+          {
+            "decile": 3,
+            "count": 45,
+            "avg_return_pct": -0.0075361786753157835,
+            "lift_vs_overall": 0.0030552022567759372
+          },
+          {
+            "decile": 4,
+            "count": 44,
+            "avg_return_pct": 0.010750852829526706,
+            "lift_vs_overall": 0.021342233761618427
+          },
+          {
+            "decile": 5,
+            "count": 45,
+            "avg_return_pct": -0.028359248935444177,
+            "lift_vs_overall": -0.017767868003352456
+          },
+          {
+            "decile": 6,
+            "count": 44,
+            "avg_return_pct": -0.018895614880122657,
+            "lift_vs_overall": -0.008304233948030936
+          },
+          {
+            "decile": 7,
+            "count": 44,
+            "avg_return_pct": -0.023355735840230228,
+            "lift_vs_overall": -0.012764354908138507
+          },
+          {
+            "decile": 8,
+            "count": 45,
+            "avg_return_pct": -0.03662611901300676,
+            "lift_vs_overall": -0.02603473808091504
+          },
+          {
+            "decile": 9,
+            "count": 44,
+            "avg_return_pct": -0.0015298617304113666,
+            "lift_vs_overall": 0.009061519201680353
+          },
+          {
+            "decile": 10,
+            "count": 45,
+            "avg_return_pct": 0.009606029026264156,
+            "lift_vs_overall": 0.020197409958355877
+          }
+        ],
+        "overall_avg_return_pct": -0.01059138093209172,
+        "t_stat": -2.118036701174283,
+        "p_value": 0.034171959569490484,
+        "samples": [
+          {
+            "ts": "2025-11-04T08:24:00+00:00",
+            "return_pct": -0.4068708250195113,
+            "hazard": 0.483366,
+            "coherence": 9.9e-05,
+            "admit": true,
+            "reasons": [],
+            "price_start": 1.1527,
+            "price_end": 1.14826,
+            "cost_pct": 0.021688210288878892
+          },
+          {
+            "ts": "2025-11-04T08:40:00+00:00",
+            "return_pct": -0.3714310509416043,
+            "hazard": 0.469667,
+            "coherence": 0.000176,
+            "admit": true,
+            "reasons": [],
+            "price_start": 1.1523,
+            "price_end": 1.14827,
+            "cost_pct": 0.021695738956860798
+          },
+          {
+            "ts": "2025-11-04T07:52:00+00:00",
+            "return_pct": -0.3252526128626344,
+            "hazard": 0.518591,
+            "coherence": 0.000176,
+            "admit": true,
+            "reasons": [],
+            "price_start": 1.15295,
+            "price_end": 1.14945,
+            "cost_pct": 0.021683507524169046
+          },
+          {
+            "ts": "2025-11-04T08:08:00+00:00",
+            "return_pct": -0.3236442516269029,
+            "hazard": 0.495108,
+            "coherence": 0.0,
+            "admit": true,
+            "reasons": [],
+            "price_start": 1.1525,
+            "price_end": 1.14902,
+            "cost_pct": 0.021691973969623163
+          },
+          {
+            "ts": "2025-11-07T11:09:00+00:00",
+            "return_pct": 0.2744113573407264,
+            "hazard": 0.536204,
+            "coherence": 0.00689,
+            "admit": true,
+            "reasons": [],
+            "price_start": 1.1552,
+            "price_end": 1.15862,
+            "cost_pct": 0.021641274238219092
+          }
+        ],
+        "median_spread": 0.00015999999999993797,
+        "p_value_holm": 0.034171959569490484
+      }
+    },
+    "GBP_USD": {
+      "5": {
+        "count": 445,
+        "avg_return_pct": -0.02265678837010526,
+        "median_return_pct": -0.02265153492942463,
+        "positive_pct": 0.11235955056179775,
+        "avg_positive_return_pct": 0.01432783210180739,
+        "avg_negative_return_pct": -0.027338385898195466,
+        "avg_hazard": 0.49632576853932586,
+        "avg_cost_pct": 0.022529709131991697,
+        "hazard_buckets": {
+          "< 0.60": {
+            "count": 445,
+            "avg_return_pct": -0.02265678837010526
+          }
+        },
+        "auroc_admit": 0.5113924050632911,
+        "hazard_deciles": [
+          {
+            "decile": 1,
+            "count": 44,
+            "avg_return_pct": -0.02630779294673089,
+            "lift_vs_overall": -0.003651004576625632
+          },
+          {
+            "decile": 2,
+            "count": 45,
+            "avg_return_pct": -0.0224422811642124,
+            "lift_vs_overall": 0.00021450720589286099
+          },
+          {
+            "decile": 3,
+            "count": 44,
+            "avg_return_pct": -0.02225550197417013,
+            "lift_vs_overall": 0.00040128639593512913
+          },
+          {
+            "decile": 4,
+            "count": 45,
+            "avg_return_pct": -0.02016391620421392,
+            "lift_vs_overall": 0.002492872165891339
+          },
+          {
+            "decile": 5,
+            "count": 44,
+            "avg_return_pct": -0.021292060030577563,
+            "lift_vs_overall": 0.0013647283395276967
+          },
+          {
+            "decile": 6,
+            "count": 45,
+            "avg_return_pct": -0.025630513801625426,
+            "lift_vs_overall": -0.002973725431520167
+          },
+          {
+            "decile": 7,
+            "count": 44,
+            "avg_return_pct": -0.02453638998098291,
+            "lift_vs_overall": -0.0018796016108776521
+          },
+          {
+            "decile": 8,
+            "count": 45,
+            "avg_return_pct": -0.022084754601861257,
+            "lift_vs_overall": 0.0005720337682440027
+          },
+          {
+            "decile": 9,
+            "count": 44,
+            "avg_return_pct": -0.02204631232255201,
+            "lift_vs_overall": 0.0006104760475532482
+          },
+          {
+            "decile": 10,
+            "count": 45,
+            "avg_return_pct": -0.019878452127559117,
+            "lift_vs_overall": 0.002778336242546142
+          }
+        ],
+        "overall_avg_return_pct": -0.02265678837010526,
+        "t_stat": -22.241576417987513,
+        "p_value": 0.0,
+        "samples": [
+          {
+            "ts": "2025-11-06T11:57:00+00:00",
+            "return_pct": -0.13711081915120577,
+            "hazard": 0.514677,
+            "coherence": 0.002478,
+            "admit": true,
+            "reasons": [],
+            "price_start": 1.30916,
+            "price_end": 1.30766,
+            "cost_pct": 0.02253353295241748
+          },
+          {
+            "ts": "2025-11-04T08:51:00+00:00",
+            "return_pct": -0.10878776080433808,
+            "hazard": 0.434442,
+            "coherence": 0.002158,
+            "admit": true,
+            "reasons": [],
+            "price_start": 1.30989,
+            "price_end": 1.30876,
+            "cost_pct": 0.022520975043695938
+          },
+          {
+            "ts": "2025-11-06T13:33:00+00:00",
+            "return_pct": 0.0904621585721527,
+            "hazard": 0.430528,
+            "coherence": 0.005831,
+            "admit": true,
+            "reasons": [],
+            "price_start": 1.30994,
+            "price_end": 1.31142,
+            "cost_pct": 0.02252011542512395
+          },
+          {
+            "ts": "2025-11-03T13:19:00+00:00",
+            "return_pct": -0.0833587088915958,
+            "hazard": 0.508806,
+            "coherence": 9.9e-05,
+            "admit": true,
+            "reasons": [],
+            "price_start": 1.3136,
+            "price_end": 1.3128,
+            "cost_pct": 0.02245736906210937
+          },
+          {
+            "ts": "2025-11-09T22:34:00+00:00",
+            "return_pct": -0.08320099689229313,
+            "hazard": 0.497065,
+            "coherence": 1.1e-05,
+            "admit": true,
+            "reasons": [],
+            "price_start": 1.31609,
+            "price_end": 1.31529,
+            "cost_pct": 0.022414880441297233
+          }
+        ],
+        "median_spread": 0.00018999999999991246,
+        "p_value_holm": 0.0
+      },
+      "15": {
+        "count": 445,
+        "avg_return_pct": -0.023118334688495716,
+        "median_return_pct": -0.02337666319209748,
+        "positive_pct": 0.21348314606741572,
+        "avg_positive_return_pct": 0.027571195234421784,
+        "avg_negative_return_pct": -0.03687692138185904,
+        "avg_hazard": 0.49632576853932586,
+        "avg_cost_pct": 0.022529709131991697,
+        "hazard_buckets": {
+          "< 0.60": {
+            "count": 445,
+            "avg_return_pct": -0.023118334688495716
+          }
+        },
+        "auroc_admit": 0.5061654135338346,
+        "hazard_deciles": [
+          {
+            "decile": 1,
+            "count": 44,
+            "avg_return_pct": -0.020978831421375944,
+            "lift_vs_overall": 0.0021395032671197717
+          },
+          {
+            "decile": 2,
+            "count": 45,
+            "avg_return_pct": -0.029584835087207963,
+            "lift_vs_overall": -0.006466500398712247
+          },
+          {
+            "decile": 3,
+            "count": 44,
+            "avg_return_pct": -0.02549512103122786,
+            "lift_vs_overall": -0.0023767863427321435
+          },
+          {
+            "decile": 4,
+            "count": 45,
+            "avg_return_pct": -0.02178758952344761,
+            "lift_vs_overall": 0.0013307451650481049
+          },
+          {
+            "decile": 5,
+            "count": 44,
+            "avg_return_pct": -0.018573929552636616,
+            "lift_vs_overall": 0.0045444051358591
+          },
+          {
+            "decile": 6,
+            "count": 45,
+            "avg_return_pct": -0.024752677120368747,
+            "lift_vs_overall": -0.0016343424318730308
+          },
+          {
+            "decile": 7,
+            "count": 44,
+            "avg_return_pct": -0.02428614556431137,
+            "lift_vs_overall": -0.0011678108758156544
+          },
+          {
+            "decile": 8,
+            "count": 45,
+            "avg_return_pct": -0.01923164313803543,
+            "lift_vs_overall": 0.003886691550460286
+          },
+          {
+            "decile": 9,
+            "count": 44,
+            "avg_return_pct": -0.02521202921002309,
+            "lift_vs_overall": -0.0020936945215273735
+          },
+          {
+            "decile": 10,
+            "count": 45,
+            "avg_return_pct": -0.02125730931048021,
+            "lift_vs_overall": 0.0018610253780155066
+          }
+        ],
+        "overall_avg_return_pct": -0.023118334688495716,
+        "t_stat": -12.497322787268047,
+        "p_value": 0.0,
+        "samples": [
+          {
+            "ts": "2025-11-06T11:57:00+00:00",
+            "return_pct": -0.20891258516910585,
+            "hazard": 0.514677,
+            "coherence": 0.002478,
+            "admit": true,
+            "reasons": [],
+            "price_start": 1.30916,
+            "price_end": 1.30672,
+            "cost_pct": 0.02253353295241748
+          },
+          {
+            "ts": "2025-11-06T13:49:00+00:00",
+            "return_pct": -0.1901068255588797,
+            "hazard": 0.418787,
+            "coherence": 0.000892,
+            "admit": true,
+            "reasons": [],
+            "price_start": 1.31242,
+            "price_end": 1.31022,
+            "cost_pct": 0.022477560537013205
+          },
+          {
+            "ts": "2025-11-04T09:07:00+00:00",
+            "return_pct": -0.18674671188304576,
+            "hazard": 0.438356,
+            "coherence": 0.002478,
+            "admit": true,
+            "reasons": [],
+            "price_start": 1.30926,
+            "price_end": 1.30711,
+            "cost_pct": 0.022531811863179867
+          },
+          {
+            "ts": "2025-11-06T13:33:00+00:00",
+            "return_pct": 0.1515336580301364,
+            "hazard": 0.430528,
+            "coherence": 0.005831,
+            "admit": true,
+            "reasons": [],
+            "price_start": 1.30994,
+            "price_end": 1.31222,
+            "cost_pct": 0.02252011542512395
+          },
+          {
+            "ts": "2025-11-06T15:25:00+00:00",
+            "return_pct": -0.1278235653235505,
+            "hazard": 0.465753,
+            "coherence": 0.003183,
+            "admit": true,
+            "reasons": [],
+            "price_start": 1.3104,
+            "price_end": 1.30902,
+            "cost_pct": 0.022512210012199992
+          }
+        ],
+        "median_spread": 0.00018999999999991246,
+        "p_value_holm": 0.0
+      },
+      "30": {
+        "count": 445,
+        "avg_return_pct": -0.022405917344962074,
+        "median_return_pct": -0.020342365855522702,
+        "positive_pct": 0.29213483146067415,
+        "avg_positive_return_pct": 0.03593249573763538,
+        "avg_negative_return_pct": -0.04648208782349436,
+        "avg_hazard": 0.49632576853932586,
+        "avg_cost_pct": 0.022529709131991697,
+        "hazard_buckets": {
+          "< 0.60": {
+            "count": 445,
+            "avg_return_pct": -0.022405917344962074
+          }
+        },
+        "auroc_admit": 0.5034188034188034,
+        "hazard_deciles": [
+          {
+            "decile": 1,
+            "count": 44,
+            "avg_return_pct": -0.03099859583811957,
+            "lift_vs_overall": -0.008592678493157497
+          },
+          {
+            "decile": 2,
+            "count": 45,
+            "avg_return_pct": -0.014233299660663475,
+            "lift_vs_overall": 0.008172617684298599
+          },
+          {
+            "decile": 3,
+            "count": 44,
+            "avg_return_pct": -0.020705147532389313,
+            "lift_vs_overall": 0.0017007698125727604
+          },
+          {
+            "decile": 4,
+            "count": 45,
+            "avg_return_pct": -0.020254165260856733,
+            "lift_vs_overall": 0.0021517520841053406
+          },
+          {
+            "decile": 5,
+            "count": 44,
+            "avg_return_pct": -0.021143083877688994,
+            "lift_vs_overall": 0.0012628334672730793
+          },
+          {
+            "decile": 6,
+            "count": 45,
+            "avg_return_pct": -0.023332490970522066,
+            "lift_vs_overall": -0.0009265736255599927
+          },
+          {
+            "decile": 7,
+            "count": 44,
+            "avg_return_pct": -0.021282878894253756,
+            "lift_vs_overall": 0.0011230384507083177
+          },
+          {
+            "decile": 8,
+            "count": 45,
+            "avg_return_pct": -0.024028837995911816,
+            "lift_vs_overall": -0.001622920650949742
+          },
+          {
+            "decile": 9,
+            "count": 44,
+            "avg_return_pct": -0.028092950168117956,
+            "lift_vs_overall": -0.005687032823155882
+          },
+          {
+            "decile": 10,
+            "count": 45,
+            "avg_return_pct": -0.02021423590855837,
+            "lift_vs_overall": 0.0021916814364037022
+          }
+        ],
+        "overall_avg_return_pct": -0.022405917344962074,
+        "t_stat": -8.781272315618638,
+        "p_value": 0.0,
+        "samples": [
+          {
+            "ts": "2025-11-06T13:49:00+00:00",
+            "return_pct": -0.25106292193046137,
+            "hazard": 0.418787,
+            "coherence": 0.000892,
+            "admit": true,
+            "reasons": [],
+            "price_start": 1.31242,
+            "price_end": 1.30942,
+            "cost_pct": 0.022477560537013205
+          },
+          {
+            "ts": "2025-11-04T08:51:00+00:00",
+            "return_pct": -0.20650588980753284,
+            "hazard": 0.434442,
+            "coherence": 0.002158,
+            "admit": true,
+            "reasons": [],
+            "price_start": 1.30989,
+            "price_end": 1.30748,
+            "cost_pct": 0.022520975043695938
+          },
+          {
+            "ts": "2025-11-06T11:41:00+00:00",
+            "return_pct": -0.20204566461183115,
+            "hazard": 0.536204,
+            "coherence": 0.002478,
+            "admit": true,
+            "reasons": [],
+            "price_start": 1.30911,
+            "price_end": 1.30676,
+            "cost_pct": 0.022534393595638923
+          },
+          {
+            "ts": "2025-11-04T14:11:00+00:00",
+            "return_pct": -0.18650428921567855,
+            "hazard": 0.463796,
+            "coherence": 0.002478,
+            "admit": true,
+            "reasons": [],
+            "price_start": 1.3056,
+            "price_end": 1.30346,
+            "cost_pct": 0.02259497549018602
+          },
+          {
+            "ts": "2025-11-07T14:41:00+00:00",
+            "return_pct": 0.18608155623545186,
+            "hazard": 0.455969,
+            "coherence": 0.001861,
+            "admit": true,
+            "reasons": [],
+            "price_start": 1.31394,
+            "price_end": 1.31668,
+            "cost_pct": 0.02245155790978802
+          }
+        ],
+        "median_spread": 0.00018999999999991246,
+        "p_value_holm": 0.0
+      },
+      "60": {
+        "count": 445,
+        "avg_return_pct": -0.022275348115314984,
+        "median_return_pct": -0.019424279587735186,
+        "positive_pct": 0.3438202247191011,
+        "avg_positive_return_pct": 0.04922232387787874,
+        "avg_negative_return_pct": -0.05973816939941992,
+        "avg_hazard": 0.49632576853932586,
+        "avg_cost_pct": 0.022529709131991697,
+        "hazard_buckets": {
+          "< 0.60": {
+            "count": 445,
+            "avg_return_pct": -0.022275348115314984
+          }
+        },
+        "auroc_admit": 0.5004700510341122,
+        "hazard_deciles": [
+          {
+            "decile": 1,
+            "count": 44,
+            "avg_return_pct": -0.03955889536501147,
+            "lift_vs_overall": -0.017283547249696486
+          },
+          {
+            "decile": 2,
+            "count": 45,
+            "avg_return_pct": -4.737225134192451e-06,
+            "lift_vs_overall": 0.02227061089018079
+          },
+          {
+            "decile": 3,
+            "count": 44,
+            "avg_return_pct": -0.023472544873370915,
+            "lift_vs_overall": -0.0011971967580559316
+          },
+          {
+            "decile": 4,
+            "count": 45,
+            "avg_return_pct": -0.014093867856697948,
+            "lift_vs_overall": 0.008181480258617035
+          },
+          {
+            "decile": 5,
+            "count": 44,
+            "avg_return_pct": -0.017691019915197025,
+            "lift_vs_overall": 0.004584328200117959
+          },
+          {
+            "decile": 6,
+            "count": 45,
+            "avg_return_pct": -0.021473930747702895,
+            "lift_vs_overall": 0.0008014173676120888
+          },
+          {
+            "decile": 7,
+            "count": 44,
+            "avg_return_pct": -0.029182864601868298,
+            "lift_vs_overall": -0.006907516486553314
+          },
+          {
+            "decile": 8,
+            "count": 45,
+            "avg_return_pct": -0.02458718443762918,
+            "lift_vs_overall": -0.0023118363223141973
+          },
+          {
+            "decile": 9,
+            "count": 44,
+            "avg_return_pct": -0.030101750904997573,
+            "lift_vs_overall": -0.00782640278968259
+          },
+          {
+            "decile": 10,
+            "count": 45,
+            "avg_return_pct": -0.02322291489407081,
+            "lift_vs_overall": -0.0009475667787558276
+          }
+        ],
+        "overall_avg_return_pct": -0.022275348115314984,
+        "t_stat": -6.412722495160051,
+        "p_value": 1.4294354588884062e-10,
+        "samples": [
+          {
+            "ts": "2025-11-06T13:49:00+00:00",
+            "return_pct": -0.3028756038463125,
+            "hazard": 0.418787,
+            "coherence": 0.000892,
+            "admit": true,
+            "reasons": [],
+            "price_start": 1.31242,
+            "price_end": 1.30874,
+            "cost_pct": 0.022477560537013205
+          },
+          {
+            "ts": "2025-11-04T07:31:00+00:00",
+            "return_pct": -0.29044537495240474,
+            "hazard": 0.483366,
+            "coherence": 0.000176,
+            "admit": true,
+            "reasons": [],
+            "price_start": 1.3135,
+            "price_end": 1.30998,
+            "cost_pct": 0.022459078797096976
+          },
+          {
+            "ts": "2025-11-04T08:35:00+00:00",
+            "return_pct": -0.2895620326567929,
+            "hazard": 0.434442,
+            "coherence": 0.001101,
+            "admit": true,
+            "reasons": [],
+            "price_start": 1.3106,
+            "price_end": 1.3071,
+            "cost_pct": 0.022508774607040188
+          },
+          {
+            "ts": "2025-11-04T08:51:00+00:00",
+            "return_pct": -0.2675797204345253,
+            "hazard": 0.434442,
+            "coherence": 0.002158,
+            "admit": true,
+            "reasons": [],
+            "price_start": 1.30989,
+            "price_end": 1.30668,
+            "cost_pct": 0.022520975043695938
+          },
+          {
+            "ts": "2025-11-07T14:09:00+00:00",
+            "return_pct": 0.2546243434574101,
+            "hazard": 0.450098,
+            "coherence": 0.000275,
+            "admit": true,
+            "reasons": [],
+            "price_start": 1.3137,
+            "price_end": 1.31734,
+            "cost_pct": 0.022455659587414835
+          }
+        ],
+        "median_spread": 0.00018999999999991246,
+        "p_value_holm": 2.8588709177768123e-10
+      },
+      "240": {
+        "count": 445,
+        "avg_return_pct": -0.01653632777041495,
+        "median_return_pct": -0.013341668699663689,
+        "positive_pct": 0.43820224719101125,
+        "avg_positive_return_pct": 0.10054296540775541,
+        "avg_negative_return_pct": -0.10785817644938785,
+        "avg_hazard": 0.49632576853932586,
+        "avg_cost_pct": 0.022529709131991697,
+        "hazard_buckets": {
+          "< 0.60": {
+            "count": 445,
+            "avg_return_pct": -0.01653632777041495
+          }
+        },
+        "auroc_admit": 0.49974358974358973,
+        "hazard_deciles": [
+          {
+            "decile": 1,
+            "count": 44,
+            "avg_return_pct": -0.02778935301930817,
+            "lift_vs_overall": -0.011253025248893218
+          },
+          {
+            "decile": 2,
+            "count": 45,
+            "avg_return_pct": 0.012495860330973153,
+            "lift_vs_overall": 0.029032188101388103
+          },
+          {
+            "decile": 3,
+            "count": 44,
+            "avg_return_pct": 0.01667146536345676,
+            "lift_vs_overall": 0.03320779313387171
+          },
+          {
+            "decile": 4,
+            "count": 45,
+            "avg_return_pct": 0.0009439378099193205,
+            "lift_vs_overall": 0.017480265580334272
+          },
+          {
+            "decile": 5,
+            "count": 44,
+            "avg_return_pct": 0.023375125607600248,
+            "lift_vs_overall": 0.0399114533780152
+          },
+          {
+            "decile": 6,
+            "count": 45,
+            "avg_return_pct": -0.027068067829510732,
+            "lift_vs_overall": -0.010531740059095782
+          },
+          {
+            "decile": 7,
+            "count": 44,
+            "avg_return_pct": -0.05260274081403227,
+            "lift_vs_overall": -0.03606641304361732
+          },
+          {
+            "decile": 8,
+            "count": 45,
+            "avg_return_pct": -0.052646932672296295,
+            "lift_vs_overall": -0.036110604901881345
+          },
+          {
+            "decile": 9,
+            "count": 44,
+            "avg_return_pct": -0.053234606341771726,
+            "lift_vs_overall": -0.036698278571356775
+          },
+          {
+            "decile": 10,
+            "count": 45,
+            "avg_return_pct": -0.00575015436922381,
+            "lift_vs_overall": 0.01078617340119114
+          }
+        ],
+        "overall_avg_return_pct": -0.01653632777041495,
+        "t_stat": -2.4455337267829607,
+        "p_value": 0.014463791995126485,
+        "samples": [
+          {
+            "ts": "2025-11-04T07:31:00+00:00",
+            "return_pct": -0.49904834411875154,
+            "hazard": 0.483366,
+            "coherence": 0.000176,
+            "admit": true,
+            "reasons": [],
+            "price_start": 1.3135,
+            "price_end": 1.30724,
+            "cost_pct": 0.022459078797096976
+          },
+          {
+            "ts": "2025-11-04T05:55:00+00:00",
+            "return_pct": -0.4713422394281435,
+            "hazard": 0.506849,
+            "coherence": 0.005831,
+            "admit": true,
+            "reasons": [],
+            "price_start": 1.31221,
+            "price_end": 1.30632,
+            "cost_pct": 0.022481157741510025
+          },
+          {
+            "ts": "2025-11-04T07:47:00+00:00",
+            "return_pct": -0.4521215814732792,
+            "hazard": 0.463796,
+            "coherence": 0.000539,
+            "admit": true,
+            "reasons": [],
+            "price_start": 1.3127,
+            "price_end": 1.30706,
+            "cost_pct": 0.022472766054686427
+          },
+          {
+            "ts": "2025-11-04T07:15:00+00:00",
+            "return_pct": -0.4445985279102534,
+            "hazard": 0.514677,
+            "coherence": 4.4e-05,
+            "admit": true,
+            "reasons": [],
+            "price_start": 1.31242,
+            "price_end": 1.30688,
+            "cost_pct": 0.022477560537013205
+          },
+          {
+            "ts": "2025-11-04T06:27:00+00:00",
+            "return_pct": -0.42935950381735805,
+            "hazard": 0.518591,
+            "coherence": 0.001101,
+            "admit": true,
+            "reasons": [],
+            "price_start": 1.31242,
+            "price_end": 1.30708,
+            "cost_pct": 0.022477560537013205
+          }
+        ],
+        "median_spread": 0.00018999999999991246,
+        "p_value_holm": 0.014463791995126485
+      }
+    },
+    "NZD_USD": {
+      "5": {
+        "count": 441,
+        "avg_return_pct": -0.03937777504058084,
+        "median_return_pct": -0.039165420494204135,
+        "positive_pct": 0.07256235827664399,
+        "avg_positive_return_pct": 0.01721486092330597,
+        "avg_negative_return_pct": -0.043805560739466856,
+        "avg_hazard": 0.5027046598639456,
+        "avg_cost_pct": 0.038861195032249024,
+        "hazard_buckets": {
+          "< 0.60": {
+            "count": 441,
+            "avg_return_pct": -0.03937777504058084
+          }
+        },
+        "auroc_admit": 0.4904874694376528,
+        "hazard_deciles": [
+          {
+            "decile": 1,
+            "count": 44,
+            "avg_return_pct": -0.03018029169673331,
+            "lift_vs_overall": 0.00919748334384753
+          },
+          {
+            "decile": 2,
+            "count": 44,
+            "avg_return_pct": -0.03950751120910334,
+            "lift_vs_overall": -0.00012973616852249986
+          },
+          {
+            "decile": 3,
+            "count": 44,
+            "avg_return_pct": -0.039334848872366775,
+            "lift_vs_overall": 4.292616821406636e-05
+          },
+          {
+            "decile": 4,
+            "count": 44,
+            "avg_return_pct": -0.047716748202768035,
+            "lift_vs_overall": -0.008338973162187194
+          },
+          {
+            "decile": 5,
+            "count": 44,
+            "avg_return_pct": -0.03628529030105652,
+            "lift_vs_overall": 0.0030924847395243232
+          },
+          {
+            "decile": 6,
+            "count": 44,
+            "avg_return_pct": -0.04266826737156727,
+            "lift_vs_overall": -0.0032904923309864317
+          },
+          {
+            "decile": 7,
+            "count": 44,
+            "avg_return_pct": -0.03752484452356624,
+            "lift_vs_overall": 0.0018529305170146004
+          },
+          {
+            "decile": 8,
+            "count": 44,
+            "avg_return_pct": -0.03937157762054192,
+            "lift_vs_overall": 6.197420038919765e-06
+          },
+          {
+            "decile": 9,
+            "count": 44,
+            "avg_return_pct": -0.03714810796442861,
+            "lift_vs_overall": 0.002229667076152228
+          },
+          {
+            "decile": 10,
+            "count": 45,
+            "avg_return_pct": -0.04393665180805205,
+            "lift_vs_overall": -0.004558876767471208
+          }
+        ],
+        "overall_avg_return_pct": -0.03937777504058084,
+        "t_stat": -29.91187717071839,
+        "p_value": 0.0,
+        "samples": [
+          {
+            "ts": "2025-11-04T22:08:00+00:00",
+            "return_pct": -0.14864099660249105,
+            "hazard": 0.483366,
+            "coherence": 0.005334,
+            "admit": true,
+            "reasons": [],
+            "price_start": 0.56512,
+            "price_end": 0.5645,
+            "cost_pct": 0.03892978482446976
+          },
+          {
+            "ts": "2025-11-05T14:59:00+00:00",
+            "return_pct": -0.13274571231350535,
+            "hazard": 0.493151,
+            "coherence": 0.001101,
+            "admit": true,
+            "reasons": [],
+            "price_start": 0.56499,
+            "price_end": 0.56446,
+            "cost_pct": 0.038938742278632095
+          },
+          {
+            "ts": "2025-11-07T14:34:00+00:00",
+            "return_pct": -0.11740847475718495,
+            "hazard": 0.471624,
+            "coherence": 0.000275,
+            "admit": true,
+            "reasons": [],
+            "price_start": 0.56214,
+            "price_end": 0.5617,
+            "cost_pct": 0.03913615825240038
+          },
+          {
+            "ts": "2025-11-04T21:48:00+00:00",
+            "return_pct": -0.11514614703278742,
+            "hazard": 0.493151,
+            "coherence": 0.010604,
+            "admit": true,
+            "reasons": [],
+            "price_start": 0.5645,
+            "price_end": 0.56407,
+            "cost_pct": 0.038972542072638346
+          },
+          {
+            "ts": "2025-11-06T14:48:00+00:00",
+            "return_pct": -0.11342289015702325,
+            "hazard": 0.448141,
+            "coherence": 4.4e-05,
+            "admit": true,
+            "reasons": [],
+            "price_start": 0.56426,
+            "price_end": 0.56384,
+            "cost_pct": 0.03898911849148327
+          }
+        ],
+        "median_spread": 0.000140000000000029,
+        "p_value_holm": 0.0
+      },
+      "15": {
+        "count": 441,
+        "avg_return_pct": -0.04194154164697925,
+        "median_return_pct": -0.04205951421262197,
+        "positive_pct": 0.16326530612244897,
+        "avg_positive_return_pct": 0.03224295604604474,
+        "avg_negative_return_pct": -0.05641656558708149,
+        "avg_hazard": 0.5027046598639456,
+        "avg_cost_pct": 0.038861195032249024,
+        "hazard_buckets": {
+          "< 0.60": {
+            "count": 441,
+            "avg_return_pct": -0.04194154164697925
+          }
+        },
+        "auroc_admit": 0.49983062330623307,
+        "hazard_deciles": [
+          {
+            "decile": 1,
+            "count": 44,
+            "avg_return_pct": -0.03410274650279969,
+            "lift_vs_overall": 0.00783879514417956
+          },
+          {
+            "decile": 2,
+            "count": 44,
+            "avg_return_pct": -0.0430692902681363,
+            "lift_vs_overall": -0.0011277486211570542
+          },
+          {
+            "decile": 3,
+            "count": 44,
+            "avg_return_pct": -0.043501936876385656,
+            "lift_vs_overall": -0.0015603952294064097
+          },
+          {
+            "decile": 4,
+            "count": 44,
+            "avg_return_pct": -0.044455047071960435,
+            "lift_vs_overall": -0.0025135054249811883
+          },
+          {
+            "decile": 5,
+            "count": 44,
+            "avg_return_pct": -0.034488667192821836,
+            "lift_vs_overall": 0.007452874454157411
+          },
+          {
+            "decile": 6,
+            "count": 44,
+            "avg_return_pct": -0.05004810385382892,
+            "lift_vs_overall": -0.008106562206849674
+          },
+          {
+            "decile": 7,
+            "count": 44,
+            "avg_return_pct": -0.04109832899021436,
+            "lift_vs_overall": 0.0008432126567648884
+          },
+          {
+            "decile": 8,
+            "count": 44,
+            "avg_return_pct": -0.046874053570936436,
+            "lift_vs_overall": -0.004932511923957189
+          },
+          {
+            "decile": 9,
+            "count": 44,
+            "avg_return_pct": -0.03275429570647787,
+            "lift_vs_overall": 0.009187245940501375
+          },
+          {
+            "decile": 10,
+            "count": 45,
+            "avg_return_pct": -0.04886558188535872,
+            "lift_vs_overall": -0.006924040238379475
+          }
+        ],
+        "overall_avg_return_pct": -0.04194154164697925,
+        "t_stat": -17.97877782955687,
+        "p_value": 0.0,
+        "samples": [
+          {
+            "ts": "2025-11-06T14:48:00+00:00",
+            "return_pct": -0.19494559245738408,
+            "hazard": 0.448141,
+            "coherence": 4.4e-05,
+            "admit": true,
+            "reasons": [],
+            "price_start": 0.56426,
+            "price_end": 0.56338,
+            "cost_pct": 0.03898911849148327
+          },
+          {
+            "ts": "2025-11-04T08:24:00+00:00",
+            "return_pct": -0.19161129276097472,
+            "hazard": 0.473581,
+            "coherence": 1.1e-05,
+            "admit": true,
+            "reasons": [],
+            "price_start": 0.56886,
+            "price_end": 0.56799,
+            "cost_pct": 0.03867383890588958
+          },
+          {
+            "ts": "2025-11-04T22:08:00+00:00",
+            "return_pct": -0.1911098527746347,
+            "hazard": 0.483366,
+            "coherence": 0.005334,
+            "admit": true,
+            "reasons": [],
+            "price_start": 0.56512,
+            "price_end": 0.56426,
+            "cost_pct": 0.03892978482446976
+          },
+          {
+            "ts": "2025-11-03T15:12:00+00:00",
+            "return_pct": -0.17709045640243384,
+            "hazard": 0.493151,
+            "coherence": 0.000705,
+            "admit": true,
+            "reasons": [],
+            "price_start": 0.57033,
+            "price_end": 0.56954,
+            "cost_pct": 0.03857415882033971
+          },
+          {
+            "ts": "2025-11-06T15:20:00+00:00",
+            "return_pct": -0.17378967902110773,
+            "hazard": 0.454012,
+            "coherence": 0.000176,
+            "admit": true,
+            "reasons": [],
+            "price_start": 0.5639,
+            "price_end": 0.56314,
+            "cost_pct": 0.0390140095761737
+          }
+        ],
+        "median_spread": 0.000140000000000029,
+        "p_value_holm": 0.0
+      },
+      "30": {
+        "count": 441,
+        "avg_return_pct": -0.04503237357231722,
+        "median_return_pct": -0.04553574556027943,
+        "positive_pct": 0.2108843537414966,
+        "avg_positive_return_pct": 0.04656856156274541,
+        "avg_negative_return_pct": -0.06951193382392878,
+        "avg_hazard": 0.5027046598639456,
+        "avg_cost_pct": 0.038861195032249024,
+        "hazard_buckets": {
+          "< 0.60": {
+            "count": 441,
+            "avg_return_pct": -0.04503237357231722
+          }
+        },
+        "auroc_admit": 0.5018075639599555,
+        "hazard_deciles": [
+          {
+            "decile": 1,
+            "count": 44,
+            "avg_return_pct": -0.025668483641147464,
+            "lift_vs_overall": 0.019363889931169758
+          },
+          {
+            "decile": 2,
+            "count": 44,
+            "avg_return_pct": -0.053400779967722196,
+            "lift_vs_overall": -0.008368406395404974
+          },
+          {
+            "decile": 3,
+            "count": 44,
+            "avg_return_pct": -0.05234898219590698,
+            "lift_vs_overall": -0.0073166086235897584
+          },
+          {
+            "decile": 4,
+            "count": 44,
+            "avg_return_pct": -0.04600908275993112,
+            "lift_vs_overall": -0.0009767091876138959
+          },
+          {
+            "decile": 5,
+            "count": 44,
+            "avg_return_pct": -0.02968358341422034,
+            "lift_vs_overall": 0.01534879015809688
+          },
+          {
+            "decile": 6,
+            "count": 44,
+            "avg_return_pct": -0.0541857584927955,
+            "lift_vs_overall": -0.009153384920478277
+          },
+          {
+            "decile": 7,
+            "count": 44,
+            "avg_return_pct": -0.04878448707150271,
+            "lift_vs_overall": -0.003752113499185486
+          },
+          {
+            "decile": 8,
+            "count": 44,
+            "avg_return_pct": -0.05095422458413074,
+            "lift_vs_overall": -0.005921851011813521
+          },
+          {
+            "decile": 9,
+            "count": 44,
+            "avg_return_pct": -0.0309039807846496,
+            "lift_vs_overall": 0.014128392787667622
+          },
+          {
+            "decile": 10,
+            "count": 45,
+            "avg_return_pct": -0.058087661716968955,
+            "lift_vs_overall": -0.013055288144651733
+          }
+        ],
+        "overall_avg_return_pct": -0.04503237357231722,
+        "t_stat": -14.020309657550794,
+        "p_value": 0.0,
+        "samples": [
+          {
+            "ts": "2025-11-06T14:32:00+00:00",
+            "return_pct": -0.3398831651619698,
+            "hazard": 0.463796,
+            "coherence": 0.000396,
+            "admit": true,
+            "reasons": [],
+            "price_start": 0.5649,
+            "price_end": 0.5632,
+            "cost_pct": 0.03894494600815073
+          },
+          {
+            "ts": "2025-11-03T23:51:00+00:00",
+            "return_pct": -0.255897921267582,
+            "hazard": 0.504892,
+            "coherence": 0.003977,
+            "admit": true,
+            "reasons": [],
+            "price_start": 0.57054,
+            "price_end": 0.5693,
+            "cost_pct": 0.038559960738956685
+          },
+          {
+            "ts": "2025-11-04T08:24:00+00:00",
+            "return_pct": -0.25137995288824805,
+            "hazard": 0.473581,
+            "coherence": 1.1e-05,
+            "admit": true,
+            "reasons": [],
+            "price_start": 0.56886,
+            "price_end": 0.56765,
+            "cost_pct": 0.03867383890588958
+          },
+          {
+            "ts": "2025-11-06T14:00:00+00:00",
+            "return_pct": -0.24557870002297624,
+            "hazard": 0.48728,
+            "coherence": 0.004407,
+            "admit": true,
+            "reasons": [],
+            "price_start": 0.56601,
+            "price_end": 0.56484,
+            "cost_pct": 0.038868571226664456
+          },
+          {
+            "ts": "2025-11-06T14:16:00+00:00",
+            "return_pct": -0.2440490927740216,
+            "hazard": 0.475538,
+            "coherence": 0.001586,
+            "admit": true,
+            "reasons": [],
+            "price_start": 0.56546,
+            "price_end": 0.5643,
+            "cost_pct": 0.03890637710891018
+          }
+        ],
+        "median_spread": 0.000140000000000029,
+        "p_value_holm": 0.0
+      },
+      "60": {
+        "count": 441,
+        "avg_return_pct": -0.0519533447178688,
+        "median_return_pct": -0.04801451105223588,
+        "positive_pct": 0.2698412698412698,
+        "avg_positive_return_pct": 0.05776384480778721,
+        "avg_negative_return_pct": -0.09250100171648079,
+        "avg_hazard": 0.5027046598639456,
+        "avg_cost_pct": 0.038861195032249024,
+        "hazard_buckets": {
+          "< 0.60": {
+            "count": 441,
+            "avg_return_pct": -0.0519533447178688
+          }
+        },
+        "auroc_admit": 0.5035622944830106,
+        "hazard_deciles": [
+          {
+            "decile": 1,
+            "count": 44,
+            "avg_return_pct": -0.01769705841037514,
+            "lift_vs_overall": 0.03425628630749366
+          },
+          {
+            "decile": 2,
+            "count": 44,
+            "avg_return_pct": -0.062023773627396375,
+            "lift_vs_overall": -0.010070428909527578
+          },
+          {
+            "decile": 3,
+            "count": 44,
+            "avg_return_pct": -0.048000113662637144,
+            "lift_vs_overall": 0.003953231055231654
+          },
+          {
+            "decile": 4,
+            "count": 44,
+            "avg_return_pct": -0.0562562469600622,
+            "lift_vs_overall": -0.0043029022421934016
+          },
+          {
+            "decile": 5,
+            "count": 44,
+            "avg_return_pct": -0.04267594993966314,
+            "lift_vs_overall": 0.009277394778205661
+          },
+          {
+            "decile": 6,
+            "count": 44,
+            "avg_return_pct": -0.08332724589128146,
+            "lift_vs_overall": -0.03137390117341266
+          },
+          {
+            "decile": 7,
+            "count": 44,
+            "avg_return_pct": -0.048950877045891746,
+            "lift_vs_overall": 0.003002467671977052
+          },
+          {
+            "decile": 8,
+            "count": 44,
+            "avg_return_pct": -0.06355181775722923,
+            "lift_vs_overall": -0.011598473039360437
+          },
+          {
+            "decile": 9,
+            "count": 44,
+            "avg_return_pct": -0.03866020810126468,
+            "lift_vs_overall": 0.013293136616604119
+          },
+          {
+            "decile": 10,
+            "count": 45,
+            "avg_return_pct": -0.05824711553699758,
+            "lift_vs_overall": -0.006293770819128783
+          }
+        ],
+        "overall_avg_return_pct": -0.0519533447178688,
+        "t_stat": -11.478161796133152,
+        "p_value": 0.0,
+        "samples": [
+          {
+            "ts": "2025-11-06T13:44:00+00:00",
+            "return_pct": -0.4870387689918704,
+            "hazard": 0.506849,
+            "coherence": 0.005831,
+            "admit": true,
+            "reasons": [],
+            "price_start": 0.56669,
+            "price_end": 0.56415,
+            "cost_pct": 0.038821930861678074
+          },
+          {
+            "ts": "2025-11-06T14:00:00+00:00",
+            "return_pct": -0.48232363385806887,
+            "hazard": 0.48728,
+            "coherence": 0.004407,
+            "admit": true,
+            "reasons": [],
+            "price_start": 0.56601,
+            "price_end": 0.5635,
+            "cost_pct": 0.038868571226664456
+          },
+          {
+            "ts": "2025-11-04T08:24:00+00:00",
+            "return_pct": -0.4183806208909212,
+            "hazard": 0.473581,
+            "coherence": 1.1e-05,
+            "admit": true,
+            "reasons": [],
+            "price_start": 0.56886,
+            "price_end": 0.5667,
+            "cost_pct": 0.03867383890588958
+          },
+          {
+            "ts": "2025-11-06T14:16:00+00:00",
+            "return_pct": -0.4102854313302504,
+            "hazard": 0.475538,
+            "coherence": 0.001586,
+            "admit": true,
+            "reasons": [],
+            "price_start": 0.56546,
+            "price_end": 0.56336,
+            "cost_pct": 0.03890637710891018
+          },
+          {
+            "ts": "2025-11-06T14:32:00+00:00",
+            "return_pct": -0.31864046733934476,
+            "hazard": 0.463796,
+            "coherence": 0.000396,
+            "admit": true,
+            "reasons": [],
+            "price_start": 0.5649,
+            "price_end": 0.56332,
+            "cost_pct": 0.03894494600815073
+          }
+        ],
+        "median_spread": 0.000140000000000029,
+        "p_value_holm": 0.0
+      },
+      "240": {
+        "count": 441,
+        "avg_return_pct": -0.09283307076043727,
+        "median_return_pct": -0.08648992127652697,
+        "positive_pct": 0.2811791383219955,
+        "avg_positive_return_pct": 0.11650300063332723,
+        "avg_negative_return_pct": -0.17471847408165744,
+        "avg_hazard": 0.5027046598639456,
+        "avg_cost_pct": 0.038861195032249024,
+        "hazard_buckets": {
+          "< 0.60": {
+            "count": 441,
+            "avg_return_pct": -0.09283307076043727
+          }
+        },
+        "auroc_admit": 0.498244632135952,
+        "hazard_deciles": [
+          {
+            "decile": 1,
+            "count": 44,
+            "avg_return_pct": 0.024538425724971277,
+            "lift_vs_overall": 0.11737149648540855
+          },
+          {
+            "decile": 2,
+            "count": 44,
+            "avg_return_pct": -0.09966816097277267,
+            "lift_vs_overall": -0.006835090212335401
+          },
+          {
+            "decile": 3,
+            "count": 44,
+            "avg_return_pct": -0.11031735361599844,
+            "lift_vs_overall": -0.017484282855561167
+          },
+          {
+            "decile": 4,
+            "count": 44,
+            "avg_return_pct": -0.1078485600271548,
+            "lift_vs_overall": -0.01501548926671753
+          },
+          {
+            "decile": 5,
+            "count": 44,
+            "avg_return_pct": -0.1047290373295804,
+            "lift_vs_overall": -0.01189596656914313
+          },
+          {
+            "decile": 6,
+            "count": 44,
+            "avg_return_pct": -0.13526927655750887,
+            "lift_vs_overall": -0.042436205797071594
+          },
+          {
+            "decile": 7,
+            "count": 44,
+            "avg_return_pct": -0.09400792564500123,
+            "lift_vs_overall": -0.0011748548845639528
+          },
+          {
+            "decile": 8,
+            "count": 44,
+            "avg_return_pct": -0.14401559029105776,
+            "lift_vs_overall": -0.05118251953062049
+          },
+          {
+            "decile": 9,
+            "count": 44,
+            "avg_return_pct": -0.08310166273815403,
+            "lift_vs_overall": 0.009731408022283242
+          },
+          {
+            "decile": 10,
+            "count": 45,
+            "avg_return_pct": -0.07433204403230063,
+            "lift_vs_overall": 0.018501026728136638
+          }
+        ],
+        "overall_avg_return_pct": -0.09283307076043727,
+        "t_stat": -10.670790073061626,
+        "p_value": 0.0,
+        "samples": [
+          {
+            "ts": "2025-11-06T13:28:00+00:00",
+            "return_pct": -0.7079552275696682,
+            "hazard": 0.522505,
+            "coherence": 0.004407,
+            "admit": true,
+            "reasons": [],
+            "price_start": 0.56642,
+            "price_end": 0.56263,
+            "cost_pct": 0.03884043642527515
+          },
+          {
+            "ts": "2025-11-06T12:56:00+00:00",
+            "return_pct": -0.6815453068719578,
+            "hazard": 0.518591,
+            "coherence": 0.00689,
+            "admit": true,
+            "reasons": [],
+            "price_start": 0.56636,
+            "price_end": 0.56272,
+            "cost_pct": 0.03884455116887554
+          },
+          {
+            "ts": "2025-11-06T13:12:00+00:00",
+            "return_pct": -0.6706434647559336,
+            "hazard": 0.500978,
+            "coherence": 0.00689,
+            "admit": true,
+            "reasons": [],
+            "price_start": 0.56662,
+            "price_end": 0.56304,
+            "cost_pct": 0.03882672690692942
+          },
+          {
+            "ts": "2025-11-06T12:24:00+00:00",
+            "return_pct": -0.6394178118486598,
+            "hazard": 0.485323,
+            "coherence": 0.015121,
+            "admit": true,
+            "reasons": [],
+            "price_start": 0.56614,
+            "price_end": 0.56274,
+            "cost_pct": 0.03885964602395936
+          },
+          {
+            "ts": "2025-11-06T13:44:00+00:00",
+            "return_pct": -0.6246801602287023,
+            "hazard": 0.506849,
+            "coherence": 0.005831,
+            "admit": true,
+            "reasons": [],
+            "price_start": 0.56669,
+            "price_end": 0.56337,
+            "cost_pct": 0.038821930861678074
+          }
+        ],
+        "median_spread": 0.000140000000000029,
+        "p_value_holm": 0.0
+      }
+    },
+    "USD_CAD": {
+      "5": {
+        "count": 444,
+        "avg_return_pct": -0.02021988345406241,
+        "median_return_pct": -0.019931663661994385,
+        "positive_pct": 0.06306306306306306,
+        "avg_positive_return_pct": 0.00800950974516619,
+        "avg_negative_return_pct": -0.02211993876554895,
+        "avg_hazard": 0.5011415720720721,
+        "avg_cost_pct": 0.019875993239427334,
+        "hazard_buckets": {
+          "< 0.60": {
+            "count": 444,
+            "avg_return_pct": -0.02021988345406241
+          }
+        },
+        "auroc_admit": 0.5048076923076923,
+        "hazard_deciles": [
+          {
+            "decile": 1,
+            "count": 44,
+            "avg_return_pct": -0.02875758490458087,
+            "lift_vs_overall": -0.008537701450518461
+          },
+          {
+            "decile": 2,
+            "count": 44,
+            "avg_return_pct": -0.016817739196977047,
+            "lift_vs_overall": 0.0034021442570853627
+          },
+          {
+            "decile": 3,
+            "count": 45,
+            "avg_return_pct": -0.023849978429016625,
+            "lift_vs_overall": -0.003630094974954215
+          },
+          {
+            "decile": 4,
+            "count": 44,
+            "avg_return_pct": -0.020466977511661284,
+            "lift_vs_overall": -0.0002470940575988734
+          },
+          {
+            "decile": 5,
+            "count": 45,
+            "avg_return_pct": -0.016953984907695983,
+            "lift_vs_overall": 0.0032658985463664275
+          },
+          {
+            "decile": 6,
+            "count": 44,
+            "avg_return_pct": -0.018527710469729078,
+            "lift_vs_overall": 0.0016921729843333323
+          },
+          {
+            "decile": 7,
+            "count": 44,
+            "avg_return_pct": -0.018632994590857713,
+            "lift_vs_overall": 0.0015868888632046968
+          },
+          {
+            "decile": 8,
+            "count": 45,
+            "avg_return_pct": -0.02026229198376741,
+            "lift_vs_overall": -4.240852970499934e-05
+          },
+          {
+            "decile": 9,
+            "count": 44,
+            "avg_return_pct": -0.018794792192009472,
+            "lift_vs_overall": 0.0014250912620529382
+          },
+          {
+            "decile": 10,
+            "count": 45,
+            "avg_return_pct": -0.01914985809080507,
+            "lift_vs_overall": 0.0010700253632573396
+          }
+        ],
+        "overall_avg_return_pct": -0.02021988345406241,
+        "t_stat": -28.349467056392914,
+        "p_value": 0.0,
+        "samples": [
+          {
+            "ts": "2025-11-07T13:29:00+00:00",
+            "return_pct": -0.1695985694112417,
+            "hazard": 0.432485,
+            "coherence": 0.001586,
+            "admit": true,
+            "reasons": [],
+            "price_start": 1.40921,
+            "price_end": 1.4071,
+            "cost_pct": 0.019869288466595008
+          },
+          {
+            "ts": "2025-11-07T14:49:00+00:00",
+            "return_pct": -0.08521274782708455,
+            "hazard": 0.450098,
+            "coherence": 0.001861,
+            "admit": true,
+            "reasons": [],
+            "price_start": 1.40824,
+            "price_end": 1.40732,
+            "cost_pct": 0.0198829744929915
+          },
+          {
+            "ts": "2025-11-03T15:59:00+00:00",
+            "return_pct": -0.08103036506311587,
+            "hazard": 0.420744,
+            "coherence": 0.001101,
+            "admit": true,
+            "reasons": [],
+            "price_start": 1.40688,
+            "price_end": 1.40602,
+            "cost_pct": 0.01990219492779082
+          },
+          {
+            "ts": "2025-11-06T15:14:00+00:00",
+            "return_pct": -0.07218274973816532,
+            "hazard": 0.448141,
+            "coherence": 0.000275,
+            "admit": true,
+            "reasons": [],
+            "price_start": 1.41308,
+            "price_end": 1.41234,
+            "cost_pct": 0.019814872477149456
+          },
+          {
+            "ts": "2025-11-05T16:44:00+00:00",
+            "return_pct": -0.06304544939363757,
+            "hazard": 0.434442,
+            "coherence": 0.000275,
+            "admit": true,
+            "reasons": [],
+            "price_start": 1.41168,
+            "price_end": 1.41107,
+            "cost_pct": 0.01983452340474495
+          }
+        ],
+        "median_spread": 0.000180000000000069,
+        "p_value_holm": 0.0
+      },
+      "15": {
+        "count": 444,
+        "avg_return_pct": -0.01974589893107607,
+        "median_return_pct": -0.019479383573592177,
+        "positive_pct": 0.1554054054054054,
+        "avg_positive_return_pct": 0.017106593564812922,
+        "avg_negative_return_pct": -0.02652675755031965,
+        "avg_hazard": 0.5011415720720721,
+        "avg_cost_pct": 0.019875993239427334,
+        "hazard_buckets": {
+          "< 0.60": {
+            "count": 444,
+            "avg_return_pct": -0.01974589893107607
+          }
+        },
+        "auroc_admit": 0.5053333333333333,
+        "hazard_deciles": [
+          {
+            "decile": 1,
+            "count": 44,
+            "avg_return_pct": -0.03581692717681488,
+            "lift_vs_overall": -0.01607102824573881
+          },
+          {
+            "decile": 2,
+            "count": 44,
+            "avg_return_pct": -0.01103038821831054,
+            "lift_vs_overall": 0.008715510712765532
+          },
+          {
+            "decile": 3,
+            "count": 45,
+            "avg_return_pct": -0.028460266205129627,
+            "lift_vs_overall": -0.008714367274053555
+          },
+          {
+            "decile": 4,
+            "count": 44,
+            "avg_return_pct": -0.019859465428725045,
+            "lift_vs_overall": -0.00011356649764897309
+          },
+          {
+            "decile": 5,
+            "count": 45,
+            "avg_return_pct": -0.01644928884719294,
+            "lift_vs_overall": 0.0032966100838831315
+          },
+          {
+            "decile": 6,
+            "count": 44,
+            "avg_return_pct": -0.018623640159088937,
+            "lift_vs_overall": 0.001122258771987135
+          },
+          {
+            "decile": 7,
+            "count": 44,
+            "avg_return_pct": -0.015826533631392487,
+            "lift_vs_overall": 0.0039193652996835845
+          },
+          {
+            "decile": 8,
+            "count": 45,
+            "avg_return_pct": -0.01448309449750203,
+            "lift_vs_overall": 0.005262804433574042
+          },
+          {
+            "decile": 9,
+            "count": 44,
+            "avg_return_pct": -0.016188122718736323,
+            "lift_vs_overall": 0.0035577762123397486
+          },
+          {
+            "decile": 10,
+            "count": 45,
+            "avg_return_pct": -0.020696144288903748,
+            "lift_vs_overall": -0.0009502453578276761
+          }
+        ],
+        "overall_avg_return_pct": -0.01974589893107607,
+        "t_stat": -16.073527506250134,
+        "p_value": 0.0,
+        "samples": [
+          {
+            "ts": "2025-11-07T13:29:00+00:00",
+            "return_pct": -0.2199814080229453,
+            "hazard": 0.432485,
+            "coherence": 0.001586,
+            "admit": true,
+            "reasons": [],
+            "price_start": 1.40921,
+            "price_end": 1.40639,
+            "cost_pct": 0.019869288466595008
+          },
+          {
+            "ts": "2025-11-07T13:13:00+00:00",
+            "return_pct": -0.1169822825015757,
+            "hazard": 0.469667,
+            "coherence": 0.004859,
+            "admit": true,
+            "reasons": [],
+            "price_start": 1.41047,
+            "price_end": 1.4091,
+            "cost_pct": 0.019851538848759884
+          },
+          {
+            "ts": "2025-11-07T17:45:00+00:00",
+            "return_pct": -0.10948541853290553,
+            "hazard": 0.459883,
+            "coherence": 0.003183,
+            "admit": true,
+            "reasons": [],
+            "price_start": 1.40658,
+            "price_end": 1.40532,
+            "cost_pct": 0.019906439733261068
+          },
+          {
+            "ts": "2025-11-07T14:49:00+00:00",
+            "return_pct": -0.0994148724649288,
+            "hazard": 0.450098,
+            "coherence": 0.001861,
+            "admit": true,
+            "reasons": [],
+            "price_start": 1.40824,
+            "price_end": 1.40712,
+            "cost_pct": 0.0198829744929915
+          },
+          {
+            "ts": "2025-11-06T08:50:00+00:00",
+            "return_pct": -0.09219073554024654,
+            "hazard": 0.518591,
+            "coherence": 9.9e-05,
+            "admit": true,
+            "reasons": [],
+            "price_start": 1.41012,
+            "price_end": 1.4091,
+            "cost_pct": 0.019856466116366232
+          }
+        ],
+        "median_spread": 0.000180000000000069,
+        "p_value_holm": 0.0
+      },
+      "30": {
+        "count": 444,
+        "avg_return_pct": -0.01953386387021429,
+        "median_return_pct": -0.02054486999555461,
+        "positive_pct": 0.23873873873873874,
+        "avg_positive_return_pct": 0.02452821194366886,
+        "avg_negative_return_pct": -0.033352148001195396,
+        "avg_hazard": 0.5011415720720721,
+        "avg_cost_pct": 0.019875993239427334,
+        "hazard_buckets": {
+          "< 0.60": {
+            "count": 444,
+            "avg_return_pct": -0.01953386387021429
+          }
+        },
+        "auroc_admit": 0.4935246176175059,
+        "hazard_deciles": [
+          {
+            "decile": 1,
+            "count": 44,
+            "avg_return_pct": -0.0425170807029141,
+            "lift_vs_overall": -0.02298321683269981
+          },
+          {
+            "decile": 2,
+            "count": 44,
+            "avg_return_pct": -0.014748867001893417,
+            "lift_vs_overall": 0.004784996868320875
+          },
+          {
+            "decile": 3,
+            "count": 45,
+            "avg_return_pct": -0.030375866643907963,
+            "lift_vs_overall": -0.010842002773693672
+          },
+          {
+            "decile": 4,
+            "count": 44,
+            "avg_return_pct": -0.015408737250667543,
+            "lift_vs_overall": 0.004125126619546749
+          },
+          {
+            "decile": 5,
+            "count": 45,
+            "avg_return_pct": -0.01716616358165139,
+            "lift_vs_overall": 0.002367700288562903
+          },
+          {
+            "decile": 6,
+            "count": 44,
+            "avg_return_pct": -0.017854524744854584,
+            "lift_vs_overall": 0.0016793391253597072
+          },
+          {
+            "decile": 7,
+            "count": 44,
+            "avg_return_pct": -0.013481661127800172,
+            "lift_vs_overall": 0.006052202742414119
+          },
+          {
+            "decile": 8,
+            "count": 45,
+            "avg_return_pct": -0.01127429973520062,
+            "lift_vs_overall": 0.008259564135013671
+          },
+          {
+            "decile": 9,
+            "count": 44,
+            "avg_return_pct": -0.015014054550815932,
+            "lift_vs_overall": 0.00451980931939836
+          },
+          {
+            "decile": 10,
+            "count": 45,
+            "avg_return_pct": -0.0175378665214963,
+            "lift_vs_overall": 0.0019959973487179913
+          }
+        ],
+        "overall_avg_return_pct": -0.01953386387021429,
+        "t_stat": -10.977400794501506,
+        "p_value": 0.0,
+        "samples": [
+          {
+            "ts": "2025-11-07T13:13:00+00:00",
+            "return_pct": -0.30557190156473246,
+            "hazard": 0.469667,
+            "coherence": 0.004859,
+            "admit": true,
+            "reasons": [],
+            "price_start": 1.41047,
+            "price_end": 1.40644,
+            "cost_pct": 0.019851538848759884
+          },
+          {
+            "ts": "2025-11-07T13:29:00+00:00",
+            "return_pct": -0.21004676378964945,
+            "hazard": 0.432485,
+            "coherence": 0.001586,
+            "admit": true,
+            "reasons": [],
+            "price_start": 1.40921,
+            "price_end": 1.40653,
+            "cost_pct": 0.019869288466595008
+          },
+          {
+            "ts": "2025-11-07T12:57:00+00:00",
+            "return_pct": -0.16014739229026337,
+            "hazard": 0.48728,
+            "coherence": 0.008039,
+            "admit": true,
+            "reasons": [],
+            "price_start": 1.4112,
+            "price_end": 1.40922,
+            "cost_pct": 0.019841269841277175
+          },
+          {
+            "ts": "2025-11-07T14:49:00+00:00",
+            "return_pct": -0.13207975913196746,
+            "hazard": 0.450098,
+            "coherence": 0.001861,
+            "admit": true,
+            "reasons": [],
+            "price_start": 1.40824,
+            "price_end": 1.40666,
+            "cost_pct": 0.0198829744929915
+          },
+          {
+            "ts": "2025-11-05T16:28:00+00:00",
+            "return_pct": -0.12603197530339283,
+            "hazard": 0.44227,
+            "coherence": 0.003183,
+            "admit": true,
+            "reasons": [],
+            "price_start": 1.41234,
+            "price_end": 1.41084,
+            "cost_pct": 0.019825254542114756
+          }
+        ],
+        "median_spread": 0.000180000000000069,
+        "p_value_holm": 0.0
+      },
+      "60": {
+        "count": 444,
+        "avg_return_pct": -0.018822942937224543,
+        "median_return_pct": -0.018501130909173068,
+        "positive_pct": 0.30180180180180183,
+        "avg_positive_return_pct": 0.03490246480793879,
+        "avg_negative_return_pct": -0.0420461837044887,
+        "avg_hazard": 0.5011415720720721,
+        "avg_cost_pct": 0.019875993239427334,
+        "hazard_buckets": {
+          "< 0.60": {
+            "count": 444,
+            "avg_return_pct": -0.018822942937224543
+          }
+        },
+        "auroc_admit": 0.4957631198844487,
+        "hazard_deciles": [
+          {
+            "decile": 1,
+            "count": 44,
+            "avg_return_pct": -0.05747771545917517,
+            "lift_vs_overall": -0.038654772521950626
+          },
+          {
+            "decile": 2,
+            "count": 44,
+            "avg_return_pct": -0.018254772370607648,
+            "lift_vs_overall": 0.0005681705666168956
+          },
+          {
+            "decile": 3,
+            "count": 45,
+            "avg_return_pct": -0.02493481716974753,
+            "lift_vs_overall": -0.006111874232522987
+          },
+          {
+            "decile": 4,
+            "count": 44,
+            "avg_return_pct": -0.010096909932362442,
+            "lift_vs_overall": 0.008726033004862101
+          },
+          {
+            "decile": 5,
+            "count": 45,
+            "avg_return_pct": -0.014900486360684851,
+            "lift_vs_overall": 0.003922456576539692
+          },
+          {
+            "decile": 6,
+            "count": 44,
+            "avg_return_pct": -0.019214470930173883,
+            "lift_vs_overall": -0.00039152799294933996
+          },
+          {
+            "decile": 7,
+            "count": 44,
+            "avg_return_pct": -0.011099987111926633,
+            "lift_vs_overall": 0.00772295582529791
+          },
+          {
+            "decile": 8,
+            "count": 45,
+            "avg_return_pct": -0.009716812793019697,
+            "lift_vs_overall": 0.009106130144204846
+          },
+          {
+            "decile": 9,
+            "count": 44,
+            "avg_return_pct": -0.008144493247665963,
+            "lift_vs_overall": 0.01067844968955858
+          },
+          {
+            "decile": 10,
+            "count": 45,
+            "avg_return_pct": -0.014641201584183035,
+            "lift_vs_overall": 0.0041817413530415085
+          }
+        ],
+        "overall_avg_return_pct": -0.018822942937224543,
+        "t_stat": -7.46841347657056,
+        "p_value": 8.115730310009894e-14,
+        "samples": [
+          {
+            "ts": "2025-11-07T12:57:00+00:00",
+            "return_pct": -0.3429705215419659,
+            "hazard": 0.48728,
+            "coherence": 0.008039,
+            "admit": true,
+            "reasons": [],
+            "price_start": 1.4112,
+            "price_end": 1.40664,
+            "cost_pct": 0.019841269841277175
+          },
+          {
+            "ts": "2025-11-07T12:41:00+00:00",
+            "return_pct": -0.3061224489796022,
+            "hazard": 0.502935,
+            "coherence": 0.005831,
+            "admit": true,
+            "reasons": [],
+            "price_start": 1.4112,
+            "price_end": 1.40716,
+            "cost_pct": 0.019841269841277175
+          },
+          {
+            "ts": "2025-11-07T13:13:00+00:00",
+            "return_pct": -0.304153934504098,
+            "hazard": 0.469667,
+            "coherence": 0.004859,
+            "admit": true,
+            "reasons": [],
+            "price_start": 1.41047,
+            "price_end": 1.40646,
+            "cost_pct": 0.019851538848759884
+          },
+          {
+            "ts": "2025-11-07T13:29:00+00:00",
+            "return_pct": -0.24197954882524111,
+            "hazard": 0.432485,
+            "coherence": 0.001586,
+            "admit": true,
+            "reasons": [],
+            "price_start": 1.40921,
+            "price_end": 1.40608,
+            "cost_pct": 0.019869288466595008
+          },
+          {
+            "ts": "2025-11-06T13:54:00+00:00",
+            "return_pct": 0.1908613594437217,
+            "hazard": 0.465753,
+            "coherence": 1.1e-05,
+            "admit": true,
+            "reasons": [],
+            "price_start": 1.4094,
+            "price_end": 1.41237,
+            "cost_pct": 0.019866609904931425
+          }
+        ],
+        "median_spread": 0.000180000000000069,
+        "p_value_holm": 1.6231460620019789e-13
+      },
+      "240": {
+        "count": 444,
+        "avg_return_pct": -0.014322389280523557,
+        "median_return_pct": -0.01488295239494904,
+        "positive_pct": 0.4346846846846847,
+        "avg_positive_return_pct": 0.07647928019624296,
+        "avg_negative_return_pct": -0.08414199967500936,
+        "avg_hazard": 0.5011415720720721,
+        "avg_cost_pct": 0.019875993239427334,
+        "hazard_buckets": {
+          "< 0.60": {
+            "count": 444,
+            "avg_return_pct": -0.014322389280523557
+          }
+        },
+        "auroc_admit": 0.5033854220424003,
+        "hazard_deciles": [
+          {
+            "decile": 1,
+            "count": 44,
+            "avg_return_pct": -0.11895503577117883,
+            "lift_vs_overall": -0.10463264649065528
+          },
+          {
+            "decile": 2,
+            "count": 44,
+            "avg_return_pct": -0.0200155946118403,
+            "lift_vs_overall": -0.005693205331316741
+          },
+          {
+            "decile": 3,
+            "count": 45,
+            "avg_return_pct": -0.03441577957672769,
+            "lift_vs_overall": -0.02009339029620413
+          },
+          {
+            "decile": 4,
+            "count": 44,
+            "avg_return_pct": 0.011213409236243853,
+            "lift_vs_overall": 0.025535798516767412
+          },
+          {
+            "decile": 5,
+            "count": 45,
+            "avg_return_pct": 0.023250984321854715,
+            "lift_vs_overall": 0.03757337360237827
+          },
+          {
+            "decile": 6,
+            "count": 44,
+            "avg_return_pct": 0.013455155822097975,
+            "lift_vs_overall": 0.02777754510262153
+          },
+          {
+            "decile": 7,
+            "count": 44,
+            "avg_return_pct": -0.0011416765604026493,
+            "lift_vs_overall": 0.013180712720120908
+          },
+          {
+            "decile": 8,
+            "count": 45,
+            "avg_return_pct": -0.004962579370735812,
+            "lift_vs_overall": 0.009359809909787745
+          },
+          {
+            "decile": 9,
+            "count": 44,
+            "avg_return_pct": -0.0004569551203638432,
+            "lift_vs_overall": 0.013865434160159715
+          },
+          {
+            "decile": 10,
+            "count": 45,
+            "avg_return_pct": -0.011861740314678617,
+            "lift_vs_overall": 0.00246064896584494
+          }
+        ],
+        "overall_avg_return_pct": -0.014322389280523557,
+        "t_stat": -2.788754689176985,
+        "p_value": 0.005291112595237957,
+        "samples": [
+          {
+            "ts": "2025-11-07T09:45:00+00:00",
+            "return_pct": -0.4384007932292351,
+            "hazard": 0.506849,
+            "coherence": 0.010604,
+            "admit": true,
+            "reasons": [],
+            "price_start": 1.41195,
+            "price_end": 1.40604,
+            "cost_pct": 0.019830730549955985
+          },
+          {
+            "ts": "2025-11-07T10:17:00+00:00",
+            "return_pct": -0.39736788049215255,
+            "hazard": 0.520548,
+            "coherence": 0.010604,
+            "admit": true,
+            "reasons": [],
+            "price_start": 1.41179,
+            "price_end": 1.40646,
+            "cost_pct": 0.019832977992484964
+          },
+          {
+            "ts": "2025-11-07T10:01:00+00:00",
+            "return_pct": -0.3853673741180582,
+            "hazard": 0.493151,
+            "coherence": 0.015953,
+            "admit": true,
+            "reasons": [],
+            "price_start": 1.41164,
+            "price_end": 1.40648,
+            "cost_pct": 0.019835085432553873
+          },
+          {
+            "ts": "2025-11-07T11:37:00+00:00",
+            "return_pct": -0.35569537737721213,
+            "hazard": 0.483366,
+            "coherence": 0.015953,
+            "admit": true,
+            "reasons": [],
+            "price_start": 1.41132,
+            "price_end": 1.40658,
+            "cost_pct": 0.019839582801923276
+          },
+          {
+            "ts": "2025-11-07T16:57:00+00:00",
+            "return_pct": -0.33391591002743753,
+            "hazard": 0.436399,
+            "coherence": 0.003569,
+            "admit": true,
+            "reasons": [],
+            "price_start": 1.40754,
+            "price_end": 1.40312,
+            "cost_pct": 0.019892862725045365
+          }
+        ],
+        "median_spread": 0.000180000000000069,
+        "p_value_holm": 0.005291112595237957
+      }
+    },
+    "USD_CHF": {
+      "5": {
+        "count": 444,
+        "avg_return_pct": -0.027154456937994863,
+        "median_return_pct": -0.027193898911728766,
+        "positive_pct": 0.0945945945945946,
+        "avg_positive_return_pct": 0.014154631948731374,
+        "avg_negative_return_pct": -0.031470331896309545,
+        "avg_hazard": 0.4983163198198198,
+        "avg_cost_pct": 0.027225988143129237,
+        "hazard_buckets": {
+          "< 0.60": {
+            "count": 444,
+            "avg_return_pct": -0.027154456937994863
+          }
+        },
+        "auroc_admit": 0.4943141435678749,
+        "hazard_deciles": [
+          {
+            "decile": 1,
+            "count": 44,
+            "avg_return_pct": -0.03600489730255084,
+            "lift_vs_overall": -0.008850440364555977
+          },
+          {
+            "decile": 2,
+            "count": 44,
+            "avg_return_pct": -0.023712979512504662,
+            "lift_vs_overall": 0.0034414774254902004
+          },
+          {
+            "decile": 3,
+            "count": 45,
+            "avg_return_pct": -0.024625099137410306,
+            "lift_vs_overall": 0.0025293578005845564
+          },
+          {
+            "decile": 4,
+            "count": 44,
+            "avg_return_pct": -0.030769354629322402,
+            "lift_vs_overall": -0.003614897691327539
+          },
+          {
+            "decile": 5,
+            "count": 45,
+            "avg_return_pct": -0.027168114459662822,
+            "lift_vs_overall": -1.3657521667959083e-05
+          },
+          {
+            "decile": 6,
+            "count": 44,
+            "avg_return_pct": -0.022764262196129495,
+            "lift_vs_overall": 0.004390194741865368
+          },
+          {
+            "decile": 7,
+            "count": 44,
+            "avg_return_pct": -0.024240537929342606,
+            "lift_vs_overall": 0.002913919008652257
+          },
+          {
+            "decile": 8,
+            "count": 45,
+            "avg_return_pct": -0.029047067129887603,
+            "lift_vs_overall": -0.0018926101918927407
+          },
+          {
+            "decile": 9,
+            "count": 44,
+            "avg_return_pct": -0.023655929109556016,
+            "lift_vs_overall": 0.0034985278284388466
+          },
+          {
+            "decile": 10,
+            "count": 45,
+            "avg_return_pct": -0.029516799508058227,
+            "lift_vs_overall": -0.0023623425700633645
+          }
+        ],
+        "overall_avg_return_pct": -0.027154456937994863,
+        "t_stat": -25.409349366383466,
+        "p_value": 0.0,
+        "samples": [
+          {
+            "ts": "2025-11-05T15:03:00+00:00",
+            "return_pct": -0.13786990989217285,
+            "hazard": 0.434442,
+            "coherence": 0.000705,
+            "admit": true,
+            "reasons": [],
+            "price_start": 0.81236,
+            "price_end": 0.81146,
+            "cost_pct": 0.027081589443109396
+          },
+          {
+            "ts": "2025-11-03T14:55:00+00:00",
+            "return_pct": -0.11631072285878113,
+            "hazard": 0.454012,
+            "coherence": 0.000396,
+            "admit": true,
+            "reasons": [],
+            "price_start": 0.80818,
+            "price_end": 0.80746,
+            "cost_pct": 0.027221658541419422
+          },
+          {
+            "ts": "2025-11-03T07:27:00+00:00",
+            "return_pct": 0.09325342550916157,
+            "hazard": 0.514677,
+            "coherence": 0.009929,
+            "admit": true,
+            "reasons": [],
+            "price_start": 0.80426,
+            "price_end": 0.80523,
+            "cost_pct": 0.027354338149360093
+          },
+          {
+            "ts": "2025-11-04T09:32:00+00:00",
+            "return_pct": -0.09277814889038248,
+            "hazard": 0.48728,
+            "coherence": 4.4e-05,
+            "admit": true,
+            "reasons": [],
+            "price_start": 0.80838,
+            "price_end": 0.80785,
+            "cost_pct": 0.027214923674514894
+          },
+          {
+            "ts": "2025-11-07T15:01:00+00:00",
+            "return_pct": -0.08956672098722286,
+            "hazard": 0.436399,
+            "coherence": 0.006349,
+            "admit": true,
+            "reasons": [],
+            "price_start": 0.80387,
+            "price_end": 0.80337,
+            "cost_pct": 0.02736760919054617
+          }
+        ],
+        "median_spread": 0.000140000000000029,
+        "p_value_holm": 0.0
+      },
+      "15": {
+        "count": 444,
+        "avg_return_pct": -0.026416700686098187,
+        "median_return_pct": -0.028431042563503314,
+        "positive_pct": 0.19369369369369369,
+        "avg_positive_return_pct": 0.025665479614564588,
+        "avg_negative_return_pct": -0.038928062434302094,
+        "avg_hazard": 0.4983163198198198,
+        "avg_cost_pct": 0.027225988143129237,
+        "hazard_buckets": {
+          "< 0.60": {
+            "count": 444,
+            "avg_return_pct": -0.026416700686098187
+          }
+        },
+        "auroc_admit": 0.5011692867350916,
+        "hazard_deciles": [
+          {
+            "decile": 1,
+            "count": 44,
+            "avg_return_pct": -0.03171967233853643,
+            "lift_vs_overall": -0.005302971652438246
+          },
+          {
+            "decile": 2,
+            "count": 44,
+            "avg_return_pct": -0.020805407414670334,
+            "lift_vs_overall": 0.005611293271427852
+          },
+          {
+            "decile": 3,
+            "count": 45,
+            "avg_return_pct": -0.022323137675587752,
+            "lift_vs_overall": 0.004093563010510434
+          },
+          {
+            "decile": 4,
+            "count": 44,
+            "avg_return_pct": -0.030641118671315495,
+            "lift_vs_overall": -0.004224417985217308
+          },
+          {
+            "decile": 5,
+            "count": 45,
+            "avg_return_pct": -0.02946601803155691,
+            "lift_vs_overall": -0.0030493173454587234
+          },
+          {
+            "decile": 6,
+            "count": 44,
+            "avg_return_pct": -0.026595373886800954,
+            "lift_vs_overall": -0.00017867320070276763
+          },
+          {
+            "decile": 7,
+            "count": 44,
+            "avg_return_pct": -0.023372296973767536,
+            "lift_vs_overall": 0.0030444037123306504
+          },
+          {
+            "decile": 8,
+            "count": 45,
+            "avg_return_pct": -0.027997042680936824,
+            "lift_vs_overall": -0.0015803419948386375
+          },
+          {
+            "decile": 9,
+            "count": 44,
+            "avg_return_pct": -0.029157453200454805,
+            "lift_vs_overall": -0.002740752514356619
+          },
+          {
+            "decile": 10,
+            "count": 45,
+            "avg_return_pct": -0.022173733062220518,
+            "lift_vs_overall": 0.0042429676238776685
+          }
+        ],
+        "overall_avg_return_pct": -0.026416700686098187,
+        "t_stat": -14.216446669020213,
+        "p_value": 0.0,
+        "samples": [
+          {
+            "ts": "2025-11-05T15:03:00+00:00",
+            "return_pct": -0.3102072972573751,
+            "hazard": 0.434442,
+            "coherence": 0.000705,
+            "admit": true,
+            "reasons": [],
+            "price_start": 0.81236,
+            "price_end": 0.81006,
+            "cost_pct": 0.027081589443109396
+          },
+          {
+            "ts": "2025-11-06T08:48:00+00:00",
+            "return_pct": -0.19020799367620564,
+            "hazard": 0.479452,
+            "coherence": 0.001861,
+            "admit": true,
+            "reasons": [],
+            "price_start": 0.80964,
+            "price_end": 0.80832,
+            "cost_pct": 0.02717257052517705
+          },
+          {
+            "ts": "2025-11-05T01:10:00+00:00",
+            "return_pct": -0.16429083183043441,
+            "hazard": 0.528376,
+            "coherence": 0.002158,
+            "admit": true,
+            "reasons": [],
+            "price_start": 0.80954,
+            "price_end": 0.80843,
+            "cost_pct": 0.02717592706969927
+          },
+          {
+            "ts": "2025-11-05T14:47:00+00:00",
+            "return_pct": 0.16409421228609244,
+            "hazard": 0.438356,
+            "coherence": 0.002478,
+            "admit": true,
+            "reasons": [],
+            "price_start": 0.81051,
+            "price_end": 0.81206,
+            "cost_pct": 0.027143403536050572
+          },
+          {
+            "ts": "2025-11-06T12:48:00+00:00",
+            "return_pct": -0.12245200870769604,
+            "hazard": 0.518591,
+            "coherence": 0.0,
+            "admit": true,
+            "reasons": [],
+            "price_start": 0.80848,
+            "price_end": 0.80771,
+            "cost_pct": 0.027211557490605026
+          }
+        ],
+        "median_spread": 0.000140000000000029,
+        "p_value_holm": 0.0
+      },
+      "30": {
+        "count": 444,
+        "avg_return_pct": -0.025648982494745228,
+        "median_return_pct": -0.02601232370574338,
+        "positive_pct": 0.2702702702702703,
+        "avg_positive_return_pct": 0.03814652365573635,
+        "avg_negative_return_pct": -0.049276947735664337,
+        "avg_hazard": 0.4983163198198198,
+        "avg_cost_pct": 0.027225988143129237,
+        "hazard_buckets": {
+          "< 0.60": {
+            "count": 444,
+            "avg_return_pct": -0.025648982494745228
+          }
+        },
+        "auroc_admit": 0.4978395061728395,
+        "hazard_deciles": [
+          {
+            "decile": 1,
+            "count": 44,
+            "avg_return_pct": -0.0355530236856559,
+            "lift_vs_overall": -0.009904041190910675
+          },
+          {
+            "decile": 2,
+            "count": 44,
+            "avg_return_pct": -0.01254766582704678,
+            "lift_vs_overall": 0.013101316667698449
+          },
+          {
+            "decile": 3,
+            "count": 45,
+            "avg_return_pct": -0.021093616884492444,
+            "lift_vs_overall": 0.0045553656102527845
+          },
+          {
+            "decile": 4,
+            "count": 44,
+            "avg_return_pct": -0.03455022248688285,
+            "lift_vs_overall": -0.008901239992137624
+          },
+          {
+            "decile": 5,
+            "count": 45,
+            "avg_return_pct": -0.03268953941229532,
+            "lift_vs_overall": -0.007040556917550091
+          },
+          {
+            "decile": 6,
+            "count": 44,
+            "avg_return_pct": -0.02598641195074332,
+            "lift_vs_overall": -0.0003374294559980902
+          },
+          {
+            "decile": 7,
+            "count": 44,
+            "avg_return_pct": -0.01818718300006697,
+            "lift_vs_overall": 0.007461799494678258
+          },
+          {
+            "decile": 8,
+            "count": 45,
+            "avg_return_pct": -0.028041793164508395,
+            "lift_vs_overall": -0.0023928106697631672
+          },
+          {
+            "decile": 9,
+            "count": 44,
+            "avg_return_pct": -0.03394099143138376,
+            "lift_vs_overall": -0.00829200893663853
+          },
+          {
+            "decile": 10,
+            "count": 45,
+            "avg_return_pct": -0.014052079402450079,
+            "lift_vs_overall": 0.01159690309229515
+          }
+        ],
+        "overall_avg_return_pct": -0.025648982494745228,
+        "t_stat": -9.998222648323658,
+        "p_value": 0.0,
+        "samples": [
+          {
+            "ts": "2025-11-05T15:03:00+00:00",
+            "return_pct": -0.26219902506278137,
+            "hazard": 0.434442,
+            "coherence": 0.000705,
+            "admit": true,
+            "reasons": [],
+            "price_start": 0.81236,
+            "price_end": 0.81045,
+            "cost_pct": 0.027081589443109396
+          },
+          {
+            "ts": "2025-11-05T00:54:00+00:00",
+            "return_pct": -0.23453894580916654,
+            "hazard": 0.528376,
+            "coherence": 0.011301,
+            "admit": true,
+            "reasons": [],
+            "price_start": 0.8101,
+            "price_end": 0.80842,
+            "cost_pct": 0.0271571410936975
+          },
+          {
+            "ts": "2025-11-07T11:01:00+00:00",
+            "return_pct": -0.19328938890816913,
+            "hazard": 0.489237,
+            "coherence": 0.002158,
+            "admit": true,
+            "reasons": [],
+            "price_start": 0.80708,
+            "price_end": 0.80574,
+            "cost_pct": 0.027258759974233472
+          },
+          {
+            "ts": "2025-11-05T01:10:00+00:00",
+            "return_pct": -0.19270202831238126,
+            "hazard": 0.528376,
+            "coherence": 0.002158,
+            "admit": true,
+            "reasons": [],
+            "price_start": 0.80954,
+            "price_end": 0.8082,
+            "cost_pct": 0.02717592706969927
+          },
+          {
+            "ts": "2025-11-03T14:39:00+00:00",
+            "return_pct": -0.17680077149427276,
+            "hazard": 0.477495,
+            "coherence": 9.9e-05,
+            "admit": true,
+            "reasons": [],
+            "price_start": 0.80882,
+            "price_end": 0.80761,
+            "cost_pct": 0.027200118691432393
+          }
+        ],
+        "median_spread": 0.000140000000000029,
+        "p_value_holm": 0.0
+      },
+      "60": {
+        "count": 444,
+        "avg_return_pct": -0.024874800685104913,
+        "median_return_pct": -0.02542108596742565,
+        "positive_pct": 0.3108108108108108,
+        "avg_positive_return_pct": 0.058707429075574954,
+        "avg_negative_return_pct": -0.06256874743992132,
+        "avg_hazard": 0.4983163198198198,
+        "avg_cost_pct": 0.027225988143129237,
+        "hazard_buckets": {
+          "< 0.60": {
+            "count": 444,
+            "avg_return_pct": -0.024874800685104913
+          }
+        },
+        "auroc_admit": 0.4940323955669224,
+        "hazard_deciles": [
+          {
+            "decile": 1,
+            "count": 44,
+            "avg_return_pct": -0.03285553820816999,
+            "lift_vs_overall": -0.007980737523065079
+          },
+          {
+            "decile": 2,
+            "count": 44,
+            "avg_return_pct": -0.021660223103715428,
+            "lift_vs_overall": 0.003214577581389485
+          },
+          {
+            "decile": 3,
+            "count": 45,
+            "avg_return_pct": -0.008284651577193134,
+            "lift_vs_overall": 0.01659014910791178
+          },
+          {
+            "decile": 4,
+            "count": 44,
+            "avg_return_pct": -0.03743385786313845,
+            "lift_vs_overall": -0.012559057178033538
+          },
+          {
+            "decile": 5,
+            "count": 45,
+            "avg_return_pct": -0.029549195872637338,
+            "lift_vs_overall": -0.004674395187532425
+          },
+          {
+            "decile": 6,
+            "count": 44,
+            "avg_return_pct": -0.018686785313178102,
+            "lift_vs_overall": 0.00618801537192681
+          },
+          {
+            "decile": 7,
+            "count": 44,
+            "avg_return_pct": -0.02029010050581131,
+            "lift_vs_overall": 0.004584700179293601
+          },
+          {
+            "decile": 8,
+            "count": 45,
+            "avg_return_pct": -0.03928361489926888,
+            "lift_vs_overall": -0.01440881421416397
+          },
+          {
+            "decile": 9,
+            "count": 44,
+            "avg_return_pct": -0.03773574664184498,
+            "lift_vs_overall": -0.012860945956740068
+          },
+          {
+            "decile": 10,
+            "count": 45,
+            "avg_return_pct": -0.003399702811096607,
+            "lift_vs_overall": 0.021475097874008305
+          }
+        ],
+        "overall_avg_return_pct": -0.024874800685104913,
+        "t_stat": -6.969873908280521,
+        "p_value": 3.1722402482614598e-12,
+        "samples": [
+          {
+            "ts": "2025-11-05T00:38:00+00:00",
+            "return_pct": -0.25183941533751125,
+            "hazard": 0.536204,
+            "coherence": 0.009277,
+            "admit": true,
+            "reasons": [],
+            "price_start": 0.81004,
+            "price_end": 0.80822,
+            "cost_pct": 0.027159152634443174
+          },
+          {
+            "ts": "2025-11-05T00:54:00+00:00",
+            "return_pct": -0.24441426984324627,
+            "hazard": 0.528376,
+            "coherence": 0.011301,
+            "admit": true,
+            "reasons": [],
+            "price_start": 0.8101,
+            "price_end": 0.80834,
+            "cost_pct": 0.0271571410936975
+          },
+          {
+            "ts": "2025-11-05T00:22:00+00:00",
+            "return_pct": -0.23693465786389564,
+            "hazard": 0.522505,
+            "coherence": 0.013526,
+            "admit": true,
+            "reasons": [],
+            "price_start": 0.81035,
+            "price_end": 0.80865,
+            "cost_pct": 0.0271487628802423
+          },
+          {
+            "ts": "2025-11-07T10:45:00+00:00",
+            "return_pct": -0.23284617290067355,
+            "hazard": 0.491194,
+            "coherence": 0.004407,
+            "admit": true,
+            "reasons": [],
+            "price_start": 0.8074,
+            "price_end": 0.80574,
+            "cost_pct": 0.02724795640327514
+          },
+          {
+            "ts": "2025-11-06T14:56:00+00:00",
+            "return_pct": -0.2324891175306735,
+            "hazard": 0.483366,
+            "coherence": 0.0,
+            "admit": true,
+            "reasons": [],
+            "price_start": 0.80864,
+            "price_end": 0.80698,
+            "cost_pct": 0.02720617332806236
+          }
+        ],
+        "median_spread": 0.000140000000000029,
+        "p_value_holm": 6.3444804965229196e-12
+      },
+      "240": {
+        "count": 444,
+        "avg_return_pct": -0.026257073654375792,
+        "median_return_pct": -0.022943294861090098,
+        "positive_pct": 0.42792792792792794,
+        "avg_positive_return_pct": 0.09876428055999113,
+        "avg_negative_return_pct": -0.11977698428716996,
+        "avg_hazard": 0.4983163198198198,
+        "avg_cost_pct": 0.027225988143129237,
+        "hazard_buckets": {
+          "< 0.60": {
+            "count": 444,
+            "avg_return_pct": -0.026257073654375792
+          }
+        },
+        "auroc_admit": 0.5026108578532946,
+        "hazard_deciles": [
+          {
+            "decile": 1,
+            "count": 44,
+            "avg_return_pct": 0.0035911989426769112,
+            "lift_vs_overall": 0.029848272597052704
+          },
+          {
+            "decile": 2,
+            "count": 44,
+            "avg_return_pct": -0.02524680874379243,
+            "lift_vs_overall": 0.0010102649105833625
+          },
+          {
+            "decile": 3,
+            "count": 45,
+            "avg_return_pct": -0.02979177276175736,
+            "lift_vs_overall": -0.0035346991073815677
+          },
+          {
+            "decile": 4,
+            "count": 44,
+            "avg_return_pct": -0.06742593103201477,
+            "lift_vs_overall": -0.04116885737763898
+          },
+          {
+            "decile": 5,
+            "count": 45,
+            "avg_return_pct": -0.0553632011357257,
+            "lift_vs_overall": -0.02910612748134991
+          },
+          {
+            "decile": 6,
+            "count": 44,
+            "avg_return_pct": 0.0033015380006379477,
+            "lift_vs_overall": 0.02955861165501374
+          },
+          {
+            "decile": 7,
+            "count": 44,
+            "avg_return_pct": 0.0016128537132217714,
+            "lift_vs_overall": 0.027869927367597563
+          },
+          {
+            "decile": 8,
+            "count": 45,
+            "avg_return_pct": -0.03802806454881605,
+            "lift_vs_overall": -0.011770990894440257
+          },
+          {
+            "decile": 9,
+            "count": 44,
+            "avg_return_pct": -0.02214583399084122,
+            "lift_vs_overall": 0.004111239663534574
+          },
+          {
+            "decile": 10,
+            "count": 45,
+            "avg_return_pct": -0.031936282569210536,
+            "lift_vs_overall": -0.005679208914834744
+          }
+        ],
+        "overall_avg_return_pct": -0.026257073654375792,
+        "t_stat": -3.971615413605093,
+        "p_value": 7.138690083374755e-05,
+        "samples": [
+          {
+            "ts": "2025-11-07T09:25:00+00:00",
+            "return_pct": -0.4492018314565112,
+            "hazard": 0.508806,
+            "coherence": 0.005334,
+            "admit": true,
+            "reasons": [],
+            "price_start": 0.8081,
+            "price_end": 0.80469,
+            "cost_pct": 0.027224353421611613
+          },
+          {
+            "ts": "2025-11-07T11:01:00+00:00",
+            "return_pct": -0.4249888486891126,
+            "hazard": 0.489237,
+            "coherence": 0.002158,
+            "admit": true,
+            "reasons": [],
+            "price_start": 0.80708,
+            "price_end": 0.80387,
+            "cost_pct": 0.027258759974233472
+          },
+          {
+            "ts": "2025-11-07T10:45:00+00:00",
+            "return_pct": -0.4062422591032939,
+            "hazard": 0.491194,
+            "coherence": 0.004407,
+            "admit": true,
+            "reasons": [],
+            "price_start": 0.8074,
+            "price_end": 0.80434,
+            "cost_pct": 0.02724795640327514
+          },
+          {
+            "ts": "2025-11-03T06:55:00+00:00",
+            "return_pct": 0.40297505037187825,
+            "hazard": 0.495108,
+            "coherence": 0.007454,
+            "admit": true,
+            "reasons": [],
+            "price_start": 0.80402,
+            "price_end": 0.80748,
+            "cost_pct": 0.027362503420318336
+          },
+          {
+            "ts": "2025-11-03T06:39:00+00:00",
+            "return_pct": 0.40175628443847666,
+            "hazard": 0.500978,
+            "coherence": 0.008039,
+            "admit": true,
+            "reasons": [],
+            "price_start": 0.80397,
+            "price_end": 0.80742,
+            "cost_pct": 0.0273642051320377
+          }
+        ],
+        "median_spread": 0.000140000000000029,
+        "p_value_holm": 7.138690083374755e-05
+      }
+    },
+    "USD_JPY": {
+      "5": {
+        "count": 445,
+        "avg_return_pct": -0.01523646147367235,
+        "median_return_pct": -0.014939721471612676,
+        "positive_pct": 0.23146067415730337,
+        "avg_positive_return_pct": 0.014868527694968926,
+        "avg_negative_return_pct": -0.02430316873791227,
+        "avg_hazard": 0.4946063213483146,
+        "avg_cost_pct": 0.01626762980821175,
+        "hazard_buckets": {
+          "< 0.60": {
+            "count": 445,
+            "avg_return_pct": -0.01523646147367235
+          }
+        },
+        "auroc_admit": 0.5014619883040936,
+        "hazard_deciles": [
+          {
+            "decile": 1,
+            "count": 44,
+            "avg_return_pct": -0.021102653160587303,
+            "lift_vs_overall": -0.0058661916869149535
+          },
+          {
+            "decile": 2,
+            "count": 45,
+            "avg_return_pct": -0.011745754283437557,
+            "lift_vs_overall": 0.0034907071902347923
+          },
+          {
+            "decile": 3,
+            "count": 44,
+            "avg_return_pct": -0.01412329065231117,
+            "lift_vs_overall": 0.0011131708213611789
+          },
+          {
+            "decile": 4,
+            "count": 45,
+            "avg_return_pct": -0.023193650790467733,
+            "lift_vs_overall": -0.007957189316795383
+          },
+          {
+            "decile": 5,
+            "count": 44,
+            "avg_return_pct": -0.01264228462515232,
+            "lift_vs_overall": 0.0025941768485200287
+          },
+          {
+            "decile": 6,
+            "count": 45,
+            "avg_return_pct": -0.011830793108425297,
+            "lift_vs_overall": 0.003405668365247052
+          },
+          {
+            "decile": 7,
+            "count": 44,
+            "avg_return_pct": -0.011093710788176468,
+            "lift_vs_overall": 0.004142750685495881
+          },
+          {
+            "decile": 8,
+            "count": 45,
+            "avg_return_pct": -0.01515832623384051,
+            "lift_vs_overall": 7.813523983184016e-05
+          },
+          {
+            "decile": 9,
+            "count": 44,
+            "avg_return_pct": -0.013986886481270396,
+            "lift_vs_overall": 0.0012495749924019538
+          },
+          {
+            "decile": 10,
+            "count": 45,
+            "avg_return_pct": -0.01741540946503555,
+            "lift_vs_overall": -0.002178947991363202
+          }
+        ],
+        "overall_avg_return_pct": -0.01523646147367235,
+        "t_stat": -13.211776547347867,
+        "p_value": 0.0,
+        "samples": [
+          {
+            "ts": "2025-11-07T15:02:00+00:00",
+            "return_pct": -0.11684530725745335,
+            "hazard": 0.422701,
+            "coherence": 1.1e-05,
+            "admit": true,
+            "reasons": [],
+            "price_start": 153.194,
+            "price_end": 153.04,
+            "cost_pct": 0.016319176991257296
+          },
+          {
+            "ts": "2025-11-04T09:23:00+00:00",
+            "return_pct": -0.10732684602173406,
+            "hazard": 0.459883,
+            "coherence": 0.002158,
+            "admit": true,
+            "reasons": [],
+            "price_start": 153.736,
+            "price_end": 153.596,
+            "cost_pct": 0.016261643336620377
+          },
+          {
+            "ts": "2025-11-09T23:56:00+00:00",
+            "return_pct": -0.09947272951869568,
+            "hazard": 0.46771,
+            "coherence": 9.9e-05,
+            "admit": true,
+            "reasons": [],
+            "price_start": 153.811,
+            "price_end": 153.683,
+            "cost_pct": 0.01625371397363433
+          },
+          {
+            "ts": "2025-11-07T15:18:00+00:00",
+            "return_pct": -0.09725721596322628,
+            "hazard": 0.432485,
+            "coherence": 0.000275,
+            "admit": true,
+            "reasons": [],
+            "price_start": 153.202,
+            "price_end": 153.078,
+            "cost_pct": 0.016318324826037976
+          },
+          {
+            "ts": "2025-11-04T05:23:00+00:00",
+            "return_pct": -0.08574602287858883,
+            "hazard": 0.446184,
+            "coherence": 0.000396,
+            "admit": true,
+            "reasons": [],
+            "price_start": 153.943,
+            "price_end": 153.836,
+            "cost_pct": 0.016239777060331875
+          }
+        ],
+        "median_spread": 0.015999999999991132,
+        "p_value_holm": 0.0
+      },
+      "15": {
+        "count": 445,
+        "avg_return_pct": -0.016577055422682976,
+        "median_return_pct": -0.016985359926304098,
+        "positive_pct": 0.3056179775280899,
+        "avg_positive_return_pct": 0.028232216556809447,
+        "avg_negative_return_pct": -0.0362989356466667,
+        "avg_hazard": 0.4946063213483146,
+        "avg_cost_pct": 0.01626762980821175,
+        "hazard_buckets": {
+          "< 0.60": {
+            "count": 445,
+            "avg_return_pct": -0.016577055422682976
+          }
+        },
+        "auroc_admit": 0.5016181229773463,
+        "hazard_deciles": [
+          {
+            "decile": 1,
+            "count": 44,
+            "avg_return_pct": -0.025273839711049188,
+            "lift_vs_overall": -0.008696784288366212
+          },
+          {
+            "decile": 2,
+            "count": 45,
+            "avg_return_pct": -0.020342266590644056,
+            "lift_vs_overall": -0.00376521116796108
+          },
+          {
+            "decile": 3,
+            "count": 44,
+            "avg_return_pct": -0.01477174432467825,
+            "lift_vs_overall": 0.0018053110980047263
+          },
+          {
+            "decile": 4,
+            "count": 45,
+            "avg_return_pct": -0.02351278121232055,
+            "lift_vs_overall": -0.006935725789637574
+          },
+          {
+            "decile": 5,
+            "count": 44,
+            "avg_return_pct": -0.010324872330272562,
+            "lift_vs_overall": 0.006252183092410414
+          },
+          {
+            "decile": 6,
+            "count": 45,
+            "avg_return_pct": -0.010903839483970187,
+            "lift_vs_overall": 0.005673215938712789
+          },
+          {
+            "decile": 7,
+            "count": 44,
+            "avg_return_pct": -0.00834929457772146,
+            "lift_vs_overall": 0.008227760844961516
+          },
+          {
+            "decile": 8,
+            "count": 45,
+            "avg_return_pct": -0.015554346301440671,
+            "lift_vs_overall": 0.0010227091212423045
+          },
+          {
+            "decile": 9,
+            "count": 44,
+            "avg_return_pct": -0.014820845715184721,
+            "lift_vs_overall": 0.0017562097074982543
+          },
+          {
+            "decile": 10,
+            "count": 45,
+            "avg_return_pct": -0.02170906441389238,
+            "lift_vs_overall": -0.005132008991209403
+          }
+        ],
+        "overall_avg_return_pct": -0.016577055422682976,
+        "t_stat": -8.434354597629191,
+        "p_value": 0.0,
+        "samples": [
+          {
+            "ts": "2025-11-04T09:23:00+00:00",
+            "return_pct": -0.17757714523597412,
+            "hazard": 0.459883,
+            "coherence": 0.002158,
+            "admit": true,
+            "reasons": [],
+            "price_start": 153.736,
+            "price_end": 153.488,
+            "cost_pct": 0.016261643336620377
+          },
+          {
+            "ts": "2025-11-05T14:52:00+00:00",
+            "return_pct": 0.1461513478402165,
+            "hazard": 0.506849,
+            "coherence": 0.000705,
+            "admit": true,
+            "reasons": [],
+            "price_start": 153.95,
+            "price_end": 154.2,
+            "cost_pct": 0.016239038648903345
+          },
+          {
+            "ts": "2025-11-04T04:19:00+00:00",
+            "return_pct": -0.13694362595568071,
+            "hazard": 0.518591,
+            "coherence": 0.004407,
+            "admit": true,
+            "reasons": [],
+            "price_start": 154.078,
+            "price_end": 153.892,
+            "cost_pct": 0.01622554809900615
+          },
+          {
+            "ts": "2025-11-06T00:00:00+00:00",
+            "return_pct": -0.13173093146096998,
+            "hazard": 0.522505,
+            "coherence": 0.007454,
+            "admit": true,
+            "reasons": [],
+            "price_start": 154.102,
+            "price_end": 153.924,
+            "cost_pct": 0.016223021115875653
+          },
+          {
+            "ts": "2025-11-04T05:23:00+00:00",
+            "return_pct": -0.1312173986475563,
+            "hazard": 0.446184,
+            "coherence": 0.000396,
+            "admit": true,
+            "reasons": [],
+            "price_start": 153.943,
+            "price_end": 153.766,
+            "cost_pct": 0.016239777060331875
+          }
+        ],
+        "median_spread": 0.015999999999991132,
+        "p_value_holm": 0.0
+      },
+      "30": {
+        "count": 445,
+        "avg_return_pct": -0.016237511009715218,
+        "median_return_pct": -0.016277101373778694,
+        "positive_pct": 0.3550561797752809,
+        "avg_positive_return_pct": 0.03990740623409356,
+        "avg_negative_return_pct": -0.047146559527212736,
+        "avg_hazard": 0.4946063213483146,
+        "avg_cost_pct": 0.01626762980821175,
+        "hazard_buckets": {
+          "< 0.60": {
+            "count": 445,
+            "avg_return_pct": -0.016237511009715218
+          }
+        },
+        "auroc_admit": 0.5017421602787456,
+        "hazard_deciles": [
+          {
+            "decile": 1,
+            "count": 44,
+            "avg_return_pct": -0.03767161175725303,
+            "lift_vs_overall": -0.021434100747537814
+          },
+          {
+            "decile": 2,
+            "count": 45,
+            "avg_return_pct": -0.022463784289000616,
+            "lift_vs_overall": -0.006226273279285398
+          },
+          {
+            "decile": 3,
+            "count": 44,
+            "avg_return_pct": -0.006324444862306041,
+            "lift_vs_overall": 0.009913066147409177
+          },
+          {
+            "decile": 4,
+            "count": 45,
+            "avg_return_pct": -0.025295411721620878,
+            "lift_vs_overall": -0.00905790071190566
+          },
+          {
+            "decile": 5,
+            "count": 44,
+            "avg_return_pct": -0.01715243836608648,
+            "lift_vs_overall": -0.0009149273563712618
+          },
+          {
+            "decile": 6,
+            "count": 45,
+            "avg_return_pct": -0.008581402926500923,
+            "lift_vs_overall": 0.007656108083214295
+          },
+          {
+            "decile": 7,
+            "count": 44,
+            "avg_return_pct": -0.0014028211111039603,
+            "lift_vs_overall": 0.014834689898611258
+          },
+          {
+            "decile": 8,
+            "count": 45,
+            "avg_return_pct": -0.0029995505767544347,
+            "lift_vs_overall": 0.013237960432960784
+          },
+          {
+            "decile": 9,
+            "count": 44,
+            "avg_return_pct": -0.014384935688090517,
+            "lift_vs_overall": 0.0018525753216247012
+          },
+          {
+            "decile": 10,
+            "count": 45,
+            "avg_return_pct": -0.02600423539257452,
+            "lift_vs_overall": -0.0097667243828593
+          }
+        ],
+        "overall_avg_return_pct": -0.016237511009715218,
+        "t_stat": -6.025125848399958,
+        "p_value": 1.6897808707838635e-09,
+        "samples": [
+          {
+            "ts": "2025-11-05T00:28:00+00:00",
+            "return_pct": -0.212957174116898,
+            "hazard": 0.438356,
+            "coherence": 9.9e-05,
+            "admit": true,
+            "reasons": [],
+            "price_start": 153.552,
+            "price_end": 153.25,
+            "cost_pct": 0.016281129519632894
+          },
+          {
+            "ts": "2025-11-06T15:28:00+00:00",
+            "return_pct": -0.19300361881785394,
+            "hazard": 0.432485,
+            "coherence": 4.4e-05,
+            "admit": true,
+            "reasons": [],
+            "price_start": 153.365,
+            "price_end": 153.094,
+            "cost_pct": 0.016300981319066734
+          },
+          {
+            "ts": "2025-11-04T09:23:00+00:00",
+            "return_pct": -0.190586459905284,
+            "hazard": 0.459883,
+            "coherence": 0.002158,
+            "admit": true,
+            "reasons": [],
+            "price_start": 153.736,
+            "price_end": 153.468,
+            "cost_pct": 0.016261643336620377
+          },
+          {
+            "ts": "2025-11-05T00:44:00+00:00",
+            "return_pct": -0.18515379500082982,
+            "hazard": 0.422701,
+            "coherence": 0.000176,
+            "admit": true,
+            "reasons": [],
+            "price_start": 153.386,
+            "price_end": 153.127,
+            "cost_pct": 0.01629874955992509
+          },
+          {
+            "ts": "2025-11-07T19:18:00+00:00",
+            "return_pct": 0.18400824774559207,
+            "hazard": 0.471624,
+            "coherence": 0.006349,
+            "admit": true,
+            "reasons": [],
+            "price_start": 153.254,
+            "price_end": 153.561,
+            "cost_pct": 0.016312787920698124
+          }
+        ],
+        "median_spread": 0.015999999999991132,
+        "p_value_holm": 5.0693426123515906e-09
+      },
+      "60": {
+        "count": 445,
+        "avg_return_pct": -0.017507910068391655,
+        "median_return_pct": -0.01621123892771519,
+        "positive_pct": 0.3752808988764045,
+        "avg_positive_return_pct": 0.05750726955330139,
+        "avg_negative_return_pct": -0.062570985596531,
+        "avg_hazard": 0.4946063213483146,
+        "avg_cost_pct": 0.01626762980821175,
+        "hazard_buckets": {
+          "< 0.60": {
+            "count": 445,
+            "avg_return_pct": -0.017507910068391655
+          }
+        },
+        "auroc_admit": 0.5017985611510791,
+        "hazard_deciles": [
+          {
+            "decile": 1,
+            "count": 44,
+            "avg_return_pct": -0.036311170080439055,
+            "lift_vs_overall": -0.0188032600120474
+          },
+          {
+            "decile": 2,
+            "count": 45,
+            "avg_return_pct": -0.05665499596000282,
+            "lift_vs_overall": -0.039147085891611165
+          },
+          {
+            "decile": 3,
+            "count": 44,
+            "avg_return_pct": -0.019814686064921178,
+            "lift_vs_overall": -0.0023067759965295226
+          },
+          {
+            "decile": 4,
+            "count": 45,
+            "avg_return_pct": -0.014666598973259393,
+            "lift_vs_overall": 0.0028413110951322623
+          },
+          {
+            "decile": 5,
+            "count": 44,
+            "avg_return_pct": -0.01368439231496652,
+            "lift_vs_overall": 0.003823517753425135
+          },
+          {
+            "decile": 6,
+            "count": 45,
+            "avg_return_pct": 0.0011171956349315592,
+            "lift_vs_overall": 0.018625105703323215
+          },
+          {
+            "decile": 7,
+            "count": 44,
+            "avg_return_pct": 0.00933808768586269,
+            "lift_vs_overall": 0.026845997754254343
+          },
+          {
+            "decile": 8,
+            "count": 45,
+            "avg_return_pct": -0.00846819978568121,
+            "lift_vs_overall": 0.009039710282710445
+          },
+          {
+            "decile": 9,
+            "count": 44,
+            "avg_return_pct": -0.01673733471017246,
+            "lift_vs_overall": 0.0007705753582191964
+          },
+          {
+            "decile": 10,
+            "count": 45,
+            "avg_return_pct": -0.018967449340661007,
+            "lift_vs_overall": -0.0014595392722693522
+          }
+        ],
+        "overall_avg_return_pct": -0.017507910068391655,
+        "t_stat": -4.597412702613826,
+        "p_value": 4.2776976547642676e-06,
+        "samples": [
+          {
+            "ts": "2025-11-05T00:28:00+00:00",
+            "return_pct": -0.3067364801500369,
+            "hazard": 0.438356,
+            "coherence": 9.9e-05,
+            "admit": true,
+            "reasons": [],
+            "price_start": 153.552,
+            "price_end": 153.106,
+            "cost_pct": 0.016281129519632894
+          },
+          {
+            "ts": "2025-11-04T05:23:00+00:00",
+            "return_pct": -0.2812729386850991,
+            "hazard": 0.446184,
+            "coherence": 0.000396,
+            "admit": true,
+            "reasons": [],
+            "price_start": 153.943,
+            "price_end": 153.535,
+            "cost_pct": 0.016239777060331875
+          },
+          {
+            "ts": "2025-11-05T00:12:00+00:00",
+            "return_pct": -0.2669722739526261,
+            "hazard": 0.46184,
+            "coherence": 0.003569,
+            "admit": true,
+            "reasons": [],
+            "price_start": 153.574,
+            "price_end": 153.189,
+            "cost_pct": 0.016278797192224397
+          },
+          {
+            "ts": "2025-11-05T00:44:00+00:00",
+            "return_pct": -0.2659955928181167,
+            "hazard": 0.422701,
+            "coherence": 0.000176,
+            "admit": true,
+            "reasons": [],
+            "price_start": 153.386,
+            "price_end": 153.003,
+            "cost_pct": 0.01629874955992509
+          },
+          {
+            "ts": "2025-11-06T14:56:00+00:00",
+            "return_pct": -0.2346071633387171,
+            "hazard": 0.477495,
+            "coherence": 0.0,
+            "admit": true,
+            "reasons": [],
+            "price_start": 153.448,
+            "price_end": 153.113,
+            "cost_pct": 0.01629216412073582
+          }
+        ],
+        "median_spread": 0.015999999999991132,
+        "p_value_holm": 8.555395309528535e-06
+      },
+      "240": {
+        "count": 445,
+        "avg_return_pct": -0.028523460597632364,
+        "median_return_pct": -0.011719512989114979,
+        "positive_pct": 0.4606741573033708,
+        "avg_positive_return_pct": 0.09524405024943829,
+        "avg_negative_return_pct": -0.1342415427795052,
+        "avg_hazard": 0.4946063213483146,
+        "avg_cost_pct": 0.01626762980821175,
+        "hazard_buckets": {
+          "< 0.60": {
+            "count": 445,
+            "avg_return_pct": -0.028523460597632364
+          }
+        },
+        "auroc_admit": 0.5020833333333333,
+        "hazard_deciles": [
+          {
+            "decile": 1,
+            "count": 44,
+            "avg_return_pct": 0.025716825593400605,
+            "lift_vs_overall": 0.054240286191032966
+          },
+          {
+            "decile": 2,
+            "count": 45,
+            "avg_return_pct": -0.025493805145295256,
+            "lift_vs_overall": 0.003029655452337108
+          },
+          {
+            "decile": 3,
+            "count": 44,
+            "avg_return_pct": -0.04864502091651712,
+            "lift_vs_overall": -0.02012156031888476
+          },
+          {
+            "decile": 4,
+            "count": 45,
+            "avg_return_pct": -0.09645936194835224,
+            "lift_vs_overall": -0.06793590135071988
+          },
+          {
+            "decile": 5,
+            "count": 44,
+            "avg_return_pct": -0.019304202210892407,
+            "lift_vs_overall": 0.009219258386739957
+          },
+          {
+            "decile": 6,
+            "count": 45,
+            "avg_return_pct": -0.049788821234026386,
+            "lift_vs_overall": -0.02126536063639402
+          },
+          {
+            "decile": 7,
+            "count": 44,
+            "avg_return_pct": -0.01031925328611651,
+            "lift_vs_overall": 0.018204207311515855
+          },
+          {
+            "decile": 8,
+            "count": 45,
+            "avg_return_pct": -0.030107157796496434,
+            "lift_vs_overall": -0.0015836971988640695
+          },
+          {
+            "decile": 9,
+            "count": 44,
+            "avg_return_pct": -0.03180398823828957,
+            "lift_vs_overall": -0.0032805276406572027
+          },
+          {
+            "decile": 10,
+            "count": 45,
+            "avg_return_pct": 0.002264882849144933,
+            "lift_vs_overall": 0.0307883434467773
+          }
+        ],
+        "overall_avg_return_pct": -0.028523460597632364,
+        "t_stat": -3.842182879194332,
+        "p_value": 0.00012194491844530475,
+        "samples": [
+          {
+            "ts": "2025-11-04T03:31:00+00:00",
+            "return_pct": -0.5196776830549839,
+            "hazard": 0.489237,
+            "coherence": 0.001332,
+            "admit": true,
+            "reasons": [],
+            "price_start": 154.134,
+            "price_end": 153.358,
+            "cost_pct": 0.01621965302917377
+          },
+          {
+            "ts": "2025-11-06T13:20:00+00:00",
+            "return_pct": -0.4896343369100887,
+            "hazard": 0.489237,
+            "coherence": 0.001332,
+            "admit": true,
+            "reasons": [],
+            "price_start": 153.584,
+            "price_end": 152.857,
+            "cost_pct": 0.016277737264289705
+          },
+          {
+            "ts": "2025-11-04T02:27:00+00:00",
+            "return_pct": -0.48616377885380796,
+            "hazard": 0.491194,
+            "coherence": 0.000705,
+            "admit": true,
+            "reasons": [],
+            "price_start": 154.269,
+            "price_end": 153.544,
+            "cost_pct": 0.01620545929511872
+          },
+          {
+            "ts": "2025-11-04T03:47:00+00:00",
+            "return_pct": -0.4621426021484429,
+            "hazard": 0.485323,
+            "coherence": 0.000892,
+            "admit": true,
+            "reasons": [],
+            "price_start": 154.065,
+            "price_end": 153.378,
+            "cost_pct": 0.016226917210259758
+          },
+          {
+            "ts": "2025-11-04T04:19:00+00:00",
+            "return_pct": -0.4471761056088491,
+            "hazard": 0.518591,
+            "coherence": 0.004407,
+            "admit": true,
+            "reasons": [],
+            "price_start": 154.078,
+            "price_end": 153.414,
+            "cost_pct": 0.01622554809900615
+          }
+        ],
+        "median_spread": 0.015999999999991132,
+        "p_value_holm": 0.00012194491844530475
+      }
+    }
+  }
+}

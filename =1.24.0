@@ -1,0 +1,5 @@
+Requirement already satisfied: pandas in /usr/local/lib/python3.12/dist-packages (2.3.3)
+Requirement already satisfied: numpy in /usr/local/lib/python3.12/dist-packages (2.3.4)
+Requirement already satisfied: python-dateutil>=2.8.2 in /usr/lib/python3/dist-packages (from pandas) (2.8.2)
+Requirement already satisfied: pytz>=2020.1 in /usr/lib/python3/dist-packages (from pandas) (2024.1)
+Requirement already satisfied: tzdata>=2022.7 in /usr/local/lib/python3.12/dist-packages (from pandas) (2025.2)

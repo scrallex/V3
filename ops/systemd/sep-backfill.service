@@ -1,0 +1,16 @@
+[Unit]
+Description=SEP Candle Backfill Loop
+After=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=/sep
+Environment="PYTHONPATH=/sep"
+EnvironmentFile=/sep/OANDA.env
+ExecStart=/usr/bin/python3 /sep/scripts/tools/backfill_candles.py --lookback-hours 48 --granularity M1 --redis ${VALKEY_URL:-redis://localhost:6379/0}
+Restart=on-failure
+StandardOutput=append:/sep/logs/backfill.log
+StandardError=append:/sep/logs/backfill.log
+
+[Install]
+WantedBy=multi-user.target

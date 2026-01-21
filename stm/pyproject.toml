@@ -1,0 +1,10 @@
+[project]
+name = "structural-manifold-compression"
+version = "0.1.0"
+description = "Text-only structural manifold compression benchmark suite"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = []
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

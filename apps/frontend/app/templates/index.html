@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SEP Regime V3 | Active State</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <span class="logo-icon">⚡</span>
+                <h1>SEP V3 <span class="subtitle">Regime Adaptive System</span></h1>
+            </div>
+            <div class="status-indicator">
+                <span class="dot pulse"></span> System Active
+            </div>
+        </header>
+
+        <main>
+            <!-- Account Overview Bar -->
+            <div class="account-bar loading" id="account-bar">
+                <div class="stat-item">
+                    <span class="label">Balance</span>
+                    <span class="value" id="nav-balance">--</span>
+                </div>
+                <div class="stat-item">
+                    <span class="label">NAV</span>
+                    <span class="value" id="nav-val">--</span>
+                </div>
+                <div class="stat-item">
+                    <span class="label">Unrealized PnL</span>
+                    <span class="value" id="nav-unrealized">--</span>
+                </div>
+                <div class="stat-item">
+                    <span class="label">Margin Used</span>
+                    <span class="value" id="nav-margin">--</span>
+                </div>
+            </div>
+
+            <div class="grid" id="instruments-grid">
+                <!-- Cards injected via JS -->
+                {% for pair in pairs %}
+                <div class="card loading" id="card-{{ pair }}">
+                    <div class="card-header">
+                        <h2>{{ pair.replace('_', '/') }}</h2>
+                        <span class="badge">Connecting...</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="metric-group">
+                            <label>Regime</label>
+                            <div class="value regime-value">--</div>
+                        </div>
+                        <div class="metric-group">
+                            <label>Signal</label>
+                            <div class="value signal-value">--</div>
+                        </div>
+                        <div class="metric-group">
+                            <label>Aligned At</label>
+                            <div class="value alignment-value"
+                                style="font-family: monospace; font-size: 0.8rem; color: var(--text-secondary);">--
+                            </div>
+                        </div>
+                        <div class="hazard-meter">
+                            <label>Structure Hazard</label>
+                            <div class="meter-bg">
+                                <div class="meter-fill" style="width: 50%"></div>
+                            </div>
+                            <div class="meter-value">0.00</div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+
+            <!-- Active Positions Section -->
+            <div class="positions-section">
+                <h3>Active Positions</h3>
+                <div class="table-container">
+                    <table class="positions-table">
+                        <thead>
+                            <tr>
+                                <th>Instrument</th>
+                                <th>Units</th>
+                                <th>Side</th>
+                                <th>Avg Price</th>
+                                <th>Current Price</th>
+                                <th>PnL</th>
+                            </tr>
+                        </thead>
+                        <tbody id="positions-body">
+                            <!-- Rows injected via JS -->
+                            <tr class="empty-state">
+                                <td colspan="6">No active positions</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>SEP V3.0.0-RegimeAdaptive • 2026</p>
+        </footer>
+    </div>
+    <script src="/static/script.js"></script>
+</body>
+
+</html>

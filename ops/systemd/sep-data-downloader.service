@@ -1,0 +1,24 @@
+[Unit]
+Description=SEP data downloader (OANDA candles)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=sep
+WorkingDirectory=/sep
+EnvironmentFile=/sep/.env.hotband
+Environment=CANDLE_STREAM_INTERVAL=2
+Environment=CANDLE_STREAM_RECENT_COUNT=180
+Environment=CANDLE_STREAM_MAX_ENTRIES=5000
+ExecStart=/bin/sh -c 'exec /usr/bin/env python3 /sep/scripts/tools/stream_candles.py \
+  --redis "${VALKEY_URL:-redis://127.0.0.1:6379/0}" \
+  --granularity "${CANDLE_STREAM_GRANULARITY:-M1}" \
+  --interval "${CANDLE_STREAM_INTERVAL}" \
+  --recent-count "${CANDLE_STREAM_RECENT_COUNT}" \
+  --max-entries "${CANDLE_STREAM_MAX_ENTRIES}"'
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

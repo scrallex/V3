@@ -1,0 +1,25 @@
+scrape_configs:
+  - job_name: sep_regime
+    scrape_interval: 15s
+    static_configs:
+      - targets:
+          - "localhost:9105"  # replace with the host/port that exposes sep-regime
+
+rule_files:
+  - "alerts/sep_regime.rules.yml"
+
+---
+
+groups:
+  - name: sep_regime_alerts
+    rules:
+      - alert: RegimeHazardFallback
+        expr: increase(regime_payloads_total{admit="False",reason="hazard_fallback_requested"}[5m]) > 0
+        for: 1m
+        labels:
+          severity: critical
+        annotations:
+          summary: "SEP regime hazard fallback triggered"
+          description: >
+            sep-regime emitted hazard_fallback_requested for {{ $labels.instrument }}.
+            Engage the trading kill switch until the fallback clears or optical verification succeeds.

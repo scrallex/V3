@@ -1,0 +1,31 @@
+# Patch for nlohmann_json to fix missing std::array header in GCC 11
+# This patch adds the necessary #include <array> to all headers in the detail directory
+
+function(patch_nlohmann_json)
+    set(DETAIL_DIR "${nlohmann_json_SOURCE_DIR}/include/nlohmann/detail")
+    file(GLOB HEADER_FILES "${DETAIL_DIR}/*.hpp")
+
+    foreach(HEADER_FILE ${HEADER_FILES})
+        if(EXISTS ${HEADER_FILE})
+            file(READ ${HEADER_FILE} FILE_CONTENTS)
+            string(FIND "${FILE_CONTENTS}" "#include <array>" ARRAY_INCLUDE_FOUND)
+
+            if(${ARRAY_INCLUDE_FOUND} EQUAL -1)
+                string(FIND "${FILE_CONTENTS}" "#pragma once" PRAGMA_POS)
+                if(NOT ${PRAGMA_POS} EQUAL -1)
+                    string(FIND "${FILE_CONTENTS}" "\n" NEWLINE_POS)
+                    math(EXPR INSERT_POS "${NEWLINE_POS} + 1")
+                    string(SUBSTRING "${FILE_CONTENTS}" 0 ${INSERT_POS} BEFORE_PART)
+                    string(SUBSTRING "${FILE_CONTENTS}" ${INSERT_POS} -1 AFTER_PART)
+                    set(PATCHED_CONTENTS "${BEFORE_PART}\n#include <array>  // Patched for GCC 11 compatibility\n${AFTER_PART}")
+                    file(WRITE ${HEADER_FILE} "${PATCHED_CONTENTS}")
+                    message(STATUS "Patched ${HEADER_FILE} with #include <array>")
+                endif()
+            else()
+                message(STATUS "${HEADER_FILE} already includes <array>")
+            endif()
+        else()
+            message(WARNING "Could not find ${HEADER_FILE} to patch")
+        endif()
+    endforeach()
+endfunction()

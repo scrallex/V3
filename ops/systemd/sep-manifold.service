@@ -1,0 +1,16 @@
+[Unit]
+Description=SEP manifold generator (quantum metrics)
+After=sep-data-downloader.service
+Requires=sep-data-downloader.service
+
+[Service]
+Type=simple
+User=sep
+WorkingDirectory=/sep
+EnvironmentFile=/sep/.env.hotband
+ExecStart=/sep/bin/manifold_generator --config /sep/config/echo_strategy.yaml
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

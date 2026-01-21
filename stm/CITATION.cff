@@ -1,0 +1,12 @@
+cff-version: 1.2.0
+title: "Discrete Shear Geometry for Time-Ordering in Binary Lattices"
+message: "If you use this work, please cite the whitepaper."
+authors:
+  - family-names: "SEP Dynamics Research"
+    name: "SEP Dynamics Research"
+year: 2025
+url: "https://github.com/sep/field-cts"
+abstract: |
+  Operational dichotomy for contractive vs expansive lattice dynamics built on
+  small-damage gain, correlation lengths, parity diagnostics, operator-order
+  curvature, and damage-ray refraction. See docs/whitepaper/field_cts_whitepaper.pdf.

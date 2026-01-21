@@ -1,0 +1,41 @@
+FROM python:3.12-slim
+
+WORKDIR /app
+
+# Install system dependencies (HTTPS certs for OANDA, curl for diagnostics)
+RUN set -eux; \
+  apt-get update; \
+  # Core runtime deps
+  apt-get install -y --no-install-recommends \
+  ca-certificates \
+  curl \
+  libyaml-cpp-dev \
+  libtbb12 \
+  libbenchmark-dev \
+  libhiredis-dev \
+  && update-ca-certificates \
+  && rm -rf /var/lib/apt/lists/* \
+  && ln -sf /usr/lib/x86_64-linux-gnu/libbenchmark.so.1.9.1 /usr/lib/x86_64-linux-gnu/libbenchmark.so.1 \
+  && ln -sf /usr/lib/x86_64-linux-gnu/libyaml-cpp.so.0.8 /usr/lib/x86_64-linux-gnu/libyaml-cpp.so
+
+
+# Copy requirements first to leverage Docker cache
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt && pip install scikit-learn
+
+# Copy application code
+COPY scripts/ ./scripts/
+COPY config/ ./config/
+COPY research/ ./research/
+COPY src/ ./src/
+
+
+# Create necessary directories
+RUN mkdir -p logs data output
+
+# Set Python to run in unbuffered mode
+ENV PYTHONUNBUFFERED=1
+ENV PYTHONPATH="/app:/app/src:${PYTHONPATH}"
+
+# Default command (can be overridden in docker-compose)
+CMD ["python3", "scripts/trading_service.py"]

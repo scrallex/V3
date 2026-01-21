@@ -1,0 +1,29 @@
+{
+  "profile": "config/echo_strategy.yaml",
+  "redis_url": "redis://localhost:6379/0",
+  "window": {
+    "start": "2025-04-02T00:00:00Z",
+    "end": "2025-10-01T23:59:00Z"
+  },
+  "nav": 100000.0,
+  "nav_risk_pct": 0.01,
+  "cost_bps": 1.5,
+  "hold_minutes": 45,
+  "exposure": 0.025,
+  "instruments": [
+    "EUR_USD",
+    "USD_JPY",
+    "GBP_USD"
+  ],
+  "semantic_filters": {
+    "EUR_USD": ["highly_stable", "low_hazard_environment"],
+    "USD_JPY": ["highly_stable", "low_hazard_environment"],
+    "GBP_USD": ["highly_stable", "low_hazard_environment"]
+  },
+  "semantic_thresholds": {
+    "high_coherence": 0.72,
+    "high_stability": 0.72,
+    "high_entropy": 0.88,
+    "low_hazard": 0.12
+  }
+}

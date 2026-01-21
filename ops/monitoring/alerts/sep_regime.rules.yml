@@ -1,0 +1,13 @@
+groups:
+  - name: sep_regime_alerts
+    rules:
+      - alert: RegimeHazardFallback
+        expr: increase(regime_payloads_total{admit="False",reason="hazard_fallback_requested"}[5m]) > 0
+        for: 1m
+        labels:
+          severity: critical
+        annotations:
+          summary: "SEP regime hazard fallback triggered"
+          description: |
+            sep-regime emitted hazard_fallback_requested for {{ $labels.instrument }}.
+            Engage the trading kill switch until the fallback clears or optical verification succeeds.

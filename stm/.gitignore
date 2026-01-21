@@ -1,0 +1,12 @@
+__pycache__/
+*.pyc
+build/
+*.so
+.env
+.venv/
+data/benchmark_corpus/
+output/raw/
+report.log
+report.aux
+output/
+manim/

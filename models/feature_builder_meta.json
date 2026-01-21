@@ -1,0 +1,163 @@
+{
+  "input_path": "/sep/output/ml_regime_2025/gates.parquet",
+  "target_col": "roc_fwd_60",
+  "numeric_features": [
+    "price_close",
+    "structure_coherence",
+    "structure_stability",
+    "structure_entropy",
+    "structure_hazard",
+    "structure_rupture",
+    "structure_coherence_tau_1",
+    "structure_coherence_tau_4",
+    "structure_coherence_tau_slope",
+    "structure_domain_wall_ratio",
+    "structure_domain_wall_slope",
+    "structure_spectral_lowf_share",
+    "structure_reynolds_ratio",
+    "structure_temporal_half_life",
+    "structure_spatial_corr_length",
+    "structure_pinned_alignment",
+    "coherence_delta_10m",
+    "stability_vs_30m_avg",
+    "hazard_zscore_60m",
+    "coherence_minus_regime_mean",
+    "stability_minus_regime_mean",
+    "hazard_minus_regime_mean",
+    "interaction_high_rupture_pos_domain",
+    "interaction_low_hazard_neg_reynolds",
+    "semantic_tag_count"
+  ],
+  "categorical_features": [
+    "instrument",
+    "regime"
+  ],
+  "category_mappings": {
+    "instrument": {
+      "UNKNOWN": 0
+    },
+    "regime": {
+      "unknown": 0
+    }
+  },
+  "normalization_stats": {
+    "price_close": {
+      "mean": 1.1118286538311857,
+      "std": 0.057275810277468926
+    },
+    "structure_coherence": {
+      "mean": 0.4351438727613028,
+      "std": 0.10221143612512604
+    },
+    "structure_stability": {
+      "mean": 0.8793726211312044,
+      "std": 0.03708771173033055
+    },
+    "structure_entropy": {
+      "mean": 0.8737501059168961,
+      "std": 0.04157248890817567
+    },
+    "structure_hazard": {
+      "mean": 0.12062737886879561,
+      "std": 0.03708771173033055
+    },
+    "structure_rupture": {
+      "mean": 0.12062737886879561,
+      "std": 0.03708771173033055
+    },
+    "structure_coherence_tau_1": {
+      "mean": 0.5148158005560055,
+      "std": 0.04879124715068205
+    },
+    "structure_coherence_tau_4": {
+      "mean": 0.538415028941595,
+      "std": 0.04844145747008595
+    },
+    "structure_coherence_tau_slope": {
+      "mean": 0.007866409461863145,
+      "std": 0.01932235933200484
+    },
+    "structure_domain_wall_ratio": {
+      "mean": 0.4851841994439945,
+      "std": 0.048791247150682046
+    },
+    "structure_domain_wall_slope": {
+      "mean": 7.398460298526103e-07,
+      "std": 0.09465148258258858
+    },
+    "structure_spectral_lowf_share": {
+      "mean": 0.22604542631596594,
+      "std": 0.05021510542641512
+    },
+    "structure_reynolds_ratio": {
+      "mean": 2.4813842348394672,
+      "std": 2.507726031755599
+    },
+    "structure_temporal_half_life": {
+      "mean": 116.37625912169756,
+      "std": 251.33755102492773
+    },
+    "structure_spatial_corr_length": {
+      "mean": 20.42866416254603,
+      "std": 18.695532523302454
+    },
+    "structure_pinned_alignment": {
+      "mean": 1.0,
+      "std": 1.0
+    },
+    "coherence_delta_10m": {
+      "mean": 1.0868540179714413e-07,
+      "std": 0.13633048565026865
+    },
+    "stability_vs_30m_avg": {
+      "mean": -9.910092106704687e-08,
+      "std": 0.013262739061004999
+    },
+    "hazard_zscore_60m": {
+      "mean": -0.0015278324341324084,
+      "std": 1.3982811075543662
+    },
+    "coherence_minus_regime_mean": {
+      "mean": -1.852069840320433e-17,
+      "std": 0.10221143612512604
+    },
+    "stability_minus_regime_mean": {
+      "mean": -1.810912732757757e-17,
+      "std": 0.03708771173033055
+    },
+    "hazard_minus_regime_mean": {
+      "mean": 7.408279361281732e-18,
+      "std": 0.03708771173033055
+    },
+    "interaction_high_rupture_pos_domain": {
+      "mean": 0.0,
+      "std": 1.0
+    },
+    "interaction_low_hazard_neg_reynolds": {
+      "mean": 0.0,
+      "std": 1.0
+    },
+    "semantic_tag_count": {
+      "mean": 0.0,
+      "std": 1.0
+    }
+  },
+  "window": 64,
+  "stride": 16,
+  "train_end": "2024-06-30",
+  "val_end": "2025-03-31",
+  "splits": {
+    "train": {
+      "rows": 1647335,
+      "seq_examples": 1647272
+    },
+    "val": {
+      "rows": 276011,
+      "seq_examples": 275948
+    },
+    "test": {
+      "rows": 286466,
+      "seq_examples": 286403
+    }
+  }
+}

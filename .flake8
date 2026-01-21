@@ -1,0 +1,63 @@
+[flake8]
+# Suppress style warnings that interfere with code analysis
+ignore =
+    E501,
+    E203,
+    E231,
+    W503,
+    W504,
+    E722,
+    E999
+
+# Focus on real issues - keep these enabled:
+# F401 - unused imports
+# F841 - unused variables
+# F821 - undefined names
+# F822 - undefined names in __all__
+# F823 - undefined names in __all__
+# F831 - duplicate argument in function definition
+# F841 - unused variables (local)
+# F842 - unused variables (local, but passed as argument)
+
+# Set reasonable line length for modern development
+max-line-length = 120
+
+# Exclude common directories that shouldn't be linted
+exclude =
+    .git,
+    __pycache__,
+    .venv,
+    .venv-*,
+    .venv-gpu-worker,
+    venv,
+    env,
+    external,
+    build,
+    dist,
+    node_modules,
+    .pytest_cache,
+    .mypy_cache,
+    .tox,
+    *.egg-info
+
+# File patterns to include
+filename = *.py
+
+# Show source of errors
+show-source = True
+show-pep8 = False
+
+# Count errors and warnings
+count = True
+statistics = True
+
+# Enable additional checks for unused variables and imports
+select = F401,F841,F821,F822,F823,F831,F842
+
+# Per-file ignores for specific patterns
+per-file-ignores =
+    __init__.py:F401
+    scripts/*:T201,T203
+    scripts/alpha_correlation_study.py:F401
+    scripts/test_margin_aware_strategy.py:F401
+    test_*.py:S101

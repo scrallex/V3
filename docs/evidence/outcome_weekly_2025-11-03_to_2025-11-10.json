@@ -1,0 +1,2373 @@
+{
+  "generated_at": "2025-11-11T00:25:03.559444+00:00",
+  "lookback_minutes": 240,
+  "horizons": [
+    5,
+    15,
+    30,
+    60,
+    240
+  ],
+  "granularity": "M1",
+  "instruments": {
+    "AUD_USD": {
+      "5": {
+        "count": 443,
+        "avg_return_pct": 0.00040549545095409695,
+        "median_return_pct": 0.0,
+        "positive_pct": 0.4785553047404063,
+        "avg_positive_return_pct": 0.023133063990070608,
+        "avg_negative_return_pct": -0.020452705978884433,
+        "avg_hazard": 0.5000375575620768,
+        "hazard_buckets": {
+          "< 0.60": {
+            "count": 443,
+            "avg_return_pct": 0.00040549545095409695
+          }
+        },
+        "samples": [
+          {
+            "ts": "2025-11-04T03:26:00+00:00",
+            "return_pct": -0.163841548379196,
+            "hazard": 0.489237,
+            "coherence": 0.003569,
+            "admit": true,
+            "reasons": [],
+            "price_start": 0.65307,
+            "price_end": 0.652
+          },
+          {
+            "ts": "2025-11-06T15:15:00+00:00",
+            "return_pct": 0.16071207813078406,
+            "hazard": 0.41683,
+            "coherence": 0.004407,
+            "admit": true,
+            "reasons": [],
+            "price_start": 0.64712,
+            "price_end": 0.64816
+          },
+          {
+            "ts": "2025-11-06T14:59:00+00:00",
+            "return_pct": -0.1589211874344219,
+            "hazard": 0.422701,
+            "coherence": 0.00282,
+            "admit": true,
+            "reasons": [],
+            "price_start": 0.64812,
+            "price_end": 0.64709
+          },
+          {
+            "ts": "2025-11-06T15:31:00+00:00",
+            "return_pct": -0.12348346865063793,
+            "hazard": 0.426614,
+            "coherence": 0.000705,
+            "admit": true,
+            "reasons": [],
+            "price_start": 0.64786,
+            "price_end": 0.64706
+          },
+          {
+            "ts": "2025-11-05T01:14:00+00:00",
+            "return_pct": -0.11897220376692842,
+            "hazard": 0.452055,
+            "coherence": 0.001586,
+            "admit": true,
+            "reasons": [],
+            "price_start": 0.64721,
+            "price_end": 0.64644
+          }
+        ]
+      },
+      "15": {
+        "count": 443,
+        "avg_return_pct": -0.00036811276655714266,
+        "median_return_pct": 0.0,
+        "positive_pct": 0.4898419864559819,
+        "avg_positive_return_pct": 0.03761268168336144,
+        "avg_negative_return_pct": -0.036836397702983394,
+        "avg_hazard": 0.5000375575620768,
+        "hazard_buckets": {
+          "< 0.60": {
+            "count": 443,
+            "avg_return_pct": -0.00036811276655714266
+          }
+        },
+        "samples": [
+          {
+            "ts": "2025-11-06T13:55:00+00:00",
+            "return_pct": -0.25785854616896103,
+            "hazard": 0.477495,
+            "coherence": 0.001101,
+            "admit": true,
+            "reasons": [],
+            "price_start": 0.65152,
+            "price_end": 0.64984
+          },
+          {
+            "ts": "2025-11-05T01:14:00+00:00",
+            "return_pct": -0.16223482331855124,
+            "hazard": 0.452055,
+            "coherence": 0.001586,
+            "admit": true,
+            "reasons": [],
+            "price_start": 0.64721,
+            "price_end": 0.64616
+          },
+          {
+            "ts": "2025-11-05T00:26:00+00:00",
+            "return_pct": -0.1588917684808229,
+            "hazard": 0.491194,
+            "coherence": 0.009929,
+            "admit": true,
+            "reasons": [],
+            "price_start": 0.64824,
+            "price_end": 0.64721
+          },
+          {
+            "ts": "2025-11-03T15:12:00+00:00",
+            "return_pct": -0.14700477765526782,
+            "hazard": 0.477495,
+            "coherence": 0.001101,
+            "admit": true,
+            "reasons": [],
+            "price_start": 0.65304,
+            "price_end": 0.65208
+          },
+          {
+            "ts": "2025-11-06T17:39:00+00:00",
+            "return_pct": 0.1452814441593677,
+            "hazard": 0.459883,
+            "coherence": 0.000705,
+            "admit": true,
+            "reasons": [],
+            "price_start": 0.64702,
+            "price_end": 0.64796
+          }
+        ]
+      },
+      "30": {
+        "count": 443,
+        "avg_return_pct": -0.001594561000058605,
+        "median_return_pct": 0.0030581039755382265,
+        "positive_pct": 0.510158013544018,
+        "avg_positive_return_pct": 0.046701340757341746,
+        "avg_negative_return_pct": -0.05189351859071519,
+        "avg_hazard": 0.5000375575620768,
+        "hazard_buckets": {
+          "< 0.60": {
+            "count": 443,
+            "avg_return_pct": -0.001594561000058605
+          }
+        },
+        "samples": [
+          {
+            "ts": "2025-11-06T13:55:00+00:00",
+            "return_pct": -0.2701375245579543,
+            "hazard": 0.477495,
+            "coherence": 0.001101,
+            "admit": true,
+            "reasons": [],
+            "price_start": 0.65152,
+            "price_end": 0.64976
+          },
+          {
+            "ts": "2025-11-06T14:43:00+00:00",
+            "return_pct": -0.25576235671145,
+            "hazard": 0.44227,
+            "coherence": 0.000396,
+            "admit": true,
+            "reasons": [],
+            "price_start": 0.64904,
+            "price_end": 0.64738
+          },
+          {
+            "ts": "2025-11-05T02:34:00+00:00",
+            "return_pct": 0.2333415749783674,
+            "hazard": 0.465753,
+            "coherence": 0.004859,
+            "admit": true,
+            "reasons": [],
+            "price_start": 0.64712,
+            "price_end": 0.64863
+          },
+          {
+            "ts": "2025-11-06T14:27:00+00:00",
+            "return_pct": -0.2308402585410983,
+            "hazard": 0.44227,
+            "coherence": 0.0,
+            "admit": true,
+            "reasons": [],
+            "price_start": 0.6498,
+            "price_end": 0.6483
+          },
+          {
+            "ts": "2025-11-06T13:39:00+00:00",
+            "return_pct": -0.22714715452146184,
+            "hazard": 0.495108,
+            "coherence": 0.002158,
+            "admit": true,
+            "reasons": [],
+            "price_start": 0.65156,
+            "price_end": 0.65008
+          }
+        ]
+      },
+      "60": {
+        "count": 443,
+        "avg_return_pct": -0.004901914077950025,
+        "median_return_pct": -0.0015448548608959403,
+        "positive_pct": 0.4785553047404063,
+        "avg_positive_return_pct": 0.06883817057391582,
+        "avg_negative_return_pct": -0.07257679696191349,
+        "avg_hazard": 0.5000375575620768,
+        "hazard_buckets": {
+          "< 0.60": {
+            "count": 443,
+            "avg_return_pct": -0.004901914077950025
+          }
+        },
+        "samples": [
+          {
+            "ts": "2025-11-06T13:55:00+00:00",
+            "return_pct": -0.45892681728879187,
+            "hazard": 0.477495,
+            "coherence": 0.001101,
+            "admit": true,
+            "reasons": [],
+            "price_start": 0.65152,
+            "price_end": 0.64853
+          },
+          {
+            "ts": "2025-11-06T14:11:00+00:00",
+            "return_pct": -0.34770300624635214,
+            "hazard": 0.457926,
+            "coherence": 0.001586,
+            "admit": true,
+            "reasons": [],
+            "price_start": 0.64998,
+            "price_end": 0.64772
+          },
+          {
+            "ts": "2025-11-05T00:26:00+00:00",
+            "return_pct": -0.3455510304825403,
+            "hazard": 0.491194,
+            "coherence": 0.009929,
+            "admit": true,
+            "reasons": [],
+            "price_start": 0.64824,
+            "price_end": 0.646
+          },
+          {
+            "ts": "2025-11-06T14:43:00+00:00",
+            "return_pct": -0.3358806853198509,
+            "hazard": 0.44227,
+            "coherence": 0.000396,
+            "admit": true,
+            "reasons": [],
+            "price_start": 0.64904,
+            "price_end": 0.64686
+          },
+          {
+            "ts": "2025-11-06T13:39:00+00:00",
+            "return_pct": -0.30695561421818435,
+            "hazard": 0.495108,
+            "coherence": 0.002158,
+            "admit": true,
+            "reasons": [],
+            "price_start": 0.65156,
+            "price_end": 0.64956
+          }
+        ]
+      },
+      "240": {
+        "count": 443,
+        "avg_return_pct": -0.02267356587043184,
+        "median_return_pct": -0.0200172456269961,
+        "positive_pct": 0.435665914221219,
+        "avg_positive_return_pct": 0.14059716630694571,
+        "avg_negative_return_pct": -0.14871857111136733,
+        "avg_hazard": 0.5000375575620768,
+        "hazard_buckets": {
+          "< 0.60": {
+            "count": 443,
+            "avg_return_pct": -0.02267356587043184
+          }
+        },
+        "samples": [
+          {
+            "ts": "2025-11-06T12:19:00+00:00",
+            "return_pct": -0.7369196757553467,
+            "hazard": 0.504892,
+            "coherence": 0.005334,
+            "admit": true,
+            "reasons": [],
+            "price_start": 0.65136,
+            "price_end": 0.64656
+          },
+          {
+            "ts": "2025-11-06T13:07:00+00:00",
+            "return_pct": -0.7273843320800993,
+            "hazard": 0.499022,
+            "coherence": 0.002478,
+            "admit": true,
+            "reasons": [],
+            "price_start": 0.65165,
+            "price_end": 0.64691
+          },
+          {
+            "ts": "2025-11-06T12:35:00+00:00",
+            "return_pct": -0.7095466273498078,
+            "hazard": 0.493151,
+            "coherence": 0.004859,
+            "admit": true,
+            "reasons": [],
+            "price_start": 0.65112,
+            "price_end": 0.6465
+          },
+          {
+            "ts": "2025-11-06T12:51:00+00:00",
+            "return_pct": -0.7030146742800881,
+            "hazard": 0.502935,
+            "coherence": 0.003183,
+            "admit": true,
+            "reasons": [],
+            "price_start": 0.65148,
+            "price_end": 0.6469
+          },
+          {
+            "ts": "2025-11-06T13:23:00+00:00",
+            "return_pct": -0.701619712903963,
+            "hazard": 0.508806,
+            "coherence": 0.000892,
+            "admit": true,
+            "reasons": [],
+            "price_start": 0.65135,
+            "price_end": 0.64678
+          }
+        ]
+      }
+    },
+    "EUR_USD": {
+      "5": {
+        "count": 444,
+        "avg_return_pct": 0.0006218875997558596,
+        "median_return_pct": 0.0,
+        "positive_pct": 0.48873873873873874,
+        "avg_positive_return_pct": 0.01335773117736524,
+        "avg_negative_return_pct": -0.011552905599985267,
+        "avg_hazard": 0.5120237657657658,
+        "hazard_buckets": {
+          "< 0.60": {
+            "count": 444,
+            "avg_return_pct": 0.0006218875997558596
+          }
+        },
+        "samples": [
+          {
+            "ts": "2025-11-05T14:56:00+00:00",
+            "return_pct": -0.13839926883404974,
+            "hazard": 0.46771,
+            "coherence": 0.000705,
+            "admit": true,
+            "reasons": [],
+            "price_start": 1.14885,
+            "price_end": 1.14726
+          },
+          {
+            "ts": "2025-11-04T10:00:00+00:00",
+            "return_pct": 0.05912323717112821,
+            "hazard": 0.495108,
+            "coherence": 0.000705,
+            "admit": true,
+            "reasons": [],
+            "price_start": 1.15014,
+            "price_end": 1.15082
+          },
+          {
+            "ts": "2025-11-06T17:28:00+00:00",
+            "return_pct": 0.058970445400306465,
+            "hazard": 0.510763,
+            "coherence": 0.000176,
+            "admit": true,
+            "reasons": [],
+            "price_start": 1.15312,
+            "price_end": 1.1538
+          },
+          {
+            "ts": "2025-11-05T16:00:00+00:00",
+            "return_pct": -0.05837253876981604,
+            "hazard": 0.426614,
+            "coherence": 0.011301,
+            "admit": true,
+            "reasons": [],
+            "price_start": 1.1478,
+            "price_end": 1.14713
+          },
+          {
+            "ts": "2025-11-06T15:52:00+00:00",
+            "return_pct": 0.05723204994797996,
+            "hazard": 0.448141,
+            "coherence": 0.002478,
+            "admit": true,
+            "reasons": [],
+            "price_start": 1.1532,
+            "price_end": 1.15386
+          }
+        ]
+      },
+      "15": {
+        "count": 444,
+        "avg_return_pct": 0.0015896837710365696,
+        "median_return_pct": 0.0017325196854584915,
+        "positive_pct": 0.5112612612612613,
+        "avg_positive_return_pct": 0.0224902791371891,
+        "avg_negative_return_pct": -0.020274072671897177,
+        "avg_hazard": 0.5120237657657658,
+        "hazard_buckets": {
+          "< 0.60": {
+            "count": 444,
+            "avg_return_pct": 0.0015896837710365696
+          }
+        },
+        "samples": [
+          {
+            "ts": "2025-11-03T08:31:00+00:00",
+            "return_pct": -0.10845516463493761,
+            "hazard": 0.504892,
+            "coherence": 0.000892,
+            "admit": true,
+            "reasons": [],
+            "price_start": 1.15255,
+            "price_end": 1.1513
+          },
+          {
+            "ts": "2025-11-05T14:56:00+00:00",
+            "return_pct": -0.1053227140183604,
+            "hazard": 0.46771,
+            "coherence": 0.000705,
+            "admit": true,
+            "reasons": [],
+            "price_start": 1.14885,
+            "price_end": 1.14764
+          },
+          {
+            "ts": "2025-11-07T14:53:00+00:00",
+            "return_pct": 0.09934518564591513,
+            "hazard": 0.46771,
+            "coherence": 0.001332,
+            "admit": true,
+            "reasons": [],
+            "price_start": 1.15758,
+            "price_end": 1.15873
+          },
+          {
+            "ts": "2025-11-03T23:52:00+00:00",
+            "return_pct": -0.09896692421216416,
+            "hazard": 0.506849,
+            "coherence": 0.025511,
+            "admit": true,
+            "reasons": [],
+            "price_start": 1.1519,
+            "price_end": 1.15076
+          },
+          {
+            "ts": "2025-11-06T17:28:00+00:00",
+            "return_pct": 0.09712779242403305,
+            "hazard": 0.510763,
+            "coherence": 0.000176,
+            "admit": true,
+            "reasons": [],
+            "price_start": 1.15312,
+            "price_end": 1.15424
+          }
+        ]
+      },
+      "30": {
+        "count": 444,
+        "avg_return_pct": 0.002412223409983164,
+        "median_return_pct": 0.0039037895599893235,
+        "positive_pct": 0.5563063063063063,
+        "avg_positive_return_pct": 0.029926785330317646,
+        "avg_negative_return_pct": -0.03208572986069001,
+        "avg_hazard": 0.5120237657657658,
+        "hazard_buckets": {
+          "< 0.60": {
+            "count": 444,
+            "avg_return_pct": 0.002412223409983164
+          }
+        },
+        "samples": [
+          {
+            "ts": "2025-11-07T14:37:00+00:00",
+            "return_pct": 0.1503707416561395,
+            "hazard": 0.459883,
+            "coherence": 0.002158,
+            "admit": true,
+            "reasons": [],
+            "price_start": 1.15714,
+            "price_end": 1.15888
+          },
+          {
+            "ts": "2025-11-03T08:15:00+00:00",
+            "return_pct": -0.12490675363876672,
+            "hazard": 0.51272,
+            "coherence": 4.4e-05,
+            "admit": true,
+            "reasons": [],
+            "price_start": 1.15286,
+            "price_end": 1.15142
+          },
+          {
+            "ts": "2025-11-03T07:59:00+00:00",
+            "return_pct": -0.12478552487912337,
+            "hazard": 0.510763,
+            "coherence": 0.002158,
+            "admit": true,
+            "reasons": [],
+            "price_start": 1.15398,
+            "price_end": 1.15254
+          },
+          {
+            "ts": "2025-11-04T14:00:00+00:00",
+            "return_pct": -0.12181751735898282,
+            "hazard": 0.530333,
+            "coherence": 0.000892,
+            "admit": true,
+            "reasons": [],
+            "price_start": 1.14926,
+            "price_end": 1.14786
+          },
+          {
+            "ts": "2025-11-04T11:36:00+00:00",
+            "return_pct": -0.1182403060337164,
+            "hazard": 0.524462,
+            "coherence": 0.001586,
+            "admit": true,
+            "reasons": [],
+            "price_start": 1.1502,
+            "price_end": 1.14884
+          }
+        ]
+      },
+      "60": {
+        "count": 444,
+        "avg_return_pct": 0.0034602352938636147,
+        "median_return_pct": 0.007394898647143146,
+        "positive_pct": 0.5765765765765766,
+        "avg_positive_return_pct": 0.04025071588565064,
+        "avg_negative_return_pct": -0.04663744040559106,
+        "avg_hazard": 0.5120237657657658,
+        "hazard_buckets": {
+          "< 0.60": {
+            "count": 444,
+            "avg_return_pct": 0.0034602352938636147
+          }
+        },
+        "samples": [
+          {
+            "ts": "2025-11-03T07:59:00+00:00",
+            "return_pct": -0.2287734622783736,
+            "hazard": 0.510763,
+            "coherence": 0.002158,
+            "admit": true,
+            "reasons": [],
+            "price_start": 1.15398,
+            "price_end": 1.15134
+          },
+          {
+            "ts": "2025-11-03T07:43:00+00:00",
+            "return_pct": -0.1958405545927148,
+            "hazard": 0.528376,
+            "coherence": 0.001586,
+            "admit": true,
+            "reasons": [],
+            "price_start": 1.154,
+            "price_end": 1.15174
+          },
+          {
+            "ts": "2025-11-05T13:04:00+00:00",
+            "return_pct": -0.1775147928994119,
+            "hazard": 0.524462,
+            "coherence": 0.006349,
+            "admit": true,
+            "reasons": [],
+            "price_start": 1.1492,
+            "price_end": 1.14716
+          },
+          {
+            "ts": "2025-11-04T11:36:00+00:00",
+            "return_pct": -0.17649104503564395,
+            "hazard": 0.524462,
+            "coherence": 0.001586,
+            "admit": true,
+            "reasons": [],
+            "price_start": 1.1502,
+            "price_end": 1.14817
+          },
+          {
+            "ts": "2025-11-04T08:24:00+00:00",
+            "return_pct": -0.15442005725688512,
+            "hazard": 0.483366,
+            "coherence": 9.9e-05,
+            "admit": true,
+            "reasons": [],
+            "price_start": 1.1527,
+            "price_end": 1.15092
+          }
+        ]
+      },
+      "240": {
+        "count": 444,
+        "avg_return_pct": 0.01111552393765007,
+        "median_return_pct": 0.017828426560821967,
+        "positive_pct": 0.5608108108108109,
+        "avg_positive_return_pct": 0.08373496440463093,
+        "avg_negative_return_pct": -0.08161391542787934,
+        "avg_hazard": 0.5120237657657658,
+        "hazard_buckets": {
+          "< 0.60": {
+            "count": 444,
+            "avg_return_pct": 0.01111552393765007
+          }
+        },
+        "samples": [
+          {
+            "ts": "2025-11-04T08:24:00+00:00",
+            "return_pct": -0.38518261473063237,
+            "hazard": 0.483366,
+            "coherence": 9.9e-05,
+            "admit": true,
+            "reasons": [],
+            "price_start": 1.1527,
+            "price_end": 1.14826
+          },
+          {
+            "ts": "2025-11-04T08:40:00+00:00",
+            "return_pct": -0.3497353119847435,
+            "hazard": 0.469667,
+            "coherence": 0.000176,
+            "admit": true,
+            "reasons": [],
+            "price_start": 1.1523,
+            "price_end": 1.14827
+          },
+          {
+            "ts": "2025-11-04T07:52:00+00:00",
+            "return_pct": -0.3035691053384654,
+            "hazard": 0.518591,
+            "coherence": 0.000176,
+            "admit": true,
+            "reasons": [],
+            "price_start": 1.15295,
+            "price_end": 1.14945
+          },
+          {
+            "ts": "2025-11-04T08:08:00+00:00",
+            "return_pct": -0.3019522776572798,
+            "hazard": 0.495108,
+            "coherence": 0.0,
+            "admit": true,
+            "reasons": [],
+            "price_start": 1.1525,
+            "price_end": 1.14902
+          },
+          {
+            "ts": "2025-11-07T11:09:00+00:00",
+            "return_pct": 0.2960526315789455,
+            "hazard": 0.536204,
+            "coherence": 0.00689,
+            "admit": true,
+            "reasons": [],
+            "price_start": 1.1552,
+            "price_end": 1.15862
+          }
+        ]
+      }
+    },
+    "GBP_USD": {
+      "5": {
+        "count": 445,
+        "avg_return_pct": -0.00012707923811356114,
+        "median_return_pct": 0.0,
+        "positive_pct": 0.48089887640449436,
+        "avg_positive_return_pct": 0.01547670857270578,
+        "avg_negative_return_pct": -0.01458253634424057,
+        "avg_hazard": 0.49632576853932586,
+        "hazard_buckets": {
+          "< 0.60": {
+            "count": 445,
+            "avg_return_pct": -0.00012707923811356114
+          }
+        },
+        "samples": [
+          {
+            "ts": "2025-11-06T11:57:00+00:00",
+            "return_pct": -0.11457728619878829,
+            "hazard": 0.514677,
+            "coherence": 0.002478,
+            "admit": true,
+            "reasons": [],
+            "price_start": 1.30916,
+            "price_end": 1.30766
+          },
+          {
+            "ts": "2025-11-06T13:33:00+00:00",
+            "return_pct": 0.11298227399727664,
+            "hazard": 0.430528,
+            "coherence": 0.005831,
+            "admit": true,
+            "reasons": [],
+            "price_start": 1.30994,
+            "price_end": 1.31142
+          },
+          {
+            "ts": "2025-11-04T08:51:00+00:00",
+            "return_pct": -0.08626678576064215,
+            "hazard": 0.434442,
+            "coherence": 0.002158,
+            "admit": true,
+            "reasons": [],
+            "price_start": 1.30989,
+            "price_end": 1.30876
+          },
+          {
+            "ts": "2025-11-07T14:57:00+00:00",
+            "return_pct": 0.07604678398149704,
+            "hazard": 0.481409,
+            "coherence": 0.00282,
+            "admit": true,
+            "reasons": [],
+            "price_start": 1.31498,
+            "price_end": 1.31598
+          },
+          {
+            "ts": "2025-11-06T18:05:00+00:00",
+            "return_pct": 0.07544294151267263,
+            "hazard": 0.471624,
+            "coherence": 0.000396,
+            "admit": true,
+            "reasons": [],
+            "price_start": 1.31225,
+            "price_end": 1.31324
+          }
+        ]
+      },
+      "15": {
+        "count": 445,
+        "avg_return_pct": -0.0005886255565040189,
+        "median_return_pct": -0.000766447973516579,
+        "positive_pct": 0.4853932584269663,
+        "avg_positive_return_pct": 0.02753899877738035,
+        "avg_negative_return_pct": -0.027119485190211547,
+        "avg_hazard": 0.49632576853932586,
+        "hazard_buckets": {
+          "< 0.60": {
+            "count": 445,
+            "avg_return_pct": -0.0005886255565040189
+          }
+        },
+        "samples": [
+          {
+            "ts": "2025-11-06T11:57:00+00:00",
+            "return_pct": -0.18637905221668838,
+            "hazard": 0.514677,
+            "coherence": 0.002478,
+            "admit": true,
+            "reasons": [],
+            "price_start": 1.30916,
+            "price_end": 1.30672
+          },
+          {
+            "ts": "2025-11-06T13:33:00+00:00",
+            "return_pct": 0.17405377345526035,
+            "hazard": 0.430528,
+            "coherence": 0.005831,
+            "admit": true,
+            "reasons": [],
+            "price_start": 1.30994,
+            "price_end": 1.31222
+          },
+          {
+            "ts": "2025-11-06T13:49:00+00:00",
+            "return_pct": -0.16762926502186648,
+            "hazard": 0.418787,
+            "coherence": 0.000892,
+            "admit": true,
+            "reasons": [],
+            "price_start": 1.31242,
+            "price_end": 1.31022
+          },
+          {
+            "ts": "2025-11-04T09:07:00+00:00",
+            "return_pct": -0.16421490001986588,
+            "hazard": 0.438356,
+            "coherence": 0.002478,
+            "admit": true,
+            "reasons": [],
+            "price_start": 1.30926,
+            "price_end": 1.30711
+          },
+          {
+            "ts": "2025-11-06T08:45:00+00:00",
+            "return_pct": 0.14620890266774436,
+            "hazard": 0.491194,
+            "coherence": 0.000176,
+            "admit": true,
+            "reasons": [],
+            "price_start": 1.30635,
+            "price_end": 1.30826
+          }
+        ]
+      },
+      "30": {
+        "count": 445,
+        "avg_return_pct": 0.00012379178702962273,
+        "median_return_pct": 0.002283348301948038,
+        "positive_pct": 0.5168539325842697,
+        "avg_positive_return_pct": 0.03790879433968706,
+        "avg_negative_return_pct": -0.040297373734417864,
+        "avg_hazard": 0.49632576853932586,
+        "hazard_buckets": {
+          "< 0.60": {
+            "count": 445,
+            "avg_return_pct": 0.00012379178702962273
+          }
+        },
+        "samples": [
+          {
+            "ts": "2025-11-06T13:49:00+00:00",
+            "return_pct": -0.22858536139344815,
+            "hazard": 0.418787,
+            "coherence": 0.000892,
+            "admit": true,
+            "reasons": [],
+            "price_start": 1.31242,
+            "price_end": 1.30942
+          },
+          {
+            "ts": "2025-11-07T14:41:00+00:00",
+            "return_pct": 0.20853311414523987,
+            "hazard": 0.455969,
+            "coherence": 0.001861,
+            "admit": true,
+            "reasons": [],
+            "price_start": 1.31394,
+            "price_end": 1.31668
+          },
+          {
+            "ts": "2025-11-06T12:29:00+00:00",
+            "return_pct": 0.20039773596451485,
+            "hazard": 0.455969,
+            "coherence": 0.001332,
+            "admit": true,
+            "reasons": [],
+            "price_start": 1.3074,
+            "price_end": 1.31002
+          },
+          {
+            "ts": "2025-11-04T08:51:00+00:00",
+            "return_pct": -0.1839849147638369,
+            "hazard": 0.434442,
+            "coherence": 0.002158,
+            "admit": true,
+            "reasons": [],
+            "price_start": 1.30989,
+            "price_end": 1.30748
+          },
+          {
+            "ts": "2025-11-03T15:27:00+00:00",
+            "return_pct": 0.17983966836346968,
+            "hazard": 0.432485,
+            "coherence": 0.007454,
+            "admit": true,
+            "reasons": [],
+            "price_start": 1.31228,
+            "price_end": 1.31464
+          }
+        ]
+      },
+      "60": {
+        "count": 445,
+        "avg_return_pct": 0.00025436101667671116,
+        "median_return_pct": 0.0030579169469787783,
+        "positive_pct": 0.5191011235955056,
+        "avg_positive_return_pct": 0.05133844484152263,
+        "avg_negative_return_pct": -0.054887804233507434,
+        "avg_hazard": 0.49632576853932586,
+        "hazard_buckets": {
+          "< 0.60": {
+            "count": 445,
+            "avg_return_pct": 0.00025436101667671116
+          }
+        },
+        "samples": [
+          {
+            "ts": "2025-11-06T13:49:00+00:00",
+            "return_pct": -0.2803980433092993,
+            "hazard": 0.418787,
+            "coherence": 0.000892,
+            "admit": true,
+            "reasons": [],
+            "price_start": 1.31242,
+            "price_end": 1.30874
+          },
+          {
+            "ts": "2025-11-07T14:09:00+00:00",
+            "return_pct": 0.27708000304482494,
+            "hazard": 0.450098,
+            "coherence": 0.000275,
+            "admit": true,
+            "reasons": [],
+            "price_start": 1.3137,
+            "price_end": 1.31734
+          },
+          {
+            "ts": "2025-11-04T07:31:00+00:00",
+            "return_pct": -0.2679862961553078,
+            "hazard": 0.483366,
+            "coherence": 0.000176,
+            "admit": true,
+            "reasons": [],
+            "price_start": 1.3135,
+            "price_end": 1.30998
+          },
+          {
+            "ts": "2025-11-04T08:35:00+00:00",
+            "return_pct": -0.2670532580497527,
+            "hazard": 0.434442,
+            "coherence": 0.001101,
+            "admit": true,
+            "reasons": [],
+            "price_start": 1.3106,
+            "price_end": 1.3071
+          },
+          {
+            "ts": "2025-11-04T08:51:00+00:00",
+            "return_pct": -0.2450587453908294,
+            "hazard": 0.434442,
+            "coherence": 0.002158,
+            "admit": true,
+            "reasons": [],
+            "price_start": 1.30989,
+            "price_end": 1.30668
+          }
+        ]
+      },
+      "240": {
+        "count": 445,
+        "avg_return_pct": 0.005993381361576745,
+        "median_return_pct": 0.009216165153671718,
+        "positive_pct": 0.5393258426966292,
+        "avg_positive_return_pct": 0.10228984347537454,
+        "avg_negative_return_pct": -0.1067439401375036,
+        "avg_hazard": 0.49632576853932586,
+        "hazard_buckets": {
+          "< 0.60": {
+            "count": 445,
+            "avg_return_pct": 0.005993381361576745
+          }
+        },
+        "samples": [
+          {
+            "ts": "2025-11-04T07:31:00+00:00",
+            "return_pct": -0.4765892653216546,
+            "hazard": 0.483366,
+            "coherence": 0.000176,
+            "admit": true,
+            "reasons": [],
+            "price_start": 1.3135,
+            "price_end": 1.30724
+          },
+          {
+            "ts": "2025-11-04T05:55:00+00:00",
+            "return_pct": -0.44886108168663347,
+            "hazard": 0.506849,
+            "coherence": 0.005831,
+            "admit": true,
+            "reasons": [],
+            "price_start": 1.31221,
+            "price_end": 1.30632
+          },
+          {
+            "ts": "2025-11-07T12:49:00+00:00",
+            "return_pct": 0.4362748836854679,
+            "hazard": 0.48728,
+            "coherence": 0.000275,
+            "admit": true,
+            "reasons": [],
+            "price_start": 1.3111,
+            "price_end": 1.31682
+          },
+          {
+            "ts": "2025-11-04T07:47:00+00:00",
+            "return_pct": -0.4296488154185928,
+            "hazard": 0.463796,
+            "coherence": 0.000539,
+            "admit": true,
+            "reasons": [],
+            "price_start": 1.3127,
+            "price_end": 1.30706
+          },
+          {
+            "ts": "2025-11-06T14:53:00+00:00",
+            "return_pct": 0.4264229381916107,
+            "hazard": 0.426614,
+            "coherence": 0.015121,
+            "admit": true,
+            "reasons": [],
+            "price_start": 1.30856,
+            "price_end": 1.31414
+          }
+        ]
+      }
+    },
+    "NZD_USD": {
+      "5": {
+        "count": 441,
+        "avg_return_pct": -0.0005165800083318155,
+        "median_return_pct": 0.0,
+        "positive_pct": 0.46938775510204084,
+        "avg_positive_return_pct": 0.021749623151026177,
+        "avg_negative_return_pct": -0.020213605880071577,
+        "avg_hazard": 0.5027046598639456,
+        "hazard_buckets": {
+          "< 0.60": {
+            "count": 441,
+            "avg_return_pct": -0.0005165800083318155
+          }
+        },
+        "samples": [
+          {
+            "ts": "2025-11-04T22:08:00+00:00",
+            "return_pct": -0.1097112117780213,
+            "hazard": 0.483366,
+            "coherence": 0.005334,
+            "admit": true,
+            "reasons": [],
+            "price_start": 0.56512,
+            "price_end": 0.5645
+          },
+          {
+            "ts": "2025-11-03T14:56:00+00:00",
+            "return_pct": 0.10000175441673705,
+            "hazard": 0.48728,
+            "coherence": 0.001101,
+            "admit": true,
+            "reasons": [],
+            "price_start": 0.56999,
+            "price_end": 0.57056
+          },
+          {
+            "ts": "2025-11-05T14:59:00+00:00",
+            "return_pct": -0.09380697003487326,
+            "hazard": 0.493151,
+            "coherence": 0.001101,
+            "admit": true,
+            "reasons": [],
+            "price_start": 0.56499,
+            "price_end": 0.56446
+          },
+          {
+            "ts": "2025-11-05T08:03:00+00:00",
+            "return_pct": 0.08668270591565073,
+            "hazard": 0.500978,
+            "coherence": 0.008039,
+            "admit": true,
+            "reasons": [],
+            "price_start": 0.56528,
+            "price_end": 0.56577
+          },
+          {
+            "ts": "2025-11-07T14:34:00+00:00",
+            "return_pct": -0.07827231650478457,
+            "hazard": 0.471624,
+            "coherence": 0.000275,
+            "admit": true,
+            "reasons": [],
+            "price_start": 0.56214,
+            "price_end": 0.5617
+          }
+        ]
+      },
+      "15": {
+        "count": 441,
+        "avg_return_pct": -0.0030803466147302223,
+        "median_return_pct": -0.0035049595177210754,
+        "positive_pct": 0.4444444444444444,
+        "avg_positive_return_pct": 0.037601672734703634,
+        "avg_negative_return_pct": -0.035625962094277305,
+        "avg_hazard": 0.5027046598639456,
+        "hazard_buckets": {
+          "< 0.60": {
+            "count": 441,
+            "avg_return_pct": -0.0030803466147302223
+          }
+        },
+        "samples": [
+          {
+            "ts": "2025-11-05T15:15:00+00:00",
+            "return_pct": 0.1877701410047385,
+            "hazard": 0.477495,
+            "coherence": 0.000705,
+            "admit": true,
+            "reasons": [],
+            "price_start": 0.56452,
+            "price_end": 0.56558
+          },
+          {
+            "ts": "2025-11-06T08:40:00+00:00",
+            "return_pct": 0.15921313331446574,
+            "hazard": 0.489237,
+            "coherence": 0.004859,
+            "admit": true,
+            "reasons": [],
+            "price_start": 0.56528,
+            "price_end": 0.56618
+          },
+          {
+            "ts": "2025-11-06T14:48:00+00:00",
+            "return_pct": -0.15595647396590082,
+            "hazard": 0.448141,
+            "coherence": 4.4e-05,
+            "admit": true,
+            "reasons": [],
+            "price_start": 0.56426,
+            "price_end": 0.56338
+          },
+          {
+            "ts": "2025-11-04T08:24:00+00:00",
+            "return_pct": -0.15293745385508514,
+            "hazard": 0.473581,
+            "coherence": 1.1e-05,
+            "admit": true,
+            "reasons": [],
+            "price_start": 0.56886,
+            "price_end": 0.56799
+          },
+          {
+            "ts": "2025-11-04T22:08:00+00:00",
+            "return_pct": -0.15218006795016492,
+            "hazard": 0.483366,
+            "coherence": 0.005334,
+            "admit": true,
+            "reasons": [],
+            "price_start": 0.56512,
+            "price_end": 0.56426
+          }
+        ]
+      },
+      "30": {
+        "count": 441,
+        "avg_return_pct": -0.006171178540068194,
+        "median_return_pct": -0.007005499316970822,
+        "positive_pct": 0.4467120181405896,
+        "avg_positive_return_pct": 0.05035515864476676,
+        "avg_negative_return_pct": -0.05180924585733248,
+        "avg_hazard": 0.5027046598639456,
+        "hazard_buckets": {
+          "< 0.60": {
+            "count": 441,
+            "avg_return_pct": -0.006171178540068194
+          }
+        },
+        "samples": [
+          {
+            "ts": "2025-11-06T14:32:00+00:00",
+            "return_pct": -0.3009382191538191,
+            "hazard": 0.463796,
+            "coherence": 0.000396,
+            "admit": true,
+            "reasons": [],
+            "price_start": 0.5649,
+            "price_end": 0.5632
+          },
+          {
+            "ts": "2025-11-03T23:51:00+00:00",
+            "return_pct": -0.2173379605286253,
+            "hazard": 0.504892,
+            "coherence": 0.003977,
+            "admit": true,
+            "reasons": [],
+            "price_start": 0.57054,
+            "price_end": 0.5693
+          },
+          {
+            "ts": "2025-11-04T08:24:00+00:00",
+            "return_pct": -0.21270611398235845,
+            "hazard": 0.473581,
+            "coherence": 1.1e-05,
+            "admit": true,
+            "reasons": [],
+            "price_start": 0.56886,
+            "price_end": 0.56765
+          },
+          {
+            "ts": "2025-11-06T14:00:00+00:00",
+            "return_pct": -0.2067101287963118,
+            "hazard": 0.48728,
+            "coherence": 0.004407,
+            "admit": true,
+            "reasons": [],
+            "price_start": 0.56601,
+            "price_end": 0.56484
+          },
+          {
+            "ts": "2025-11-06T14:16:00+00:00",
+            "return_pct": -0.2051427156651114,
+            "hazard": 0.475538,
+            "coherence": 0.001586,
+            "admit": true,
+            "reasons": [],
+            "price_start": 0.56546,
+            "price_end": 0.5643
+          }
+        ]
+      },
+      "60": {
+        "count": 441,
+        "avg_return_pct": -0.01309214968561977,
+        "median_return_pct": -0.008891576120782192,
+        "positive_pct": 0.4421768707482993,
+        "avg_positive_return_pct": 0.06680002806287381,
+        "avg_negative_return_pct": -0.07642131497405981,
+        "avg_hazard": 0.5027046598639456,
+        "hazard_buckets": {
+          "< 0.60": {
+            "count": 441,
+            "avg_return_pct": -0.01309214968561977
+          }
+        },
+        "samples": [
+          {
+            "ts": "2025-11-06T13:44:00+00:00",
+            "return_pct": -0.4482168381301923,
+            "hazard": 0.506849,
+            "coherence": 0.005831,
+            "admit": true,
+            "reasons": [],
+            "price_start": 0.56669,
+            "price_end": 0.56415
+          },
+          {
+            "ts": "2025-11-06T14:00:00+00:00",
+            "return_pct": -0.4434550626314044,
+            "hazard": 0.48728,
+            "coherence": 0.004407,
+            "admit": true,
+            "reasons": [],
+            "price_start": 0.56601,
+            "price_end": 0.5635
+          },
+          {
+            "ts": "2025-11-04T08:24:00+00:00",
+            "return_pct": -0.3797067819850316,
+            "hazard": 0.473581,
+            "coherence": 1.1e-05,
+            "admit": true,
+            "reasons": [],
+            "price_start": 0.56886,
+            "price_end": 0.5667
+          },
+          {
+            "ts": "2025-11-06T14:16:00+00:00",
+            "return_pct": -0.37137905422134027,
+            "hazard": 0.475538,
+            "coherence": 0.001586,
+            "admit": true,
+            "reasons": [],
+            "price_start": 0.56546,
+            "price_end": 0.56336
+          },
+          {
+            "ts": "2025-11-06T14:32:00+00:00",
+            "return_pct": -0.279695521331194,
+            "hazard": 0.463796,
+            "coherence": 0.000396,
+            "admit": true,
+            "reasons": [],
+            "price_start": 0.5649,
+            "price_end": 0.56332
+          }
+        ]
+      },
+      "240": {
+        "count": 441,
+        "avg_return_pct": -0.053971875728188234,
+        "median_return_pct": -0.04765771172379575,
+        "positive_pct": 0.4036281179138322,
+        "avg_positive_return_pct": 0.11406260543837769,
+        "avg_negative_return_pct": -0.16769863484472336,
+        "avg_hazard": 0.5027046598639456,
+        "hazard_buckets": {
+          "< 0.60": {
+            "count": 441,
+            "avg_return_pct": -0.053971875728188234
+          }
+        },
+        "samples": [
+          {
+            "ts": "2025-11-06T13:28:00+00:00",
+            "return_pct": -0.6691147911443931,
+            "hazard": 0.522505,
+            "coherence": 0.004407,
+            "admit": true,
+            "reasons": [],
+            "price_start": 0.56642,
+            "price_end": 0.56263
+          },
+          {
+            "ts": "2025-11-06T12:56:00+00:00",
+            "return_pct": -0.6427007557030823,
+            "hazard": 0.518591,
+            "coherence": 0.00689,
+            "admit": true,
+            "reasons": [],
+            "price_start": 0.56636,
+            "price_end": 0.56272
+          },
+          {
+            "ts": "2025-11-06T13:12:00+00:00",
+            "return_pct": -0.6318167378490042,
+            "hazard": 0.500978,
+            "coherence": 0.00689,
+            "admit": true,
+            "reasons": [],
+            "price_start": 0.56662,
+            "price_end": 0.56304
+          },
+          {
+            "ts": "2025-11-06T12:24:00+00:00",
+            "return_pct": -0.6005581658247005,
+            "hazard": 0.485323,
+            "coherence": 0.015121,
+            "admit": true,
+            "reasons": [],
+            "price_start": 0.56614,
+            "price_end": 0.56274
+          },
+          {
+            "ts": "2025-11-06T13:44:00+00:00",
+            "return_pct": -0.5858582293670243,
+            "hazard": 0.506849,
+            "coherence": 0.005831,
+            "admit": true,
+            "reasons": [],
+            "price_start": 0.56669,
+            "price_end": 0.56337
+          }
+        ]
+      }
+    },
+    "USD_CAD": {
+      "5": {
+        "count": 444,
+        "avg_return_pct": -0.00034389021463507465,
+        "median_return_pct": 0.0,
+        "positive_pct": 0.4752252252252252,
+        "avg_positive_return_pct": 0.010016468075436779,
+        "avg_negative_return_pct": -0.00972601724985036,
+        "avg_hazard": 0.5011415720720721,
+        "hazard_buckets": {
+          "< 0.60": {
+            "count": 444,
+            "avg_return_pct": -0.00034389021463507465
+          }
+        },
+        "samples": [
+          {
+            "ts": "2025-11-07T13:29:00+00:00",
+            "return_pct": -0.14972928094464671,
+            "hazard": 0.432485,
+            "coherence": 0.001586,
+            "admit": true,
+            "reasons": [],
+            "price_start": 1.40921,
+            "price_end": 1.4071
+          },
+          {
+            "ts": "2025-11-07T14:49:00+00:00",
+            "return_pct": -0.06532977333409305,
+            "hazard": 0.450098,
+            "coherence": 0.001861,
+            "admit": true,
+            "reasons": [],
+            "price_start": 1.40824,
+            "price_end": 1.40732
+          },
+          {
+            "ts": "2025-11-03T15:59:00+00:00",
+            "return_pct": -0.06112817013532504,
+            "hazard": 0.420744,
+            "coherence": 0.001101,
+            "admit": true,
+            "reasons": [],
+            "price_start": 1.40688,
+            "price_end": 1.40602
+          },
+          {
+            "ts": "2025-11-06T15:14:00+00:00",
+            "return_pct": -0.05236787726101587,
+            "hazard": 0.448141,
+            "coherence": 0.000275,
+            "admit": true,
+            "reasons": [],
+            "price_start": 1.41308,
+            "price_end": 1.41234
+          },
+          {
+            "ts": "2025-11-07T14:33:00+00:00",
+            "return_pct": 0.045481679411010396,
+            "hazard": 0.465753,
+            "coherence": 0.003569,
+            "admit": true,
+            "reasons": [],
+            "price_start": 1.40716,
+            "price_end": 1.4078
+          }
+        ]
+      },
+      "15": {
+        "count": 444,
+        "avg_return_pct": 0.00013009430835125933,
+        "median_return_pct": 0.0003541402537083978,
+        "positive_pct": 0.5,
+        "avg_positive_return_pct": 0.018229248591528215,
+        "avg_negative_return_pct": -0.0179690599748257,
+        "avg_hazard": 0.5011415720720721,
+        "hazard_buckets": {
+          "< 0.60": {
+            "count": 444,
+            "avg_return_pct": 0.00013009430835125933
+          }
+        },
+        "samples": [
+          {
+            "ts": "2025-11-07T13:29:00+00:00",
+            "return_pct": -0.2001121195563503,
+            "hazard": 0.432485,
+            "coherence": 0.001586,
+            "admit": true,
+            "reasons": [],
+            "price_start": 1.40921,
+            "price_end": 1.40639
+          },
+          {
+            "ts": "2025-11-07T13:13:00+00:00",
+            "return_pct": -0.09713074365281582,
+            "hazard": 0.469667,
+            "coherence": 0.004859,
+            "admit": true,
+            "reasons": [],
+            "price_start": 1.41047,
+            "price_end": 1.4091
+          },
+          {
+            "ts": "2025-11-06T13:54:00+00:00",
+            "return_pct": 0.09507591883071653,
+            "hazard": 0.465753,
+            "coherence": 1.1e-05,
+            "admit": true,
+            "reasons": [],
+            "price_start": 1.4094,
+            "price_end": 1.41074
+          },
+          {
+            "ts": "2025-11-07T17:45:00+00:00",
+            "return_pct": -0.08957897879964445,
+            "hazard": 0.459883,
+            "coherence": 0.003183,
+            "admit": true,
+            "reasons": [],
+            "price_start": 1.40658,
+            "price_end": 1.40532
+          },
+          {
+            "ts": "2025-11-06T14:26:00+00:00",
+            "return_pct": 0.08648311452632765,
+            "hazard": 0.465753,
+            "coherence": 0.000396,
+            "admit": true,
+            "reasons": [],
+            "price_start": 1.41068,
+            "price_end": 1.4119
+          }
+        ]
+      },
+      "30": {
+        "count": 444,
+        "avg_return_pct": 0.0003421293692130426,
+        "median_return_pct": -0.0007084437929391991,
+        "positive_pct": 0.4864864864864865,
+        "avg_positive_return_pct": 0.026306092682934275,
+        "avg_negative_return_pct": -0.02425530955957549,
+        "avg_hazard": 0.5011415720720721,
+        "hazard_buckets": {
+          "< 0.60": {
+            "count": 444,
+            "avg_return_pct": 0.0003421293692130426
+          }
+        },
+        "samples": [
+          {
+            "ts": "2025-11-07T13:13:00+00:00",
+            "return_pct": -0.28572036271597256,
+            "hazard": 0.469667,
+            "coherence": 0.004859,
+            "admit": true,
+            "reasons": [],
+            "price_start": 1.41047,
+            "price_end": 1.40644
+          },
+          {
+            "ts": "2025-11-07T13:29:00+00:00",
+            "return_pct": -0.19017747532305446,
+            "hazard": 0.432485,
+            "coherence": 0.001586,
+            "admit": true,
+            "reasons": [],
+            "price_start": 1.40921,
+            "price_end": 1.40653
+          },
+          {
+            "ts": "2025-11-07T12:57:00+00:00",
+            "return_pct": -0.1403061224489862,
+            "hazard": 0.48728,
+            "coherence": 0.008039,
+            "admit": true,
+            "reasons": [],
+            "price_start": 1.4112,
+            "price_end": 1.40922
+          },
+          {
+            "ts": "2025-11-07T14:17:00+00:00",
+            "return_pct": 0.13437993259672848,
+            "hazard": 0.455969,
+            "coherence": 0.003569,
+            "admit": true,
+            "reasons": [],
+            "price_start": 1.40646,
+            "price_end": 1.40835
+          },
+          {
+            "ts": "2025-11-06T14:26:00+00:00",
+            "return_pct": 0.13185130575325182,
+            "hazard": 0.465753,
+            "coherence": 0.000396,
+            "admit": true,
+            "reasons": [],
+            "price_start": 1.41068,
+            "price_end": 1.41254
+          }
+        ]
+      },
+      "60": {
+        "count": 444,
+        "avg_return_pct": 0.0010530503022027915,
+        "median_return_pct": 0.0014181078188101734,
+        "positive_pct": 0.5112612612612613,
+        "avg_positive_return_pct": 0.036300439562733856,
+        "avg_negative_return_pct": -0.03581864261088731,
+        "avg_hazard": 0.5011415720720721,
+        "hazard_buckets": {
+          "< 0.60": {
+            "count": 444,
+            "avg_return_pct": 0.0010530503022027915
+          }
+        },
+        "samples": [
+          {
+            "ts": "2025-11-07T12:57:00+00:00",
+            "return_pct": -0.32312925170068874,
+            "hazard": 0.48728,
+            "coherence": 0.008039,
+            "admit": true,
+            "reasons": [],
+            "price_start": 1.4112,
+            "price_end": 1.40664
+          },
+          {
+            "ts": "2025-11-07T12:41:00+00:00",
+            "return_pct": -0.28628117913832507,
+            "hazard": 0.502935,
+            "coherence": 0.005831,
+            "admit": true,
+            "reasons": [],
+            "price_start": 1.4112,
+            "price_end": 1.40716
+          },
+          {
+            "ts": "2025-11-07T13:13:00+00:00",
+            "return_pct": -0.2843023956553381,
+            "hazard": 0.469667,
+            "coherence": 0.004859,
+            "admit": true,
+            "reasons": [],
+            "price_start": 1.41047,
+            "price_end": 1.40646
+          },
+          {
+            "ts": "2025-11-07T13:29:00+00:00",
+            "return_pct": -0.22211026035864612,
+            "hazard": 0.432485,
+            "coherence": 0.001586,
+            "admit": true,
+            "reasons": [],
+            "price_start": 1.40921,
+            "price_end": 1.40608
+          },
+          {
+            "ts": "2025-11-06T13:54:00+00:00",
+            "return_pct": 0.21072796934865312,
+            "hazard": 0.465753,
+            "coherence": 1.1e-05,
+            "admit": true,
+            "reasons": [],
+            "price_start": 1.4094,
+            "price_end": 1.41237
+          }
+        ]
+      },
+      "240": {
+        "count": 444,
+        "avg_return_pct": 0.005553603958903775,
+        "median_return_pct": 0.004966184576863421,
+        "positive_pct": 0.5180180180180181,
+        "avg_positive_return_pct": 0.08250928748824367,
+        "avg_negative_return_pct": -0.07715577553524659,
+        "avg_hazard": 0.5011415720720721,
+        "hazard_buckets": {
+          "< 0.60": {
+            "count": 444,
+            "avg_return_pct": 0.005553603958903775
+          }
+        },
+        "samples": [
+          {
+            "ts": "2025-11-07T09:45:00+00:00",
+            "return_pct": -0.4185700626792791,
+            "hazard": 0.506849,
+            "coherence": 0.010604,
+            "admit": true,
+            "reasons": [],
+            "price_start": 1.41195,
+            "price_end": 1.40604
+          },
+          {
+            "ts": "2025-11-07T10:17:00+00:00",
+            "return_pct": -0.3775349024996676,
+            "hazard": 0.520548,
+            "coherence": 0.010604,
+            "admit": true,
+            "reasons": [],
+            "price_start": 1.41179,
+            "price_end": 1.40646
+          },
+          {
+            "ts": "2025-11-07T10:01:00+00:00",
+            "return_pct": -0.36553228868550436,
+            "hazard": 0.493151,
+            "coherence": 0.015953,
+            "admit": true,
+            "reasons": [],
+            "price_start": 1.41164,
+            "price_end": 1.40648
+          },
+          {
+            "ts": "2025-11-07T11:37:00+00:00",
+            "return_pct": -0.33585579457528886,
+            "hazard": 0.483366,
+            "coherence": 0.015953,
+            "admit": true,
+            "reasons": [],
+            "price_start": 1.41132,
+            "price_end": 1.40658
+          },
+          {
+            "ts": "2025-11-06T12:18:00+00:00",
+            "return_pct": 0.33065591916669806,
+            "hazard": 0.497065,
+            "coherence": 0.003183,
+            "admit": true,
+            "reasons": [],
+            "price_start": 1.40932,
+            "price_end": 1.41398
+          }
+        ]
+      }
+    },
+    "USD_CHF": {
+      "5": {
+        "count": 444,
+        "avg_return_pct": 7.153120513437868e-05,
+        "median_return_pct": 0.0,
+        "positive_pct": 0.481981981981982,
+        "avg_positive_return_pct": 0.016733942991324895,
+        "avg_negative_return_pct": -0.015431756282886362,
+        "avg_hazard": 0.4983163198198198,
+        "hazard_buckets": {
+          "< 0.60": {
+            "count": 444,
+            "avg_return_pct": 7.153120513437868e-05
+          }
+        },
+        "samples": [
+          {
+            "ts": "2025-11-03T07:27:00+00:00",
+            "return_pct": 0.12060776365852166,
+            "hazard": 0.514677,
+            "coherence": 0.009929,
+            "admit": true,
+            "reasons": [],
+            "price_start": 0.80426,
+            "price_end": 0.80523
+          },
+          {
+            "ts": "2025-11-05T15:03:00+00:00",
+            "return_pct": -0.11078832044906345,
+            "hazard": 0.434442,
+            "coherence": 0.000705,
+            "admit": true,
+            "reasons": [],
+            "price_start": 0.81236,
+            "price_end": 0.81146
+          },
+          {
+            "ts": "2025-11-05T13:11:00+00:00",
+            "return_pct": 0.103716508210898,
+            "hazard": 0.530333,
+            "coherence": 0.003977,
+            "admit": true,
+            "reasons": [],
+            "price_start": 0.8099,
+            "price_end": 0.81074
+          },
+          {
+            "ts": "2025-11-03T14:55:00+00:00",
+            "return_pct": -0.08908906431736172,
+            "hazard": 0.454012,
+            "coherence": 0.000396,
+            "admit": true,
+            "reasons": [],
+            "price_start": 0.80818,
+            "price_end": 0.80746
+          },
+          {
+            "ts": "2025-11-07T15:49:00+00:00",
+            "return_pct": 0.08211815059971059,
+            "hazard": 0.450098,
+            "coherence": 0.000539,
+            "admit": true,
+            "reasons": [],
+            "price_start": 0.80372,
+            "price_end": 0.80438
+          }
+        ]
+      },
+      "15": {
+        "count": 444,
+        "avg_return_pct": 0.0008092874570310521,
+        "median_return_pct": -0.0012361322853706557,
+        "positive_pct": 0.481981981981982,
+        "avg_positive_return_pct": 0.029477160097693387,
+        "avg_negative_return_pct": -0.02586429839123738,
+        "avg_hazard": 0.4983163198198198,
+        "hazard_buckets": {
+          "< 0.60": {
+            "count": 444,
+            "avg_return_pct": 0.0008092874570310521
+          }
+        },
+        "samples": [
+          {
+            "ts": "2025-11-05T15:03:00+00:00",
+            "return_pct": -0.2831257078142657,
+            "hazard": 0.434442,
+            "coherence": 0.000705,
+            "admit": true,
+            "reasons": [],
+            "price_start": 0.81236,
+            "price_end": 0.81006
+          },
+          {
+            "ts": "2025-11-05T14:47:00+00:00",
+            "return_pct": 0.19123761582214302,
+            "hazard": 0.438356,
+            "coherence": 0.002478,
+            "admit": true,
+            "reasons": [],
+            "price_start": 0.81051,
+            "price_end": 0.81206
+          },
+          {
+            "ts": "2025-11-06T08:48:00+00:00",
+            "return_pct": -0.1630354231510286,
+            "hazard": 0.479452,
+            "coherence": 0.001861,
+            "admit": true,
+            "reasons": [],
+            "price_start": 0.80964,
+            "price_end": 0.80832
+          },
+          {
+            "ts": "2025-11-05T01:10:00+00:00",
+            "return_pct": -0.13711490476073515,
+            "hazard": 0.528376,
+            "coherence": 0.002158,
+            "admit": true,
+            "reasons": [],
+            "price_start": 0.80954,
+            "price_end": 0.80843
+          },
+          {
+            "ts": "2025-11-03T13:35:00+00:00",
+            "return_pct": 0.12010004209691148,
+            "hazard": 0.495108,
+            "coherence": 0.00282,
+            "admit": true,
+            "reasons": [],
+            "price_start": 0.80766,
+            "price_end": 0.80863
+          }
+        ]
+      },
+      "30": {
+        "count": 444,
+        "avg_return_pct": 0.0015770056483840082,
+        "median_return_pct": 0.0012386820812197133,
+        "positive_pct": 0.5045045045045045,
+        "avg_positive_return_pct": 0.04110274451832767,
+        "avg_negative_return_pct": -0.03866738301919499,
+        "avg_hazard": 0.4983163198198198,
+        "hazard_buckets": {
+          "< 0.60": {
+            "count": 444,
+            "avg_return_pct": 0.0015770056483840082
+          }
+        },
+        "samples": [
+          {
+            "ts": "2025-11-05T15:03:00+00:00",
+            "return_pct": -0.235117435619672,
+            "hazard": 0.434442,
+            "coherence": 0.000705,
+            "admit": true,
+            "reasons": [],
+            "price_start": 0.81236,
+            "price_end": 0.81045
+          },
+          {
+            "ts": "2025-11-05T00:54:00+00:00",
+            "return_pct": -0.20738180471546905,
+            "hazard": 0.528376,
+            "coherence": 0.011301,
+            "admit": true,
+            "reasons": [],
+            "price_start": 0.8101,
+            "price_end": 0.80842
+          },
+          {
+            "ts": "2025-11-05T14:31:00+00:00",
+            "return_pct": 0.1850526783291047,
+            "hazard": 0.454012,
+            "coherence": 0.001586,
+            "admit": true,
+            "reasons": [],
+            "price_start": 0.81058,
+            "price_end": 0.81208
+          },
+          {
+            "ts": "2025-11-05T15:35:00+00:00",
+            "return_pct": 0.1838575535839873,
+            "hazard": 0.414873,
+            "coherence": 0.004407,
+            "admit": true,
+            "reasons": [],
+            "price_start": 0.81041,
+            "price_end": 0.8119
+          },
+          {
+            "ts": "2025-11-07T11:01:00+00:00",
+            "return_pct": -0.16603062893393566,
+            "hazard": 0.489237,
+            "coherence": 0.002158,
+            "admit": true,
+            "reasons": [],
+            "price_start": 0.80708,
+            "price_end": 0.80574
+          }
+        ]
+      },
+      "60": {
+        "count": 444,
+        "avg_return_pct": 0.0023511874580243253,
+        "median_return_pct": 0.0018546363413436354,
+        "positive_pct": 0.509009009009009,
+        "avg_positive_return_pct": 0.05770972671555176,
+        "avg_negative_return_pct": -0.055038857827302286,
+        "avg_hazard": 0.4983163198198198,
+        "hazard_buckets": {
+          "< 0.60": {
+            "count": 444,
+            "avg_return_pct": 0.0023511874580243253
+          }
+        },
+        "samples": [
+          {
+            "ts": "2025-11-05T00:38:00+00:00",
+            "return_pct": -0.2246802627030681,
+            "hazard": 0.536204,
+            "coherence": 0.009277,
+            "admit": true,
+            "reasons": [],
+            "price_start": 0.81004,
+            "price_end": 0.80822
+          },
+          {
+            "ts": "2025-11-05T00:54:00+00:00",
+            "return_pct": -0.21725712874954878,
+            "hazard": 0.528376,
+            "coherence": 0.011301,
+            "admit": true,
+            "reasons": [],
+            "price_start": 0.8101,
+            "price_end": 0.80834
+          },
+          {
+            "ts": "2025-11-05T00:22:00+00:00",
+            "return_pct": -0.20978589498365335,
+            "hazard": 0.522505,
+            "coherence": 0.013526,
+            "admit": true,
+            "reasons": [],
+            "price_start": 0.81035,
+            "price_end": 0.80865
+          },
+          {
+            "ts": "2025-11-07T10:45:00+00:00",
+            "return_pct": -0.20559821649739843,
+            "hazard": 0.491194,
+            "coherence": 0.004407,
+            "admit": true,
+            "reasons": [],
+            "price_start": 0.8074,
+            "price_end": 0.80574
+          },
+          {
+            "ts": "2025-11-06T14:56:00+00:00",
+            "return_pct": -0.20528294420261115,
+            "hazard": 0.483366,
+            "coherence": 0.0,
+            "admit": true,
+            "reasons": [],
+            "price_start": 0.80864,
+            "price_end": 0.80698
+          }
+        ]
+      },
+      "240": {
+        "count": 444,
+        "avg_return_pct": 0.000968914488753445,
+        "median_return_pct": 0.004339375161971968,
+        "positive_pct": 0.5112612612612613,
+        "avg_positive_return_pct": 0.10797927203455825,
+        "avg_negative_return_pct": -0.11097279593934652,
+        "avg_hazard": 0.4983163198198198,
+        "hazard_buckets": {
+          "< 0.60": {
+            "count": 444,
+            "avg_return_pct": 0.000968914488753445
+          }
+        },
+        "samples": [
+          {
+            "ts": "2025-11-03T06:55:00+00:00",
+            "return_pct": 0.43033755379219657,
+            "hazard": 0.495108,
+            "coherence": 0.007454,
+            "admit": true,
+            "reasons": [],
+            "price_start": 0.80402,
+            "price_end": 0.80748
+          },
+          {
+            "ts": "2025-11-03T06:39:00+00:00",
+            "return_pct": 0.42912048957051435,
+            "hazard": 0.500978,
+            "coherence": 0.008039,
+            "admit": true,
+            "reasons": [],
+            "price_start": 0.80397,
+            "price_end": 0.80742
+          },
+          {
+            "ts": "2025-11-07T09:25:00+00:00",
+            "return_pct": -0.4219774780348996,
+            "hazard": 0.508806,
+            "coherence": 0.005334,
+            "admit": true,
+            "reasons": [],
+            "price_start": 0.8081,
+            "price_end": 0.80469
+          },
+          {
+            "ts": "2025-11-03T06:07:00+00:00",
+            "return_pct": 0.4027946990228524,
+            "hazard": 0.514677,
+            "coherence": 0.018583,
+            "admit": true,
+            "reasons": [],
+            "price_start": 0.80438,
+            "price_end": 0.80762
+          },
+          {
+            "ts": "2025-11-03T07:11:00+00:00",
+            "return_pct": 0.39800995024875374,
+            "hazard": 0.508806,
+            "coherence": 0.005831,
+            "admit": true,
+            "reasons": [],
+            "price_start": 0.804,
+            "price_end": 0.8072
+          }
+        ]
+      }
+    },
+    "USD_JPY": {
+      "5": {
+        "count": 445,
+        "avg_return_pct": 0.0010311683345393984,
+        "median_return_pct": 0.001299612715417013,
+        "positive_pct": 0.5213483146067416,
+        "avg_positive_return_pct": 0.018097509248806827,
+        "avg_negative_return_pct": -0.01755752223874719,
+        "avg_hazard": 0.4946063213483146,
+        "hazard_buckets": {
+          "< 0.60": {
+            "count": 445,
+            "avg_return_pct": 0.0010311683345393984
+          }
+        },
+        "samples": [
+          {
+            "ts": "2025-11-07T15:02:00+00:00",
+            "return_pct": -0.10052613026619606,
+            "hazard": 0.422701,
+            "coherence": 1.1e-05,
+            "admit": true,
+            "reasons": [],
+            "price_start": 153.194,
+            "price_end": 153.04
+          },
+          {
+            "ts": "2025-11-04T09:23:00+00:00",
+            "return_pct": -0.09106520268511369,
+            "hazard": 0.459883,
+            "coherence": 0.002158,
+            "admit": true,
+            "reasons": [],
+            "price_start": 153.736,
+            "price_end": 153.596
+          },
+          {
+            "ts": "2025-11-04T07:47:00+00:00",
+            "return_pct": 0.084757918345541,
+            "hazard": 0.410959,
+            "coherence": 0.001101,
+            "admit": true,
+            "reasons": [],
+            "price_start": 153.378,
+            "price_end": 153.508
+          },
+          {
+            "ts": "2025-11-09T23:56:00+00:00",
+            "return_pct": -0.08321901554506135,
+            "hazard": 0.46771,
+            "coherence": 9.9e-05,
+            "admit": true,
+            "reasons": [],
+            "price_start": 153.811,
+            "price_end": 153.683
+          },
+          {
+            "ts": "2025-11-07T15:18:00+00:00",
+            "return_pct": -0.08093889113718832,
+            "hazard": 0.432485,
+            "coherence": 0.000275,
+            "admit": true,
+            "reasons": [],
+            "price_start": 153.202,
+            "price_end": 153.078
+          }
+        ]
+      },
+      "15": {
+        "count": 445,
+        "avg_return_pct": -0.00030942561447122775,
+        "median_return_pct": -0.0006532830740919528,
+        "positive_pct": 0.48089887640449436,
+        "avg_positive_return_pct": 0.031172139433776246,
+        "avg_negative_return_pct": -0.02947416552929789,
+        "avg_hazard": 0.4946063213483146,
+        "hazard_buckets": {
+          "< 0.60": {
+            "count": 445,
+            "avg_return_pct": -0.00030942561447122775
+          }
+        },
+        "samples": [
+          {
+            "ts": "2025-11-05T14:52:00+00:00",
+            "return_pct": 0.16239038648911985,
+            "hazard": 0.506849,
+            "coherence": 0.000705,
+            "admit": true,
+            "reasons": [],
+            "price_start": 153.95,
+            "price_end": 154.2
+          },
+          {
+            "ts": "2025-11-04T09:23:00+00:00",
+            "return_pct": -0.16131550189935373,
+            "hazard": 0.459883,
+            "coherence": 0.002158,
+            "admit": true,
+            "reasons": [],
+            "price_start": 153.736,
+            "price_end": 153.488
+          },
+          {
+            "ts": "2025-11-04T07:47:00+00:00",
+            "return_pct": 0.12778886150557864,
+            "hazard": 0.410959,
+            "coherence": 0.001101,
+            "admit": true,
+            "reasons": [],
+            "price_start": 153.378,
+            "price_end": 153.574
+          },
+          {
+            "ts": "2025-11-07T19:34:00+00:00",
+            "return_pct": 0.12191305708398531,
+            "hazard": 0.455969,
+            "coherence": 0.009277,
+            "admit": true,
+            "reasons": [],
+            "price_start": 153.388,
+            "price_end": 153.575
+          },
+          {
+            "ts": "2025-11-04T04:19:00+00:00",
+            "return_pct": -0.12071807785667457,
+            "hazard": 0.518591,
+            "coherence": 0.004407,
+            "admit": true,
+            "reasons": [],
+            "price_start": 154.078,
+            "price_end": 153.892
+          }
+        ]
+      },
+      "30": {
+        "count": 445,
+        "avg_return_pct": 3.0118798496528882e-05,
+        "median_return_pct": 0.0,
+        "positive_pct": 0.49213483146067416,
+        "avg_positive_return_pct": 0.04283177923749843,
+        "avg_negative_return_pct": -0.0414458264941646,
+        "avg_hazard": 0.4946063213483146,
+        "hazard_buckets": {
+          "< 0.60": {
+            "count": 445,
+            "avg_return_pct": 3.0118798496528882e-05
+          }
+        },
+        "samples": [
+          {
+            "ts": "2025-11-07T19:18:00+00:00",
+            "return_pct": 0.2003210356662902,
+            "hazard": 0.471624,
+            "coherence": 0.006349,
+            "admit": true,
+            "reasons": [],
+            "price_start": 153.254,
+            "price_end": 153.561
+          },
+          {
+            "ts": "2025-11-05T00:28:00+00:00",
+            "return_pct": -0.1966760445972651,
+            "hazard": 0.438356,
+            "coherence": 9.9e-05,
+            "admit": true,
+            "reasons": [],
+            "price_start": 153.552,
+            "price_end": 153.25
+          },
+          {
+            "ts": "2025-11-05T14:36:00+00:00",
+            "return_pct": 0.18970647470797,
+            "hazard": 0.510763,
+            "coherence": 0.002158,
+            "admit": true,
+            "reasons": [],
+            "price_start": 153.922,
+            "price_end": 154.214
+          },
+          {
+            "ts": "2025-11-06T15:28:00+00:00",
+            "return_pct": -0.1767026374987872,
+            "hazard": 0.432485,
+            "coherence": 4.4e-05,
+            "admit": true,
+            "reasons": [],
+            "price_start": 153.365,
+            "price_end": 153.094
+          },
+          {
+            "ts": "2025-11-04T09:23:00+00:00",
+            "return_pct": -0.17432481656866364,
+            "hazard": 0.459883,
+            "coherence": 0.002158,
+            "admit": true,
+            "reasons": [],
+            "price_start": 153.736,
+            "price_end": 153.468
+          }
+        ]
+      },
+      "60": {
+        "count": 445,
+        "avg_return_pct": -0.001240280260179905,
+        "median_return_pct": 0.0,
+        "positive_pct": 0.49887640449438203,
+        "avg_positive_return_pct": 0.05791643484011236,
+        "avg_negative_return_pct": -0.0601317186111435,
+        "avg_hazard": 0.4946063213483146,
+        "hazard_buckets": {
+          "< 0.60": {
+            "count": 445,
+            "avg_return_pct": -0.001240280260179905
+          }
+        },
+        "samples": [
+          {
+            "ts": "2025-11-05T00:28:00+00:00",
+            "return_pct": -0.290455350630404,
+            "hazard": 0.438356,
+            "coherence": 9.9e-05,
+            "admit": true,
+            "reasons": [],
+            "price_start": 153.552,
+            "price_end": 153.106
+          },
+          {
+            "ts": "2025-11-04T05:23:00+00:00",
+            "return_pct": -0.26503316162476726,
+            "hazard": 0.446184,
+            "coherence": 0.000396,
+            "admit": true,
+            "reasons": [],
+            "price_start": 153.943,
+            "price_end": 153.535
+          },
+          {
+            "ts": "2025-11-05T00:12:00+00:00",
+            "return_pct": -0.2506934767604017,
+            "hazard": 0.46184,
+            "coherence": 0.003569,
+            "admit": true,
+            "reasons": [],
+            "price_start": 153.574,
+            "price_end": 153.189
+          },
+          {
+            "ts": "2025-11-05T00:44:00+00:00",
+            "return_pct": -0.2496968432581916,
+            "hazard": 0.422701,
+            "coherence": 0.000176,
+            "admit": true,
+            "reasons": [],
+            "price_start": 153.386,
+            "price_end": 153.003
+          },
+          {
+            "ts": "2025-11-07T18:46:00+00:00",
+            "return_pct": 0.2232405122782181,
+            "hazard": 0.51272,
+            "coherence": 0.000275,
+            "admit": true,
+            "reasons": [],
+            "price_start": 153.198,
+            "price_end": 153.54
+          }
+        ]
+      },
+      "240": {
+        "count": 445,
+        "avg_return_pct": -0.012255830789420618,
+        "median_return_pct": 0.004561389790309655,
+        "positive_pct": 0.5213483146067416,
+        "avg_positive_return_pct": 0.09936937323678481,
+        "avg_negative_return_pct": -0.13383821263955986,
+        "avg_hazard": 0.4946063213483146,
+        "hazard_buckets": {
+          "< 0.60": {
+            "count": 445,
+            "avg_return_pct": -0.012255830789420618
+          }
+        },
+        "samples": [
+          {
+            "ts": "2025-11-04T03:31:00+00:00",
+            "return_pct": -0.5034580300258101,
+            "hazard": 0.489237,
+            "coherence": 0.001332,
+            "admit": true,
+            "reasons": [],
+            "price_start": 154.134,
+            "price_end": 153.358
+          },
+          {
+            "ts": "2025-11-06T13:20:00+00:00",
+            "return_pct": -0.47335659964579896,
+            "hazard": 0.489237,
+            "coherence": 0.001332,
+            "admit": true,
+            "reasons": [],
+            "price_start": 153.584,
+            "price_end": 152.857
+          },
+          {
+            "ts": "2025-11-04T02:27:00+00:00",
+            "return_pct": -0.4699583195586892,
+            "hazard": 0.491194,
+            "coherence": 0.000705,
+            "admit": true,
+            "reasons": [],
+            "price_start": 154.269,
+            "price_end": 153.544
+          },
+          {
+            "ts": "2025-11-04T03:47:00+00:00",
+            "return_pct": -0.4459156849381831,
+            "hazard": 0.485323,
+            "coherence": 0.000892,
+            "admit": true,
+            "reasons": [],
+            "price_start": 154.065,
+            "price_end": 153.378
+          },
+          {
+            "ts": "2025-11-04T04:19:00+00:00",
+            "return_pct": -0.4309505575098429,
+            "hazard": 0.518591,
+            "coherence": 0.004407,
+            "admit": true,
+            "reasons": [],
+            "price_start": 154.078,
+            "price_end": 153.414
+          }
+        ]
+      }
+    }
+  }
+}

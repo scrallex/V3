@@ -1,0 +1,317 @@
+# Build  directories
+build/
+build_*/
+dist/
+out/
+cpr/
+.venv*/
+data_snapshot/
+tools/
+output/backtests/
+output/trades/*
+output/semantic_runs/
+
+
+# Compiled binaries
+*.exe
+*.out
+*.app
+*.o
+*.so
+*.dll
+*.dylib
+*.a
+bin/
+roc_history/
+
+# CMake
+!CMakeLists.txt
+CMakeCache.txt
+CMakeFiles/
+CMakeScripts/
+Testing/
+Makefile
+cmake_install.cmake
+install_manifest.txt
+compile_commands.json
+CTestTestfile.cmake
+_deps
+
+# CUDA
+*.i
+*.ii
+*.gpu
+*.ptx
+*.cubin
+*.fatbin
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+qdrant_storage/
+data.sqlite
+data.sqlite-journal
+cache/
+ruby/
+
+# Environment files with secrets
+.sep-config.env
+*.env
+!*.env.template
+sep-data/
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trash*
+ehthumbs.db
+Thumbs.db
+data/
+*cache*/
+.codechecker/
+
+
+# Logs and output
+*.log
+output/
+logs/
+**/logs/
+
+
+# Dependencies
+**/node_modules/
+vendor/
+third_party/build/
+
+# Package files
+*.tar.gz
+*.zip
+*.deb
+*.rpm
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv/
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Ruby
+*.gem
+.bundle/
+Gemfile.lock
+pkg/
+tmp/
+
+# Test artifacts
+test_results/
+coverage/
+*.gcov
+*.gcda
+*.gcno
+
+# Documentation build
+docs/_build/
+docs/html/
+docs/latex/
+site/
+
+# Cache directories
+.cache/
+.kilocode/
+# cache/
+tests/fuzzing/corpus/
+build_asan/
+
+# Temporary files
+temp/
+tmp/
+*.tmp
+*.temp
+# Configuration files (may contain secrets)
+*.env
+OANDA.env
+*.key
+*.pem
+config/secrets/
+
+# Docker
+.dockerignore
+
+# Git
+*.orig
+*.rej
+
+# Backup files
+*.bak
+*.backup
+
+# Editor artifacts
+*.kate-swp
+.#*
+
+# Clang tools
+.clang-format
+.clang-tidy
+
+# Static analysis
+static-analysis-results/
+cppcheck-report.xml
+
+# Benchmarks
+benchmark_results.json
+profiling_results.txt
+
+# SEP DSL specific
+*.sep.out
+sep_output/
+pattern_results/
+
+# Package manager artifacts
+Pipfile.lock
+yarn.lock
+package-lock.json
+
+# Local development
+local/
+dev/
+scratch/
+frontend_legacy/
+
+# Allow committed testbed scenarios
+!_sep/
+!_sep/**
+
+# CI/CD artifacts
+artifacts/
+reports/
+!scripts/reports/
+
+# Database files
+*.db
+*.sqlite
+*.sqlite3
+
+# Large test data files
+data/large/
+datasets/
+*.csv
+!tests/data/*.csv
+*.json.gz
+
+# Jupyter notebooks
+.ipynb_checkpoints/
+
+# R
+.RData
+
+# Allow top-level Makefile for docs
+!/Makefile
+.Rhistory
+
+# MATLAB
+*.asv
+
+# Temporary network files
+*.networkx_cache
+
+# PyCharm
+.idea/
+
+# VSCode
+.vscode/settings.json
+.vscode/launch.json
+.vscode/extensions.json
+.vscode/*.code-snippets
+
+# Vim
+[._]*.s[a-v][a-z]
+[._]*.sw[a-p]
+[._]s[a-rt-v][a-z]
+[._]ss[a-gi-z]
+[._]sw[a-p]
+
+# Allow internal testbed utilities
+!_sep/
+!_sep/testbed/
+
+# Emacs
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+*.elc
+auto-save-list
+tramp
+.\#*
+
+# JetBrains
+.idea/
+*.iws
+*.iml
+*.ipr
+
+# CodeBlocks
+*.depend
+*.layout
+*.cbp
+*.workspace
+
+# Eclipse CDT
+.autotools
+.cproject
+.metadata
+.project
+.settings/
+
+# NetBeans
+/nbproject/private/
+/build/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+
+# Visual Studio
+.vs/
+*.user
+*.suo
+*.sdf
+*.opensdf
+*.VC.db
+*.rdb
+
+
+# Xcode
+*.xcodeproj/
+*.xcworkspace/
+
+# AppCode
+.idea/
+
+# CLion
+cmake-build-*/
+
+# Ignore generated files but not the templates
+*_generated.*
+!*_template.*
+
+!scripts/tools/
+*.csv
+*.log
+logs/
+__pycache__/
+*.pyc
+.gemini/
+config/.env*
+config/default.yaml

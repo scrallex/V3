@@ -1,0 +1,14 @@
+This synthetic sample acts as a placeholder transcript for the hybrid manifold compression benchmark.
+It summarises the Figure 1 content, explains the role of structural signatures, and includes multiple
+sentences to simulate a medium-length research page. The structural manifold should capture rhythm,
+hazard, and repetition even when the raw text is no longer stored verbatim.
+
+The objective of this sample is to provide enough variation for sliding windows to encounter different
+structural regimes: sections with repeated phrases, sections with numerical references, and a closing
+paragraph that revisits earlier themes. By emphasising coherence across the narrative we ensure the
+manifold metrics expose useful signatures for later verification.
+
+Repeated motifs such as "structural manifold" and "compression benchmark" encourage windows to
+share signatures. Short sentences like "Signals repeat." raise rupture scores, while longer explanatory
+passages stabilise coherence. These characteristics mimic the behaviour of planning documents used
+inside the SEP stack.

@@ -1,0 +1,18 @@
+global:
+  min_repetitions: 1
+  min_regime_confidence: 0.0
+  regime_filter: 
+    - "lowvol"
+    - "highvol"
+  guard_thresholds:
+    min_coherence: 0.0
+    min_stability: 0.0
+
+instruments:
+  EUR_USD: {}
+  GBP_USD: {}
+  USD_JPY: {}
+  USD_CHF: {}
+  AUD_USD: {}
+  USD_CAD: {}
+  NZD_USD: {}

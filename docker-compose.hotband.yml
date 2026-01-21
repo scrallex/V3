@@ -1,0 +1,112 @@
+services:
+  valkey:
+    image: redis:7-alpine
+    container_name: sep-valkey
+    restart: unless-stopped
+    command: [ "redis-server", "--appendonly", "yes" ]
+    volumes:
+      - valkey-data:/data
+
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile.backend
+    container_name: sep-backend
+    restart: unless-stopped
+    env_file:
+      - .env.hotband
+      - OANDA.env
+    environment:
+      VALKEY_URL: "${VALKEY_URL:-redis://valkey:6379/0}"
+      STRATEGY_PROFILE: /app/config/echo_strategy.yaml
+    volumes:
+      - /sep/scripts:/app/scripts:ro
+      - /sep/config:/app/config:ro
+      - /sep/bin:/app/bin:ro
+      - /sep/logs/backend:/app/logs
+    depends_on:
+      - valkey
+    ports:
+      - "8000:8000"
+    command: [ "python3", "/app/scripts/trading_service.py" ]
+
+  regime:
+    build:
+      context: .
+      dockerfile: Dockerfile.backend
+    container_name: sep-regime
+    restart: unless-stopped
+    env_file:
+      - .env.hotband
+      - OANDA.env
+    environment:
+      VALKEY_URL: "${VALKEY_URL:-redis://valkey:6379/0}"
+      STRATEGY_PROFILE: /app/config/echo_strategy.yaml
+      HOTBAND_PAIRS: "${HOTBAND_PAIRS:-EUR_USD,GBP_USD,USD_JPY,USD_CHF,AUD_USD,USD_CAD,NZD_USD}"
+      REGIME_PROM_PORT: "${REGIME_PROM_PORT:-9105}"
+      REGIME_WINDOW_CANDLES: "${REGIME_WINDOW_CANDLES:-60}"
+      REGIME_STRIDE_CANDLES: "${REGIME_STRIDE_CANDLES:-1}"
+      REGIME_LOOP_SECONDS: "${REGIME_LOOP_SECONDS:-2.0}"
+      PYTHONPATH: /app
+      LD_LIBRARY_PATH: /app/bin:/usr/lib/x86_64-linux-gnu:/usr/local/lib:/usr/lib
+    volumes:
+      - /sep/scripts:/app/scripts:ro
+      - /sep/research:/app/research:ro
+      - /sep/config:/app/config:ro
+      - /sep/models:/app/models:ro
+      - /sep/bin:/app/bin:ro
+      - /sep/logs/backend:/app/logs
+    depends_on:
+      - valkey
+    ports:
+      - "9105:9105"
+    command: [ "python3", "/app/scripts/trading/regime_agent.py", "--redis", "redis://valkey:6379/0" ]
+
+  frontend:
+    build:
+      context: ./apps/frontend
+    container_name: sep-frontend
+    restart: unless-stopped
+    environment:
+      API_URL: "https://mxbikes.xyz"
+      SERVER_NAME: "mxbikes.xyz"
+      BACKEND_UPSTREAM: "http://backend:8000"
+      WS_UPSTREAM: "http://backend:8000"
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - /etc/letsencrypt:/etc/letsencrypt:ro
+      - /var/www/certbot:/var/www/certbot:ro
+    depends_on:
+      - backend
+
+  streamer:
+    build:
+      context: .
+      dockerfile: Dockerfile.backend
+    container_name: sep-streamer
+    restart: unless-stopped
+    env_file:
+      - .env.hotband
+      - OANDA.env
+    environment:
+      VALKEY_URL: "${VALKEY_URL:-redis://valkey:6379/0}"
+      HOTBAND_PAIRS: "${HOTBAND_PAIRS:-EUR_USD,GBP_USD,USD_JPY,AUD_USD,USD_CHF,USD_CAD,NZD_USD}"
+      CANDLE_STREAM_INTERVAL: "${CANDLE_STREAM_INTERVAL:-2}"
+      CANDLE_STREAM_RECENT_COUNT: "${CANDLE_STREAM_RECENT_COUNT:-180}"
+      CANDLE_STREAM_MAX_ENTRIES: "${CANDLE_STREAM_MAX_ENTRIES:-5000}"
+    volumes:
+      - /sep/scripts:/app/scripts:ro
+      - /sep/config:/app/config:ro
+    depends_on:
+      - valkey
+    command:
+      - "/bin/sh"
+      - "-c"
+      - >-
+        python3 /app/scripts/tools/stream_candles.py --redis "${VALKEY_URL:-redis://valkey:6379/0}" --granularity "${CANDLE_STREAM_GRANULARITY:-S5}" --interval "${CANDLE_STREAM_INTERVAL:-2}" --recent-count "${CANDLE_STREAM_RECENT_COUNT:-500}" --max-entries "${CANDLE_STREAM_MAX_ENTRIES:-50000}" --instruments "EUR_USD,GBP_USD,USD_JPY,USD_CHF,AUD_USD,USD_CAD,NZD_USD"
+
+volumes:
+  valkey-data:
+    driver: local

@@ -1,0 +1,176 @@
+{
+  "id": null,
+  "title": "Telemetry Optimizer Overview",
+  "timezone": "browser",
+  "schemaVersion": 39,
+  "version": 1,
+  "refresh": "10s",
+  "panels": [
+    {
+      "id": 1,
+      "type": "timeseries",
+      "title": "Efficiency vs Actions",
+      "gridPos": { "x": 0, "y": 0, "w": 12, "h": 9 },
+      "targets": [
+        {
+          "expr": "telemetry_efficiency_gh_per_j{rig=\"$rig\"}",
+          "legendFormat": "GH/J",
+          "interval": ""
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "none",
+          "thresholds": { "mode": "absolute", "steps": [ { "value": null, "color": "green" } ] }
+        },
+        "overrides": []
+      },
+      "options": {
+        "legend": { "displayMode": "table", "placement": "right" },
+        "tooltip": { "mode": "multi" }
+      },
+      "transformations": []
+    },
+    {
+      "id": 2,
+      "type": "timeseries",
+      "title": "SEP Score & Rupture",
+      "gridPos": { "x": 12, "y": 0, "w": 12, "h": 9 },
+      "targets": [
+        {
+          "expr": "telemetry_sep_score{rig=\"$rig\"}",
+          "legendFormat": "sep_score",
+          "interval": ""
+        },
+        {
+          "expr": "telemetry_lambda_hazard{rig=\"$rig\"}",
+          "legendFormat": "lambda_hazard",
+          "interval": ""
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "options": {
+        "legend": { "displayMode": "table", "placement": "right" },
+        "tooltip": { "mode": "multi" }
+      }
+    },
+    {
+      "id": 3,
+      "type": "timeseries",
+      "title": "Rejects and Latency",
+      "gridPos": { "x": 0, "y": 9, "w": 12, "h": 9 },
+      "targets": [
+        {
+          "expr": "telemetry_reject_rate{rig=\"$rig\"}",
+          "legendFormat": "reject_rate",
+          "interval": ""
+        },
+        {
+          "expr": "telemetry_latency_budget_ms{rig=\"$rig\"}",
+          "legendFormat": "latency_budget",
+          "interval": ""
+        }
+      ],
+      "fieldConfig": { "defaults": { "unit": "short" }, "overrides": [] },
+      "options": {
+        "legend": { "displayMode": "table", "placement": "right" },
+        "tooltip": { "mode": "multi" }
+      }
+    },
+    {
+      "id": 4,
+      "type": "timeseries",
+      "title": "Thermals & Power",
+      "gridPos": { "x": 12, "y": 9, "w": 12, "h": 9 },
+      "targets": [
+        {
+          "expr": "telemetry_temp_core_c{rig=\"$rig\"}",
+          "legendFormat": "temp_core_c",
+          "interval": ""
+        },
+        {
+          "expr": "telemetry_power_w{rig=\"$rig\"}",
+          "legendFormat": "power_w",
+          "interval": ""
+        }
+      ],
+      "fieldConfig": {
+        "defaults": { "unit": "short" },
+        "overrides": []
+      },
+      "options": {
+        "legend": { "displayMode": "table", "placement": "right" },
+        "tooltip": { "mode": "multi" }
+      }
+    },
+    {
+      "id": 5,
+      "type": "stat",
+      "title": "Auto-Tune Actions",
+      "gridPos": { "x": 0, "y": 18, "w": 12, "h": 6 },
+      "targets": [
+        {
+          "expr": "increase(telemetry_action_total{rig=\"$rig\"}[$__range])",
+          "legendFormat": "{{actuator}} (Δ={{delta}})",
+          "interval": ""
+        }
+      ],
+      "options": {
+        "reduceOptions": { "calcs": [ "sum" ], "fields": "", "values": false },
+        "orientation": "horizontal",
+        "textMode": "value",
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto"
+      }
+    },
+    {
+      "id": 6,
+      "type": "state-timeline",
+      "title": "Rupture Class",
+      "gridPos": { "x": 12, "y": 18, "w": 12, "h": 6 },
+      "targets": [
+        {
+          "expr": "telemetry_rupture_class{rig=\"$rig\"}",
+          "legendFormat": "{{class}}",
+          "interval": ""
+        }
+      ],
+      "options": {
+        "mergeValues": true,
+        "rowHeight": 0.9,
+        "showValue": "never"
+      }
+    }
+  ],
+  "templating": {
+    "list": [
+      {
+        "type": "query",
+        "name": "rig",
+        "label": "Rig",
+        "query": "label_values(telemetry_sep_score, rig)",
+        "refresh": 1,
+        "includeAll": false
+      }
+    ]
+  },
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": "-- Grafana --",
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgb(0, 211, 255)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  }
+}

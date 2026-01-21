@@ -1,0 +1,13 @@
+OmniDoc sample transcript describing a synthetic benchmark page used to validate the manifold
+compression pipeline. It mirrors the format expected by OmniDocBench with headings, paragraphs,
+numeric references, and short bullet-style sentences that challenge the structural encoder.
+
+Section 1 introduces the dataset assumptions and lists the instrumentation required to reproduce
+benchmarks. Section 2 enumerates the sliding window parameters: window_bytes = 256, stride_bytes = 192,
+precision = 2. Section 3 discusses evaluation criteria, including compression ratio, recall, precision,
+and false-positive rate.
+
+The closing paragraphs revisit the motivation for structural signatures in lieu of optical tokens. The
+goal is to demonstrate that repetition counts and hazard thresholds allow us to validate page content
+without retaining the full textual payload. This mirrors the "optical compression" narrative but grounds
+it entirely in SEP's manifold mapping technique.

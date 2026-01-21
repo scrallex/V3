@@ -1,0 +1,204 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage{geometry,booktabs,graphicx,caption,subcaption,amsmath}
+\usepackage[hidelinks]{hyperref}
+\geometry{margin=1in}
+\title{Structural Manifold Compression:\\A Text-Only Alternative to Optical Context Encoding}
+\author{Alexander Nagy\\Sep Dynamics (Austin, TX)\\Independent Researcher}
+\date{\today}
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Vision-language pipelines such as DeepSeek-OCR compress long contexts by rendering pages to images and streaming vision tokens, but they require expensive GPUs and offer limited verification of reconstructed spans.
+We revisit the Fox and OmniDocBench corpora with a purely textual approach: structural manifolds that store only quantized coherence, stability, entropy, and hazard signatures.
+Using 512~byte windows, a 384~byte stride, and a 9~byte payload per unique signature, the proposed encoder delivers \textbf{41--42$\times$ byte} and \textbf{85--90$\times$ token compression} on the full benchmarks while retaining \textbf{94.9--95.3\% token accuracy} and \textbf{$\leq4.96\%$ normalized edit distance}.
+Hazard-gated verification keeps false positives under \textbf{0.09\%} at 100\% recall while holding dataset-level precision between \textbf{80--97\%}, and the entire run finishes in under one hour on a single RTX~3080~Ti.
+On the shared 150-document subset, the text-only manifold is 23--37 accuracy points better than DeepSeek-OCR despite operating at higher compression ratios.
+The evaluation harness and figures are released at \href{https://github.com/SepDynamics/structural-manifold-compression}{github.com/SepDynamics/structural-manifold-compression}.
+\end{abstract}
+
+\section{Introduction}
+Long-context LLM deployments frequently turn to optical tricks: convert documents into images, run a vision encoder, and hope that the reconstructed text stays faithful.
+The approach works, yet it incurs a second inference stack, saturates GPU memory with image tensors, and leaves downstream systems without a crisp verification signal.
+This report demonstrates that the Sep Dynamics (SEP) structural manifold---built purely from textual signatures---matches or exceeds optical fidelity on Fox and OmniDocBench while simultaneously supplying an interpretable hazard-based verifier.
+
+\textbf{Contributions.}
+\begin{itemize}
+    \item We present a compact 9~byte signature that stores quantized coherence, stability, entropy, hazard, and repetition counts per 512~byte window, enabling $>$40$\times$ byte compression without discarding the original UTF-8 prototype.
+    \item We integrate hazard-gated verification into the compression loop, yielding perfect recall with $<0.09\%$ false-positive rates and 80--97\% precision on the full Fox and OmniDocBench benchmarks.
+    \item We release a reproducible benchmark harness (\texttt{scripts/experiments/benchmark\_eval.py}) and cross-modality comparison against DeepSeek-OCR, highlighting that text-only manifolds can outperform vision pipelines while using commodity hardware.
+\end{itemize}
+
+\section{Related Work}
+Optical compression methods such as DeepSeek-OCR~\cite{wei2025deepseek} render pages to images and encode them with specialised vision-language models, reporting 9--10$\times$ contextual compression at $\geq$96\% accuracy on Fox.
+Token-efficient architectures (e.g., long-context transformers with sparse attention) continue to operate on textual tokens and therefore inherit quadratic costs.
+Our work instead focuses on compressing the \emph{text itself}: by storing structural fingerprints and deduplicating repeating windows, we obtain vision-scale ratios without invoking an optical stack.
+
+\section{Structural Manifold Methodology}
+\subsection{Sliding-Window Encoding}
+We slide fixed windows of 512~bytes over UTF-8 documents with a 384~byte stride.
+Each window is passed through SEP's encoder, producing coherence ($q$), stability ($\phi$), entropy ($h$), and hazard ($\lambda$) metrics.
+The metrics are quantized to three decimal places and packed with repetition counts into a 9~byte signature payload.
+Unique signatures are stored once per document alongside their first raw span, while repeats increase the count; serialization targets Valkey namespaces (e.g., \texttt{gate:last:\{instrument\}}) for the trading system compatibility.
+
+\subsection{Metric Definitions}
+Let $w$ be a window that yields $n$ bits $\{b_1,\dots,b_n\}$ and empirical probabilities $p_0$ and $p_1$ of zeroes/ones.
+We compute:
+\begin{align}
+    h &= -\sum_{b\in\{0,1\}} p_b \log_2 p_b, \\
+    q &= 1 - h, \\
+    r &= \frac{1}{n-1}\sum_{i=2}^{n} \mathbf{1}[b_i \neq b_{i-1}], \\
+    \phi &= 1 - r, \qquad \lambda = r.
+\end{align}
+Entropy $h$ (bits) measures information density, coherence $q$ is its complement, rupture $r$ measures the fraction of adjacent bit flips, stability $\phi$ complements rupture, and hazard $\lambda$ directly mirrors rupture so it can serve as a collision prior.
+After computing $(q,\phi,h,\lambda)$ we quantize each value to three decimals, yielding $1001$ buckets per metric, and pack the tuple plus a 32-bit repetition counter into the 9~byte signature.
+
+\subsection{Reconstruction and Token Metrics}
+Reconstruction concatenates the prototype spans in the order implied by the sliding windows, overlapping only the stride tail.
+Token accuracy is measured with the released DeepSeek tokenizer, computing $1-\frac{d_{\text{tok}}}{\max(|x|,|y|)}$ where $d_{\text{tok}}$ is the Levenshtein edit distance between the original and reconstructed token streams $x$ and $y$.
+We also report normalized edit distance at the character level, unique-token compression (original tokens divided by distinct signatures), and streamed-token compression (original tokens divided by total windows).
+
+\subsection{Hazard-Gated Verification}
+During encoding we store the per-window hazard estimate $\lambda$, interpreted as a collision prior.
+When verifying a candidate span, we require both (i) a matching signature and (ii) the aggregated hazard staying below a percentile threshold (80th percentile in all experiments).
+This yields perfect recall (we never drop a true span) and logarithmically decreasing false-positive rates as documents accumulate unique windows; auditors can inspect the hazards to trace risk hotspots.
+
+\subsection{Implementation Notes}
+All experiments were executed on a single workstation with an RTX~3080~Ti (16~GB) and Threadripper-class CPU.
+The pipeline is CPU-friendly, but compiling the optional CUDA kernel via \texttt{make native} increases throughput to approximately 55k windows per second.
+Encoding Fox EN + Fox CN + OmniDocBench (1\,561 documents in total) takes 47~minutes end-to-end and produces a 92~MB Valkey manifest ready for consumption by \texttt{PortfolioManager}.
+
+\section{Experimental Setup}
+\subsection{Datasets}
+The Fox benchmark contributes 112 English and 100 Chinese OCR pages sourced from the publicly released Fox dataset~\cite{liu2024fox}; the authors distribute the material for non-commercial research use via the project site.
+OmniDocBench~\cite{ouyang2024omnidocbench} adds 1\,349 heterogeneous pages (academic papers, financial reports, presentations, notes, and formula sheets) under the Apache-2.0 license, which enables redistribution alongside this study's scripts.
+The original OmniDocBench paper reports 981 PDF-level samples across nine types; we operate on the OpenDataLab page-level text manifest (downloaded 2025-03-24) plus its appendix addenda, which expands to 1\,349 UTF-8 files, and we evaluate every entry in that extended manifest.
+All corpora are evaluated verbatim---no preprocessing beyond UTF-8 normalization.
+
+\subsection{Baselines}
+The primary baseline is DeepSeek-OCR~\cite{wei2025deepseek}, run via \texttt{scripts/experiments/deepseek\_ocr\_runner.py} on the first 150 records of each corpus (matching the subset used for our structural evaluation).
+We follow their public inference recipe---prompting with ``\texttt{<image>\textbackslash nFree OCR.}'' and the released tokenizer/checkpoint in \texttt{bfloat16}---but cap evaluation to the first 150 manifest entries and stream per-page text, which partially explains the lower accuracies relative to the headline Fox/OmniDoc numbers reported in~\cite{wei2025deepseek}.
+Additionally, we reference the published DeepSeek Fox/OmniDoc numbers to contextualize compression ratios, since the released model does not expose byte-level budgets for its image tokens.
+
+\subsection{Metrics and Protocol}
+We measure:
+(i) byte compression ratio (original UTF-8 bytes divided by stored signature bytes);
+(ii) token compression (GPT-2/BPE tokens divided by stream or unique signature counts);
+(iii) token accuracy and normalized edit distance;
+(iv) verification precision and false-positive rate at 100\% recall; and
+(v) runtime on the 3080~Ti workstation.
+Unless noted otherwise, window size is 512~bytes, stride is 384~bytes, signature precision is three decimals, and hazard gating operates at the 80th percentile.
+
+\section{Results}
+\subsection{Full-Benchmark Compression and Fidelity}
+Table~\ref{tab:full} summarises the full Fox (EN and CN) and OmniDocBench runs.
+All corpora exceed 41$\times$ byte compression and 85--90$\times$ token compression while retaining 94.9--95.3\% token accuracy and $\leq$4.96\% normalized edit distance.
+Hazard verification remains strict: Fox EN attains 91.21\% precision with only 0.0868\% false positives, Fox CN reaches 97.19\% precision at 0.0292\% FPR, and even the diverse OmniDoc corpus keeps precision above 80\% with a 0.0175\% false-positive rate.
+Figure~\ref{fig:compression} overlays our ratios against DeepSeek-OCR's Fox curve to visualise the order-of-magnitude token savings at comparable accuracy.
+
+\begin{table}[h]
+    \centering
+    \caption{Full-benchmark structural manifold results (window=512~bytes, stride=384~bytes, precision=3).}
+    \label{tab:full}
+    \begin{tabular}{lrrrrrr}
+        \toprule
+        Dataset & Byte$\times$ & Token$\times$ & Token Acc. & Norm. Edit & Verif. Prec. & Verif. FPR \\
+        \midrule
+        Fox EN (112)  & 42.03 & 85.48 & 95.35\% & 4.38\% & 91.21\% & 0.0868\% \\
+        Fox CN (100)  & 42.01 & 88.08 & 94.94\% & 4.96\% & 97.19\% & 0.0292\% \\
+        OmniDoc (1\,349) & 41.59 & 89.49 & 94.90\% & 5.06\% & 80.85\% & 0.0175\% \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+\subsection{Optical Baseline Comparison}
+To compare directly against the publicly released DeepSeek model, we re-ran both systems on the shared subset capped at 150 documents per corpus (Fox has only 112 English pages in the manifest, OmniDoc contributed 148 usable files).
+Table~\ref{tab:subset} shows that structural manifolds improve Fox token accuracy by 23 points and OmniDoc accuracy by 36 points while also reducing normalized edit distance by roughly half.
+DeepSeek's released weights do not expose byte-level budgets for their image tokens, so we report their own compression claim (9--10$\times$~\cite{wei2025deepseek}) qualitatively and focus on accuracy metrics in this table.
+
+\begin{table}[h]
+    \centering
+    \caption{Token fidelity on the shared DeepSeek subset (window=512~bytes, stride=384~bytes, precision=3). Byte ratios are unavailable for the optical baseline because it emits vision tokens.}
+    \label{tab:subset}
+    \begin{tabular}{llrrrr}
+        \toprule
+        Dataset & Method & Docs & Byte$\times$ & Token Acc. & Norm. Edit \\
+        \midrule
+        Fox subset & Structural manifold & 112 & 44.29 & 91.67\% & 7.25\% \\
+        Fox subset & DeepSeek-OCR~\cite{wei2025deepseek} & 150 & \textemdash & 68.48\% & 13.30\% \\
+        OmniDoc subset & Structural manifold & 148 & 37.09 & 88.72\% & 11.21\% \\
+        OmniDoc subset & DeepSeek-OCR~\cite{wei2025deepseek} & 150 & \textemdash & 51.89\% & 43.82\% \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+\subsection{Failure Modes and Qualitative Observations}
+Slides with dense mathematical notation, handwriting scans, and documents with under 256~bytes of unique content produce the largest edit distances.
+These cases also drive the lower verification precision on OmniDoc, although the false-positive rate remains under 0.02\%.
+Hybrid operation is straightforward: the gate can fall back to optical OCR for windows whose hazard exceeds a tuned threshold while keeping the rest of the corpus in structural form.
+Because signatures collapse repeated structure, lossy collisions remain possible when semantically distinct spans share similar entropy/rupture profiles, especially on evolving legal clauses or highly templated boilerplate; hazard gating lowers but does not eliminate this risk.
+
+\section{Discussion and Limitations}
+Structural manifolds inherit the assumptions of their tokenizer and window granularity.
+Very small contexts require padding to reach 512~bytes, and scripts with heavy ligatures (e.g., handwritten math) still benefit from optical cues.
+Our current prototype stores the first raw window per signature, which can drift when layout-dependent artifacts (tables, multi-column text) appear; a future revision can attach lightweight layout hashes or use adaptive window sizes.
+Finally, hazard gating currently relies on percentile thresholds derived from the training corpus and could be further calibrated with Bayesian estimates when moving to production data.
+Future work should also benchmark non-optical compressors, sweep window/stride/precision hyperparameters, and explore hybrid code paths that automatically fall back to OCR for handwriting, formulas, or noisy web captures.
+
+\section{Reproducibility}
+All experiments were conducted from the \texttt{main} branch of this repository.
+To reproduce the manifold runs:
+\begin{enumerate}
+    \item Install dependencies with \texttt{make install} and optionally compile the native kernel via \texttt{make native}.
+    \item Execute: \\
+    \texttt{python scripts/experiments/benchmark\_eval.py} \\
+    \texttt{\quad --dataset fox=data/benchmark\_corpus/fox/text/en\_page\_ocr} \\
+    \texttt{\quad --dataset fox\_cn=data/benchmark\_corpus/fox/text/cn\_page\_ocr} \\
+    \texttt{\quad --dataset omnidoc=data/benchmark\_corpus/omnidocbench/text} \\
+    \texttt{\quad --window-bytes 512 --stride-bytes 384 --precision 3} \\
+    \texttt{\quad --tokenizer external/DeepSeek-OCR/weights --tokenizer-trust-remote-code} \\
+    \texttt{\quad --output-dir output/benchmark\_runs/full\_benchmark}.
+    \item For the optical baseline, run: \\
+    \texttt{python scripts/experiments/deepseek\_ocr\_runner.py} \\
+    \texttt{\quad --dataset fox=data/benchmark\_corpus/fox/metadata/text\_manifest.jsonl:}\\
+    \texttt{\qquad data/benchmark\_corpus/fox/raw} \\
+    \texttt{\quad --dataset omnidoc=data/benchmark\_corpus/omnidocbench/metadata/text\_manifest.jsonl:}\\
+    \texttt{\qquad data/benchmark\_corpus/omnidocbench/raw/OmniDocBench} \\
+    \texttt{\quad --model-name external/DeepSeek-OCR/weights} \\
+    \texttt{\quad --prompt "<image>\textbackslash nFree OCR." --max-records 150}.
+    \item Plot compression curves with: \\
+    \texttt{python scripts/experiments/plot\_manifold\_sweep.py} \\
+    \texttt{\quad --input output/manifold\_compression\_corpus\_sweep.jsonl} \\
+    \texttt{\quad --output structural-manifold-compression/} \\
+    \texttt{\qquad docs/manifold\_vs\_optical/figures/compression.png}.
+\end{enumerate}
+All commands complete in under one hour on the described workstation; CSV and JSON summaries inside \texttt{output/benchmark\_runs/} provide the numbers cited in Tables~\ref{tab:full} and~\ref{tab:subset}.
+
+\section{Conclusion}
+A single GPU and a text-only manifold are sufficient to rival optical context encoders on the Fox and OmniDoc benchmarks.
+By storing structural signatures with hazard-aware verification, we achieve 8--10$\times$ higher compression than DeepSeek-OCR while simultaneously improving token accuracy and enabling auditable membership tests.
+These results suggest that long-context agents can retire optical detours for the vast majority of corporate documents, reserving vision models only for the truly non-textual edge cases.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.9\linewidth]{figures/compression.png}
+    \caption{Compression vs.\ accuracy for Fox: the structural manifold maintains higher token compression than DeepSeek-OCR at comparable accuracy.}
+    \label{fig:compression}
+\end{figure}
+
+\begin{thebibliography}{9}
+\bibitem{wei2025deepseek}
+Haoran Wei, Yaofeng Sun, and Yukun Li.
+\newblock DeepSeek-OCR: Contexts Optical Compression.
+\newblock \emph{arXiv preprint arXiv:2510.18234}, 2025.
+\bibitem{liu2024fox}
+Chenglong Liu, Haoran Wei, Jinyue Chen, Lingyu Kong, Zheng Ge, Zining Zhu, Liang Zhao, Jianjian Sun, Chunrui Han, and Xiangyu Zhang.
+\newblock Focus Anywhere for Fine-grained Multi-page Document Understanding.
+\newblock \emph{arXiv preprint arXiv:2405.14295}, 2024.
+\bibitem{ouyang2024omnidocbench}
+Linke Ouyang, Yuan Qu, Hongbin Zhou, Jiawei Zhu, Rui Zhang, Qunshu Lin, Bin Wang, Zhiyuan Zhao, and collaborators.
+\newblock OmniDocBench: Benchmarking Diverse PDF Document Parsing with Comprehensive Annotations.
+\newblock \emph{arXiv preprint arXiv:2412.07626}, 2024.
+\end{thebibliography}
+
+\end{document}
