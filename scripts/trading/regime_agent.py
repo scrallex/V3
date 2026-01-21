@@ -129,7 +129,7 @@ class RegimeAgent:
         row = df.iloc[-1]
 
         # Inference
-        # MATCHING TRAINING FEATURES EXACTLY
+        # MATCHING REPO MODELS (7 features)
         feat_cols = [
             "stability",
             "entropy",
@@ -159,6 +159,7 @@ class RegimeAgent:
             "prob": prob,
             "regime": "SafeRegime" if prob > 0.5 else "Hazel",
             "hazard": float(row.get("lambda_hazard", 0)),
+            "hazard_norm": float(row.get("lambda_hazard", 0)), # Frontend Compat
             "source": "regime_agent",
             "admit": True,
         }
