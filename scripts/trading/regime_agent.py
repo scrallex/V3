@@ -139,15 +139,9 @@ class RegimeAgent:
         #  "structure_reynolds_ratio", "structure_spectral_lowf_share"]
 
         feat_cols = [
-            "stability",
-            "entropy",
-            "coherence",
-            "lambda_hazard",
-            "rsi",
-            "volatility",
-            "dist_ema60",
-            "structure_reynolds_ratio",
-            "structure_spectral_lowf_share",
+            "coherence", "entropy", "stability", 
+            "coh_mean_5", "ent_mean_5", "coh_std_15", 
+            "vol_5"
         ]
 
         # Ensure all columns exist (fill 0)
@@ -256,9 +250,6 @@ class RegimeAgent:
                     "coherence": m.get("coherence", 0),
                     "stability": m.get("stability", 0),
                     "entropy": m.get("entropy", 0),
-                    "lambda_hazard": c.get("lambda_hazard", 0),
-                    "structure_reynolds_ratio": m.get("reynolds_ratio", 0),
-                    "structure_spectral_lowf_share": m.get("spectral_lowf_share", 0),
                 }
             )
         df_sfi = pd.DataFrame(recs)
@@ -274,30 +265,55 @@ class RegimeAgent:
 
         # Techncials
         df["close"] = df["price"].astype(float)
+        
+        # --- Feature Engineering (Research Lab Standard) ---
+        # Features: ["coherence", "entropy", "stability", "coh_mean_5", "ent_mean_5", "coh_std_15", "vol_5"]
+        
+        # 1. Resample to M1 implies we treat these S5 candles as a timeseries. 
+        # But wait, Training was done on M1 resampled data.
+        # This agent runs on S5. 
+        # If I compute rolling(5) on S5 data, it spans 25 seconds.
+        # In Training, rolling(5) on M1 data spanned 5 minutes.
+        # CRITICAL DISTINCTION:
+        # The Research Lab Resampled S5 -> M1, then calculated features.
+        # If I want to match the model (which expects 5-minute trends), I CANNOT feed it 25-second trends (S5 row).
+        # I MUST Resample this execution buffer to M1 first!
+        
+        df["datetime"] = pd.to_datetime(df["timestamp_ns"], unit="ns")
+        df.set_index("datetime", inplace=True)
+        
+        agg = {
+            "close": "last",
+            "coherence": "last",
+            "entropy": "last",
+            "stability": "last"
+        }
+        
+        # Resample to M1 (1Min)
+        df_m1 = df.resample("1min").agg(agg).ffill() # ffill to handle gaps
+        
+        if len(df_m1) < 20:
+             # Not enough history for M1 features
+             return None
 
-        # RSI
-        delta = df["close"].diff()
-        gain = (delta.where(delta > 0, 0)).rolling(14).mean()
-        loss = (-delta.where(delta < 0, 0)).rolling(14).mean()
-        rs = gain / loss
-        df["rsi"] = 100 - (100 / (1 + rs))
-
-        # Vol
-        df["log_ret"] = np.log(df["close"] / df["close"].shift(1))
-        df["volatility"] = df["log_ret"].rolling(20).std()
-
-        # EMA
-        ema = df["close"].ewm(span=60).mean()
-        df["dist_ema60"] = (df["close"] - ema) / ema
-
-        df.fillna(0, inplace=True)
-        return df
+        # Features
+        df_m1["coh_mean_5"] = df_m1["coherence"].rolling(5).mean()
+        df_m1["ent_mean_5"] = df_m1["entropy"].rolling(5).mean()
+        df_m1["coh_std_15"] = df_m1["coherence"].rolling(15).std()
+        
+        df_m1["returns"] = df_m1["close"].pct_change()
+        df_m1["vol_5"] = df_m1["returns"].rolling(5).std()
+        
+        df_m1.dropna(inplace=True)
+        return df_m1
 
 
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--redis", default="redis://localhost:6379/0")
-    parser.add_argument("--pairs", default="EUR_USD,GBP_USD,USD_JPY")
+    parser.add_argument(
+        "--pairs", default="EUR_USD,GBP_USD,USD_JPY,USD_CHF,AUD_USD,USD_CAD,NZD_USD"
+    )
     args = parser.parse_args()
 
     agent = RegimeAgent(args.redis, args.pairs.split(","))
