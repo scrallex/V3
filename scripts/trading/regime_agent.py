@@ -211,7 +211,7 @@ class RegimeAgent:
                 os.unlink(dst)
 
     def compute_features(self, candles, sfi_signals):
-        # Align
+        # 1. Align S5
         df_p = pd.DataFrame(candles)
         # SFI
         recs = []
@@ -238,26 +238,45 @@ class RegimeAgent:
             direction="backward",
         )
 
-        # Technicals (Matches 03_train_model.py)
-        df["close"] = df["price"].astype(float)
+        # 2. Resample to M1 (Correct Time Basis)
+        df["datetime"] = pd.to_datetime(df["timestamp_ns"], unit="ns")
+        df.set_index("datetime", inplace=True)
+        
+        agg = {
+            "price": "last",
+            "coherence": "last",
+            "entropy": "last",
+            "stability": "last",
+            "lambda_hazard": "last"
+        }
+        
+        df_m1 = df.resample("1min").agg(agg)
+        df_m1["close"] = df_m1["price"] # Alias
+        
+        # Ensure continuity (ffill mostly, but dropna if big gap)
+        df_m1.dropna(inplace=True)
+        
+        if len(df_m1) < 60:
+             return None
 
-        # RSI
-        delta = df["close"].diff()
+        # 3. Technicals on M1
+        # RSI (14)
+        delta = df_m1["close"].diff()
         gain = (delta.where(delta > 0, 0)).rolling(14).mean()
         loss = (-delta.where(delta < 0, 0)).rolling(14).mean()
         rs = gain / loss
-        df["rsi"] = 100 - (100 / (1 + rs))
+        df_m1["rsi"] = 100 - (100 / (1 + rs))
 
-        # Vol
-        df["log_ret"] = np.log(df["close"] / df["close"].shift(1))
-        df["volatility"] = df["log_ret"].rolling(20).std()
+        # Volatility (20)
+        df_m1["log_ret"] = np.log(df_m1["close"] / df_m1["close"].shift(1))
+        df_m1["volatility"] = df_m1["log_ret"].rolling(20).std()
 
-        # EMA
-        ema = df["close"].ewm(span=60).mean()
-        df["dist_ema60"] = (df["close"] - ema) / ema
+        # EMA (60)
+        ema = df_m1["close"].ewm(span=60).mean()
+        df_m1["dist_ema60"] = (df_m1["close"] - ema) / ema
 
-        df.fillna(0, inplace=True)
-        return df
+        df_m1.fillna(0, inplace=True)
+        return df_m1
 
 
 def main():
