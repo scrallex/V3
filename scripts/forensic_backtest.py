@@ -103,7 +103,7 @@ class ForensicBacktest:
             if os.path.exists(output_path): os.unlink(output_path)
 
     def resample_and_compute_features(self, df_s5, signals):
-        logger.info("Resampling S5 -> M1 & Computing RAW Features...")
+        logger.info("Computing RAW S5 Features (No Resampling)...")
         
         # 1. Merge S5 Signals
         sig_data = []
@@ -111,10 +111,8 @@ class ForensicBacktest:
             mets = s.get("metrics", {})
             coeffs = s.get("coeffs", {})
             ts = s.get("timestamp_ns", 0)
-            if ts < 10_000_000_000: # Seconds
-                 ts *= 1_000_000_000
-            elif ts < 10_000_000_000_000_000: # Microseconds (16 digits)
-                 ts *= 1_000
+            if ts < 10_000_000_000: ts *= 1_000_000_000
+            elif ts < 10_000_000_000_000_000: ts *= 1_000
             
             sig_data.append({
                 "timestamp_ns": int(ts),
@@ -133,37 +131,27 @@ class ForensicBacktest:
             tolerance=5000000000
         )
         
-        # 2. Resample to M1
-        df_merged["dt"] = pd.to_datetime(df_merged["timestamp_ns"], unit="ns")
-        df_merged.set_index("dt", inplace=True)
+        # USE S5 DATA DIRECTLY
+        df_features = df_merged.copy()
         
-        agg = {
-            "close": "last",
-            "coherence": "last",
-            "entropy": "last",
-            "stability": "last",
-            "lambda_hazard": "last"
-        }
-        df_m1 = df_merged.resample("1min").agg(agg).dropna()
-        
-        # 3. Compute Technicals (RAW, exactly like Live Agent)
-        # RSI 14
-        delta = df_m1["close"].diff()
+        # 3. Compute Technicals (RAW S5)
+        # RSI 14 (on S5 candles)
+        delta = df_features["close"].diff()
         gain = (delta.where(delta > 0, 0)).rolling(14).mean()
         loss = (-delta.where(delta < 0, 0)).rolling(14).mean()
         rs = gain / loss
-        df_m1["rsi"] = 100 - (100 / (1 + rs))
+        df_features["rsi"] = 100 - (100 / (1 + rs))
 
-        # Volatility 20 (Log Returns)
-        df_m1["log_ret"] = np.log(df_m1["close"] / df_m1["close"].shift(1))
-        df_m1["volatility"] = df_m1["log_ret"].rolling(20).std()
+        # Volatility 20 (Log Returns of S5)
+        df_features["log_ret"] = np.log(df_features["close"] / df_features["close"].shift(1))
+        df_features["volatility"] = df_features["log_ret"].rolling(20).std()
 
-        # EMA 60
-        ema = df_m1["close"].ewm(span=60).mean()
-        df_m1["dist_ema60"] = (df_m1["close"] - ema) / ema
+        # EMA 60 (of S5)
+        ema = df_features["close"].ewm(span=60).mean()
+        df_features["dist_ema60"] = (df_features["close"] - ema) / ema
         
-        df_m1.dropna(inplace=True)
-        return df_m1
+        df_features.dropna(inplace=True)
+        return df_features
 
     def run_inference(self, df):
         logger.info("Running Inference (Target: model_EUR_USD.json)...")
