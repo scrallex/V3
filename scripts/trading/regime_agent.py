@@ -86,7 +86,6 @@ class RegimeAgent:
         logger.info("Stopping Agent...")
 
     def process_instrument(self, inst):
-        # Fetch S5 Data
         key = f"md:candles:{inst}:S5"
         raw_data = self.redis.zrange(key, -HISTORY_LEN, -1)
 
@@ -99,7 +98,6 @@ class RegimeAgent:
                 if isinstance(r, bytes):
                     r = r.decode()
                 c = json.loads(r)
-                # Normalize mid price
                 mid = c.get("mid", c)
                 price = float(mid.get("c") if isinstance(mid, dict) else mid)
                 ts = int(c.get("t", 0))
@@ -111,17 +109,17 @@ class RegimeAgent:
         if len(candles) < 100:
             return
 
-        # Check for new candle
         curr_ts = candles[-1]["timestamp_ns"]
         if curr_ts <= self.last_ts[inst]:
             return
 
-        # Run SFI
+        # Run SFI (S5)
         sfi_metrics = self.run_manifold(candles)
         if not sfi_metrics:
             return
 
-        # Feature Engineering (S5 Based)
+        # Feature Engineering (S5)
+        # CRITICAL: Do NOT resample to M1. The models are trained on S5.
         df = self.compute_features(candles, sfi_metrics)
         if df is None or df.empty:
             return
@@ -129,7 +127,6 @@ class RegimeAgent:
         row = df.iloc[-1]
 
         # Inference
-        # MATCHING REPO MODELS (7 features)
         feat_cols = [
             "stability",
             "entropy",
@@ -140,18 +137,15 @@ class RegimeAgent:
             "dist_ema60",
         ]
 
-        # Ensure all columns exist (fill 0)
         input_data = [row.get(f, 0.0) for f in feat_cols]
         X = np.array([input_data])
 
-        # Predict
         prob = float(self.models[inst].predict_proba(X)[:, 1][0])
 
         signal = "NEUTRAL"
-        if prob > 0.55:  # Safety Threshold
+        if prob > 0.55:
             signal = "LONG"
 
-        # Publish
         gate_payload = {
             "instrument": inst,
             "ts_ms": curr_ts // 1_000_000,
@@ -159,7 +153,7 @@ class RegimeAgent:
             "prob": prob,
             "regime": "SafeRegime" if prob > 0.5 else "Hazel",
             "hazard": float(row.get("lambda_hazard", 0)),
-            "hazard_norm": float(row.get("lambda_hazard", 0)), # Frontend Compat
+            "hazard_norm": float(row.get("lambda_hazard", 0)),
             "source": "regime_agent",
             "admit": True,
         }
@@ -211,9 +205,8 @@ class RegimeAgent:
                 os.unlink(dst)
 
     def compute_features(self, candles, sfi_signals):
-        # 1. Align S5
+        # Align
         df_p = pd.DataFrame(candles)
-        # SFI
         recs = []
         for s in sfi_signals:
             m = s.get("metrics", {})
@@ -238,45 +231,26 @@ class RegimeAgent:
             direction="backward",
         )
 
-        # 2. Resample to M1 (Correct Time Basis)
-        df["datetime"] = pd.to_datetime(df["timestamp_ns"], unit="ns")
-        df.set_index("datetime", inplace=True)
-        
-        agg = {
-            "price": "last",
-            "coherence": "last",
-            "entropy": "last",
-            "stability": "last",
-            "lambda_hazard": "last"
-        }
-        
-        df_m1 = df.resample("1min").agg(agg)
-        df_m1["close"] = df_m1["price"] # Alias
-        
-        # Ensure continuity (ffill mostly, but dropna if big gap)
-        df_m1.dropna(inplace=True)
-        
-        if len(df_m1) < 60:
-             return None
+        # S5 Features (NO RESAMPLING)
+        df["close"] = df["price"].astype(float)
 
-        # 3. Technicals on M1
-        # RSI (14)
-        delta = df_m1["close"].diff()
+        # RSI
+        delta = df["close"].diff()
         gain = (delta.where(delta > 0, 0)).rolling(14).mean()
         loss = (-delta.where(delta < 0, 0)).rolling(14).mean()
         rs = gain / loss
-        df_m1["rsi"] = 100 - (100 / (1 + rs))
+        df["rsi"] = 100 - (100 / (1 + rs))
 
-        # Volatility (20)
-        df_m1["log_ret"] = np.log(df_m1["close"] / df_m1["close"].shift(1))
-        df_m1["volatility"] = df_m1["log_ret"].rolling(20).std()
+        # Volatility
+        df["log_ret"] = np.log(df["close"] / df["close"].shift(1))
+        df["volatility"] = df["log_ret"].rolling(20).std()
 
-        # EMA (60)
-        ema = df_m1["close"].ewm(span=60).mean()
-        df_m1["dist_ema60"] = (df_m1["close"] - ema) / ema
+        # EMA
+        ema = df["close"].ewm(span=60).mean()
+        df["dist_ema60"] = (df["close"] - ema) / ema
 
-        df_m1.fillna(0, inplace=True)
-        return df_m1
+        df.fillna(0, inplace=True)
+        return df
 
 
 def main():
