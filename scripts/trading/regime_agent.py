@@ -101,7 +101,7 @@ class RegimeAgent:
                 mid = c.get("mid", c)
                 price = float(mid.get("c") if isinstance(mid, dict) else mid)
                 ts = int(c.get("t", 0))
-                if ts > 0:
+                if ts > 0 and c.get("complete", True):
                     candles.append({"timestamp_ns": ts * 1_000_000, "price": price})
             except:
                 continue
@@ -156,14 +156,18 @@ class RegimeAgent:
             "hazard_norm": float(row.get("lambda_hazard", 0)),
             "source": "regime_agent",
             "admit": True,
+            "volatility": float(row.get("volatility", 0)),
+            "rsi": float(row.get("rsi", 0)),
         }
 
         self.redis.set(f"gate:last:{inst}", json.dumps(gate_payload))
         self.last_ts[inst] = curr_ts
 
         logger.info(
-            f"{inst} | Haz={row.get('lambda_hazard',0):.2f} | Prob={prob:.2f} | {signal}"
+             f"{inst} | Haz={row.get('lambda_hazard',0):.2f} | Prob={prob:.2f} | {signal}"
         )
+        if inst == "EUR_USD":
+             logger.info(f"DEBUG {inst} Features: Vol={row.get('volatility', 0):.2e}, RSI={row.get('rsi', 0):.2f}")
 
     def run_manifold(self, candles):
         with tempfile.NamedTemporaryFile(

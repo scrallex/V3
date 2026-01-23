@@ -58,6 +58,18 @@ async function updateState() {
             if (info.signal === 'SHORT') signalVal.classList.add('short');
             if (!info.signal) signalVal.classList.add('neutral');
 
+            // Update Prob
+            const probVal = card.querySelector('.prob-value');
+            if (probVal) probVal.textContent = (info.prob || 0).toFixed(4);
+
+            // Update RSI
+            const rsiVal = card.querySelector('.rsi-value');
+            if (rsiVal) rsiVal.textContent = (info.rsi || 0).toFixed(1);
+
+            // Update Vol
+            const volVal = card.querySelector('.vol-value');
+            if (volVal) volVal.textContent = (info.volatility || 0).toExponential(2);
+
 
             // Update Regime
             const regimeVal = card.querySelector('.regime-value');
@@ -96,12 +108,17 @@ async function updateState() {
 
         // Update Positions Table
         const tbody = document.getElementById('positions-body');
-        const positions = posData.positions || [];
+        // Filter active only
+        const activePositions = (posData.positions || []).filter(pos => {
+            const longUnits = Number(pos.long?.units || 0);
+            const shortUnits = Number(pos.short?.units || 0);
+            return longUnits !== 0 || shortUnits !== 0;
+        });
 
-        if (positions.length === 0) {
+        if (activePositions.length === 0) {
             tbody.innerHTML = '<tr class="empty-state"><td colspan="6" style="text-align:center; padding: 2rem; color: var(--text-secondary);">No active positions</td></tr>';
         } else {
-            tbody.innerHTML = positions.map(pos => {
+            tbody.innerHTML = activePositions.map(pos => {
                 const side = Number(pos.long?.units || 0) > 0 ? 'LONG' : (Number(pos.short?.units || 0) > 0 ? 'SHORT' : 'N/A');
                 const units = side === 'LONG' ? pos.long.units : (side === 'SHORT' ? pos.short.units : 0);
                 const avgPrice = side === 'LONG' ? pos.long.averagePrice : (side === 'SHORT' ? pos.short.averagePrice : 0);

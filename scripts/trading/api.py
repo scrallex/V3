@@ -87,6 +87,27 @@ class TradingAPIHandler(BaseHTTPRequestHandler):
             payload = self.svc.price_history(instrument, granularity=granularity, count=count) if self.svc else {"points": []}
             self._send_json(payload)
             return
+        if parsed.path == "/api/account":
+            payload = self.svc.get_oanda_account_info() if self.svc else {}
+            # OANDA response already wraps in "account", so send direct
+            self._send_json(payload)
+            return
+        if parsed.path == "/api/positions":
+            # OANDA positions returns a list, wrap in dict "positions" if not already?
+            # get_oanda_positions calls connector.positions() -> returns list.
+            # So {"positions": payload} IS correct for positions.
+            # But let's check oanda.py positions().
+            # oanda.py: return payload.get("positions", [])
+            # So payload is LIST.
+            # api.py: self._send_json({"positions": payload}) -> {"positions": [list]}. Correct.
+            # Wait. frontend JS: posData.positions.
+            # So positions was correct?
+            # User said "Unrealized PnL $NaN". That's account data.
+            # "Active Positions" table empty or just not mentioned as broken. "everything... broken".
+            # I will only change account.
+            payload = self.svc.get_oanda_positions() if self.svc else []
+            self._send_json({"positions": payload})
+            return
         self._send_json({"error": "not_found"}, status=404)
 
     def do_POST(self) -> None:  # pragma: no cover - exercised in integration flow
