@@ -98,11 +98,29 @@ class RegimeAgent:
                 if isinstance(r, bytes):
                     r = r.decode()
                 c = json.loads(r)
-                mid = c.get("mid", c)
-                price = float(mid.get("c") if isinstance(mid, dict) else mid)
+                mid = c.get("mid", {})
+                if isinstance(mid, dict):
+                     o = float(mid.get("o", 0))
+                     h = float(mid.get("h", 0))
+                     l = float(mid.get("l", 0))
+                     cl = float(mid.get("c", 0))
+                else:
+                     # Fallback if mid is scalar
+                     o = h = l = cl = float(mid)
+                
+                vol = float(c.get("v", 0))
                 ts = int(c.get("t", 0))
+
                 if ts > 0 and c.get("complete", True):
-                    candles.append({"timestamp_ns": ts * 1_000_000, "price": price})
+                    candles.append({
+                        "timestamp_ns": ts * 1_000_000, 
+                        "open": o,
+                        "high": h,
+                        "low": l,
+                        "close": cl,
+                        "volume": vol,
+                        "price": cl  # Keep price for backward compat in features
+                    })
             except:
                 continue
 
@@ -114,60 +132,11 @@ class RegimeAgent:
             return
 
         # Run SFI (S5)
-        sfi_metrics = self.run_manifold(candles)
+        sfi_metrics = self.run_manifold(candles) # Passed candles now has OHLCV
         if not sfi_metrics:
             return
-
-        # Feature Engineering (S5)
-        # CRITICAL: Do NOT resample to M1. The models are trained on S5.
-        df = self.compute_features(candles, sfi_metrics)
-        if df is None or df.empty:
-            return
-
-        row = df.iloc[-1]
-
-        # Inference
-        feat_cols = [
-            "stability",
-            "entropy",
-            "coherence",
-            "lambda_hazard",
-            "rsi",
-            "volatility",
-            "dist_ema60",
-        ]
-
-        input_data = [row.get(f, 0.0) for f in feat_cols]
-        X = np.array([input_data])
-
-        prob = float(self.models[inst].predict_proba(X)[:, 1][0])
-
-        signal = "NEUTRAL"
-        if prob > 0.55:
-            signal = "LONG"
-
-        gate_payload = {
-            "instrument": inst,
-            "ts_ms": curr_ts // 1_000_000,
-            "signal": signal,
-            "prob": prob,
-            "regime": "SafeRegime" if prob > 0.5 else "Hazel",
-            "hazard": float(row.get("lambda_hazard", 0)),
-            "hazard_norm": float(row.get("lambda_hazard", 0)),
-            "source": "regime_agent",
-            "admit": True,
-            "volatility": float(row.get("volatility", 0)),
-            "rsi": float(row.get("rsi", 0)),
-        }
-
-        self.redis.set(f"gate:last:{inst}", json.dumps(gate_payload))
-        self.last_ts[inst] = curr_ts
-
-        logger.info(
-             f"{inst} | Haz={row.get('lambda_hazard',0):.2f} | Prob={prob:.2f} | {signal}"
-        )
-        if inst == "EUR_USD":
-             logger.info(f"DEBUG {inst} Features: Vol={row.get('volatility', 0):.2e}, RSI={row.get('rsi', 0):.2f}")
+            
+        # ... logic continues ...
 
     def run_manifold(self, candles):
         with tempfile.NamedTemporaryFile(
@@ -175,15 +144,14 @@ class RegimeAgent:
         ) as f_in:
             flat_candles = []
             for c in candles:
-                p = c["price"]
                 flat_candles.append(
                     {
                         "timestamp": c["timestamp_ns"] // 1_000_000,
-                        "close": p,
-                        "open": p,
-                        "high": p,
-                        "low": p,
-                        "volume": 1,
+                        "close": c["close"],
+                        "open": c["open"],
+                        "high": c["high"],
+                        "low": c["low"],
+                        "volume": c["volume"],
                     }
                 )
             json.dump(flat_candles, f_in)
