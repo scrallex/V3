@@ -14,7 +14,7 @@ import subprocess
 sys.path.append("/app") 
 from scripts.trading.oanda import OandaConnector
 
-PAIRS = ["EUR_USD", "GBP_USD", "USD_JPY", "USD_CHF", "AUD_USD", "USD_CAD", "NZD_USD"]
+PAIRS = ["USD_CHF", "AUD_USD", "USD_CAD", "NZD_USD"]
 LOOKBACK_DAYS = 3 # 2 days train, 1 day test
 BIN_PATH = "/app/bin/manifold_generator"
 MODEL_DIR = "/app/models"
