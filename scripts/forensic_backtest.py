@@ -14,25 +14,31 @@ import subprocess
 sys.path.append("/app") # /app in container
 from scripts.trading.oanda import OandaConnector
 
-PAIRS = ["EUR_USD"]
-LOOKBACK_DAYS = 14
+PAIRS = ["EUR_USD", "GBP_USD", "USD_JPY", "USD_CHF", "AUD_USD", "USD_CAD", "NZD_USD"]
+LOOKBACK_DAYS = 3
 MODEL_DIR = "/app/models" # Container path
 BIN_PATH = "/app/bin/manifold_generator" # Container path
 OUTPUT_DIR = "/app/logs"
 
-logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s :: %(message)s")
+logging.basicConfig(level=logging.ERROR, format="%(asctime)s %(levelname)s :: %(message)s") # Reduce noise
 logger = logging.getLogger("forensic")
 
 class ForensicBacktest:
     def __init__(self):
         self.connector = OandaConnector(read_only=True)
         self.model = xgb.XGBClassifier()
-        # Load the LIVE model for EUR_USD
-        self.model.load_model(f"{MODEL_DIR}/model_EUR_USD.json")
-        logger.info("Loaded Live Model: model_EUR_USD.json")
+
+    def load_model_for_pair(self, instrument):
+        model = xgb.XGBClassifier()
+        model_path = f"{MODEL_DIR}/model_{instrument}.json"
+        try:
+            model.load_model(model_path)
+            return model
+        except Exception as e:
+            return None
 
     def fetch_data(self, instrument):
-        logger.info(f"Fetching {LOOKBACK_DAYS} days of S5 data for {instrument}...")
+        print(f"[{instrument}] Fetching S5 data...", end="", flush=True)
         to_time = datetime.now(timezone.utc)
         from_time = to_time - timedelta(days=LOOKBACK_DAYS)
         
@@ -60,23 +66,22 @@ class ForensicBacktest:
                 all_candles.append({
                     "timestamp_ns": ts_ns,
                     "timestamp": int(dt.timestamp()), 
-                    "open": float(mid["o"]),
-                    "high": float(mid["h"]),
-                    "low": float(mid["l"]),
-                    "close": float(mid["c"])
+                    "open": float(mid.get("o", 0)),
+                    "high": float(mid.get("h", 0)),
+                    "low": float(mid.get("l", 0)),
+                    "close": float(mid.get("c", 0))
                 })
             
             last_dt = datetime.fromisoformat(candles[-1]["time"].replace("Z", "+00:00"))
             if last_dt >= to_time or len(candles) < 10:
                 break
             current_from = last_dt + timedelta(seconds=5)
-            # time.sleep(0.1)
             
-        logger.info(f"Fetched {len(all_candles)} S5 candles.")
+        print(f" Done ({len(all_candles)} candles)")
         return pd.DataFrame(all_candles)
 
     def run_manifold(self, df):
-        logger.info("Running Manifold (S5 High Fidelity)...")
+        # logger.info("Running Manifold...")
         input_data = []
         for _, row in df.iterrows():
             input_data.append({
@@ -98,13 +103,13 @@ class ForensicBacktest:
             with open(output_path, "r") as f_out:
                 res = json.load(f_out)
             return res.get("signals", [])
+        except Exception as e:
+            return []
         finally:
             if os.path.exists(input_path): os.unlink(input_path)
             if os.path.exists(output_path): os.unlink(output_path)
 
     def resample_and_compute_features(self, df_s5, signals):
-        logger.info("Computing RAW S5 Features (No Resampling)...")
-        
         # 1. Merge S5 Signals
         sig_data = []
         for s in signals:
@@ -123,6 +128,8 @@ class ForensicBacktest:
             })
             
         df_sig = pd.DataFrame(sig_data)
+        if df_sig.empty: return pd.DataFrame()
+
         df_merged = pd.merge_asof(
             df_s5.sort_values("timestamp_ns"),
             df_sig.sort_values("timestamp_ns"),
@@ -131,62 +138,69 @@ class ForensicBacktest:
             tolerance=5000000000
         )
         
-        # USE S5 DATA DIRECTLY
         df_features = df_merged.copy()
         
         # 3. Compute Technicals (RAW S5)
-        # RSI 14 (on S5 candles)
         delta = df_features["close"].diff()
         gain = (delta.where(delta > 0, 0)).rolling(14).mean()
         loss = (-delta.where(delta < 0, 0)).rolling(14).mean()
         rs = gain / loss
         df_features["rsi"] = 100 - (100 / (1 + rs))
 
-        # Volatility 20 (Log Returns of S5)
         df_features["log_ret"] = np.log(df_features["close"] / df_features["close"].shift(1))
         df_features["volatility"] = df_features["log_ret"].rolling(20).std()
 
-        # EMA 60 (of S5)
         ema = df_features["close"].ewm(span=60).mean()
         df_features["dist_ema60"] = (df_features["close"] - ema) / ema
         
         df_features.dropna(inplace=True)
         return df_features
 
-    def run_inference(self, df):
-        logger.info("Running Inference (Target: model_EUR_USD.json)...")
+    def run_inference(self, df, model):
         feat_cols = [
             "stability", "entropy", "coherence", "lambda_hazard",
             "rsi", "volatility", "dist_ema60"
         ]
         
-        # Prepare X (Raw)
         X = df[feat_cols].values
-        
-        # Predict
-        probs = self.model.predict_proba(X)[:, 1]
+        probs = model.predict_proba(X)[:, 1]
         df["prob"] = probs
         
         trades = df[df["prob"] > 0.55]
-        
-        logger.info("="*40)
-        logger.info(f"FORENSIC RESULTS: EUR_USD (Last {LOOKBACK_DAYS} Days)")
-        logger.info(f"Total Candles (M1): {len(df)}")
-        logger.info(f"Total TRADES Triggered: {len(trades)}")
-        logger.info(f"Max Prob: {df['prob'].max():.4f}")
-        logger.info(f"Avg Coherence: {df['coherence'].mean():.4f}")
-        logger.info(f"Avg Hazard: {df['lambda_hazard'].mean():.4f}")
-        logger.info("="*40)
-        
-        if not trades.empty:
-             print("TRADES FOUND:")
-             print(trades[["close", "prob", "coherence", "lambda_hazard", "volatility"]])
-        else:
-             print("NO TRADES FOUND (Confirmed Live Behavior)")
+        return trades, df
 
 if __name__ == "__main__":
     fb = ForensicBacktest()
-    df_s5 = fb.fetch_data("EUR_USD")
-    signals = fb.run_manifold(df_s5)
-    df_m1 = fb.resample_and_compute_features(df_s5, signals)
-    fb.run_inference(df_m1)
+    
+    print("\n" + "="*80)
+    print(f"FORENSIC AUDIT: LAST {LOOKBACK_DAYS} DAYS | {len(PAIRS)} INSTRUMENTS")
+    print("="*80)
+    print(f"{'Instrument':<10} | {'Candles':<8} | {'Trades':<6} | {'MaxProb':<8} | {'AvgHaz':<8} | {'AvgVol':<10}")
+    print("-" * 80)
+    
+    for pair in PAIRS:
+        model = fb.load_model_for_pair(pair)
+        if not model:
+            print(f"{pair:<10} | ERROR LOAD | -      | -        | -        | -")
+            continue
+            
+        df_s5 = fb.fetch_data(pair)
+        if df_s5.empty:
+            print(f"{pair:<10} | NO DATA    | -      | -        | -        | -")
+            continue
+
+        signals = fb.run_manifold(df_s5)
+        if not signals:
+            print(f"{pair:<10} | MANIFOLD X | -      | -        | -        | -")
+            continue
+
+        df_feat = fb.resample_and_compute_features(df_s5, signals)
+        if df_feat.empty:
+            print(f"{pair:<10} | FEAT FAIL  | -      | -        | -        | -")
+            continue
+
+        trades, df_res = fb.run_inference(df_feat, model)
+        
+        print(f"{pair:<10} | {len(df_s5):<8} | {len(trades):<6} | {df_res['prob'].max():<8.4f} | {df_res['lambda_hazard'].mean():<8.4f} | {df_res['volatility'].mean():<10.2e}")
+        
+    print("="*80)
