@@ -11,15 +11,15 @@ import tempfile
 import subprocess
 
 # Add path for OandaConnector
-sys.path.append("/sep")
+sys.path.append("/app")
 from scripts.trading.oanda import OandaConnector
 
 # Config
 PAIRS = ["EUR_USD"]
 LOOKBACK_DAYS = 2
-MODEL_DIR = "/sep/models"
-BIN_PATH = "/sep/bin/manifold_generator"
-OUTPUT_DIR = "/sep/logs"
+MODEL_DIR = "/app/models"
+BIN_PATH = "/app/bin/manifold_generator"
+OUTPUT_DIR = "/app/logs"
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s :: %(message)s")
 logger = logging.getLogger("forensic")
@@ -110,7 +110,7 @@ class ForensicBacktest:
         for s in signals:
             mets = s.get("metrics", {})
             coeffs = s.get("coeffs", {})
-            ts = s.get("timestamp_ns", 0)
+            ts = s.get("timestamp_ns", s.get("timestamp", 0))
             if ts < 10_000_000_000: ts *= 1_000_000_000 # Fix seconds
             
             sig_data.append({
@@ -122,13 +122,23 @@ class ForensicBacktest:
             })
             
         df_sig = pd.DataFrame(sig_data)
+        logger.info(f"Signal Data Size: {len(df_sig)}")
+        logger.info(f"S5 Data Size: {len(df_s5)}")
+        
+        if df_sig.empty:
+            logger.error("Signal Data Empty! Manifold failed?")
+            return pd.DataFrame()
+
+        logging.info(f"SIG TS Head: {df_sig['timestamp_ns'].head().tolist()}")
+        logging.info(f"S5 TS Head: {df_s5['timestamp_ns'].head().tolist()}")
+
         df_merged = pd.merge_asof(
             df_s5.sort_values("timestamp_ns"),
             df_sig.sort_values("timestamp_ns"),
             on="timestamp_ns",
-            direction="nearest",
-            tolerance=5000000000
+            direction="backward"
         )
+        logger.info(f"Merged Sample:\n{df_merged[['timestamp_ns', 'lambda_hazard']].head()}")
         
         # 2. Resample to M1
         df_merged["dt"] = pd.to_datetime(df_merged["timestamp_ns"], unit="ns")
@@ -142,6 +152,7 @@ class ForensicBacktest:
             "lambda_hazard": "last"
         }
         df_m1 = df_merged.resample("1min").agg(agg).dropna()
+        logger.info(f"M1 Resampled Size: {len(df_m1)}")
         
         # 3. Compute Technicals (RAW, exactly like Live Agent)
         # RSI 14
@@ -182,32 +193,36 @@ class ForensicBacktest:
         entry_price = 0.0
         entry_time = None
         
-        threshold_long = 0.55
-        threshold_exit = 0.50 # If drops below 0.50, exit? Or if Neutral signal from regime?
-        # Regime Agent Logic: 
-        # Signal LONG if Prob > 0.60 (High Conviction) or > 0.55?
-        # Let's match Regime Agent exactly:
-        # if prob > 0.55: Signal LONG
-        # elif prob < 0.45: Signal SHORT
-        # else: NEUTRAL
+        threshold_entry = 0.65
+        threshold_exit = 0.55 
         
-        logger.info("Simulating Trades (Regime Logic: >0.55 Long, <0.45 Short, Else Neutral)...")
+        logger.info("Simulating Trades (Hysteresis Logic: Enter >0.65, Exit <0.55)...")
         
         for t, row in df.iterrows():
             prob = row["prob"]
             price = row["close"]
+            dist = row["dist_ema60"]
             
-            signal = 0
-            if prob > 0.55: signal = 1
-            elif prob < 0.45: signal = -1
+            # Hysteresis Logic
+            signal = position # Default to Hold
             
-            # Entry
+            # 1. Entry
+            if prob > threshold_entry:
+                 if dist > 0: signal = 1
+                 else: signal = -1
+            
+            # 2. Exit (if prob drops below exit threshold)
+            elif prob < threshold_exit:
+                signal = 0
+            
+            # 3. Hold (if between 0.55 and 0.65) -> signals remains 'position'
+            
+            # Execution Logic
             if position == 0 and signal != 0:
                 position = signal
                 entry_price = price
                 entry_time = t
             
-            # Exit (Signal Flips or goes Neutral)
             elif position != 0:
                 if signal == 0 or signal != position:
                     # Close
@@ -223,7 +238,7 @@ class ForensicBacktest:
                     })
                     position = 0 # Reset
                     
-                    # Reverse? (If signal flipped directly)
+                    # Reverse?
                     if signal != 0:
                         position = signal
                         entry_price = price

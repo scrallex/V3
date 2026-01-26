@@ -45,8 +45,8 @@ HEADERS = {
 }
 
 # Risk Config
-TARGET_ALLOC_PER_PAIR = 1.0  # 100% NAV per Pair (7 Pairs = 700% Exposure = 7x Leverage)
-MAX_LEVERAGE_GLOBAL = 2.0  # Safety Cap (200% Exposure)
+TARGET_ALLOC_PER_PAIR = 20.0  # 2000% NAV per Pair (20x Leverage)
+MAX_LEVERAGE_GLOBAL = 100.0  # Safety Cap (10000% Exposure)
 
 
 class ExecutionAgent:

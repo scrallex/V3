@@ -53,6 +53,7 @@ class RegimeAgent:
         self.load_models()
 
         self.last_ts = {inst: 0 for inst in instruments}
+        self.last_signal = {inst: "NEUTRAL" for inst in instruments}
 
     def load_models(self):
         logger.info("Loading Gold Standard Models...")
@@ -243,26 +244,28 @@ class RegimeAgent:
                 pass # Debug log removed
             
             # Decision
-            signal = "NEUTRAL"
-            if prob > 0.65: # High confidence
-                # Trend Filter
-                if row["close"] > row["close"] * (1 + row["dist_ema60"]): # Above EMA? No, dist is (C-E)/E.
-                    # dist > 0 means Close > EMA
-                    if row["dist_ema60"] > 0:
-                        signal = "LONG"
-                    else:
-                        signal = "SHORT" # Wait, model is direction agnostic or specific?
-                        # Model trained on Trend Following?
-                        # deploy_models used: trend_dir = 1 if close > ema.
-                        # And target = 1 if return > 0.
-                        # So model predicts "Profitable Trade in Trend Direction".
-                        # So if Prob > Thresh, trade in Trend Direction.
-                
-                # Simple logic for now: Match trend
+            # Decision
+            current_signal = self.last_signal.get(inst, "NEUTRAL")
+            new_signal = "NEUTRAL"
+            
+            # 1. Entry Logic (High Confidence)
+            if prob > 0.65:
                 if row["dist_ema60"] > 0:
-                    signal = "LONG"
+                    new_signal = "LONG"
                 else:
-                    signal = "SHORT"
+                    new_signal = "SHORT"
+            
+            # 2. Hold Logic (Hysteresis / Buffer Zone)
+            elif prob > 0.55:
+                # If we are already in a trade, hold it
+                if current_signal != "NEUTRAL":
+                    new_signal = current_signal
+            
+            # 3. Exit (Implicit) implies new_signal remains "NEUTRAL" if prob <= 0.55
+            
+            # Update State
+            self.last_signal[inst] = new_signal
+            signal = new_signal
 
             # DEBUG PARITY
             logger.info(f"{inst} | Prob={prob:.2f} | Haz={row.get('lambda_hazard',0):.2f} | Vol={row.get('volatility',0):.2e} | RSI={row.get('rsi',0):.1f} | Dist={row.get('dist_ema60',0):.2e}")
