@@ -137,7 +137,7 @@ class ExecutionAgent:
         # CASE 1: Close (Target 0, Current != 0)
         if target_units == 0 and pos_units != 0:
             logger.info(f"{inst}: Signal {signal_dir}. Closing {pos_units}.")
-            self.close_position(inst)
+            self.close_position(inst, current_pos)
 
         # CASE 2: Flip (Long -> Short or Short -> Long)
         elif (target_units > 0 and pos_units < 0) or (
@@ -146,7 +146,7 @@ class ExecutionAgent:
             logger.info(
                 f"{inst}: Signal {signal_dir}. Flipping {pos_units} -> {target_units}."
             )
-            self.close_position(inst)  # Close first
+            self.close_position(inst, current_pos)  # Close first
             self.market_order(inst, target_units)
 
         # CASE 3: Entry (Zero -> Pos)
@@ -262,14 +262,34 @@ class ExecutionAgent:
         except:
             return None
 
-    def close_position(self, inst):
-        # Close Long and Short
+    def close_position(self, inst, current_pos=None):
+        # Close specific side if known, else try ALL (which fails if one side empty)
+        body = {}
+        
+        if current_pos:
+            longs = int(current_pos.get("long", {}).get("units", 0))
+            shorts = int(current_pos.get("short", {}).get("units", 0))
+            if longs != 0:
+                body["longUnits"] = "ALL"
+            if shorts != 0:
+                body["shortUnits"] = "ALL"
+        else:
+            # Fallback (legacy/risky)
+            body = {"longUnits": "ALL", "shortUnits": "ALL"}
+
+        if not body:
+            logger.warning(f"Close requested for {inst} but no open units found in state.")
+            return
+
         url = f"{OANDA_URL}/v3/accounts/{ACCOUNT_ID}/positions/{inst}/close"
-        body = {"longUnits": "ALL", "shortUnits": "ALL"}
         try:
-            requests.put(url, headers=HEADERS, json=body, timeout=5)
+            resp = requests.put(url, headers=HEADERS, json=body, timeout=5)
+            if resp.status_code != 200:
+                logger.error(f"Close failed {inst}: {resp.status_code} {resp.text}")
+            else:
+                logger.info(f"Closed {inst} successfully.")
         except Exception as e:
-            logger.error(f"Close failed {inst}: {e}")
+            logger.error(f"Close network error {inst}: {e}")
 
     def market_order(self, inst, units):
         url = f"{OANDA_URL}/v3/accounts/{ACCOUNT_ID}/orders"

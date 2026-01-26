@@ -176,22 +176,74 @@ class ForensicBacktest:
         probs = self.model.predict_proba(X)[:, 1]
         df["prob"] = probs
         
-        trades = df[df["prob"] > 0.55]
+        # Simulation Logic
+        trades = []
+        position = 0  # 0, 1 (Long), -1 (Short)
+        entry_price = 0.0
+        entry_time = None
+        
+        threshold_long = 0.55
+        threshold_exit = 0.50 # If drops below 0.50, exit? Or if Neutral signal from regime?
+        # Regime Agent Logic: 
+        # Signal LONG if Prob > 0.60 (High Conviction) or > 0.55?
+        # Let's match Regime Agent exactly:
+        # if prob > 0.55: Signal LONG
+        # elif prob < 0.45: Signal SHORT
+        # else: NEUTRAL
+        
+        logger.info("Simulating Trades (Regime Logic: >0.55 Long, <0.45 Short, Else Neutral)...")
+        
+        for t, row in df.iterrows():
+            prob = row["prob"]
+            price = row["close"]
+            
+            signal = 0
+            if prob > 0.55: signal = 1
+            elif prob < 0.45: signal = -1
+            
+            # Entry
+            if position == 0 and signal != 0:
+                position = signal
+                entry_price = price
+                entry_time = t
+            
+            # Exit (Signal Flips or goes Neutral)
+            elif position != 0:
+                if signal == 0 or signal != position:
+                    # Close
+                    pnl = (price - entry_price) * position if position == 1 else (entry_price - price)
+                    trades.append({
+                        "entry_time": entry_time,
+                        "exit_time": t,
+                        "duration": t - entry_time,
+                        "entry_price": entry_price,
+                        "exit_price": price,
+                        "type": "LONG" if position == 1 else "SHORT",
+                        "pnl_pips": pnl * 10000
+                    })
+                    position = 0 # Reset
+                    
+                    # Reverse? (If signal flipped directly)
+                    if signal != 0:
+                        position = signal
+                        entry_price = price
+                        entry_time = t
+
+        res_df = pd.DataFrame(trades)
         
         logger.info("="*40)
-        logger.info(f"FORENSIC RESULTS: EUR_USD (Last {LOOKBACK_DAYS} Days)")
-        logger.info(f"Total Candles (M1): {len(df)}")
-        logger.info(f"Total TRADES Triggered: {len(trades)}")
-        logger.info(f"Max Prob: {df['prob'].max():.4f}")
-        logger.info(f"Avg Coherence: {df['coherence'].mean():.4f}")
-        logger.info(f"Avg Hazard: {df['lambda_hazard'].mean():.4f}")
-        logger.info("="*40)
-        
-        if not trades.empty:
-             print("TRADES FOUND:")
-             print(trades[["close", "prob", "coherence", "lambda_hazard", "volatility"]])
+        logger.info(f"FORENSIC BACKTEST RESULTS: EUR_USD (Last {LOOKBACK_DAYS} Days)")
+        logger.info(f"Total Candles: {len(df)}")
+        logger.info(f"Total Trades: {len(res_df)}")
+        if not res_df.empty:
+            logger.info(f"Win Rate: {(res_df['pnl_pips'] > 0).mean():.2%}")
+            logger.info(f"Avg PnL (Pips): {res_df['pnl_pips'].mean():.2f}")
+            logger.info(f"Avg Duration: {res_df['duration'].mean()}")
+            print("\nTRADE LOG:")
+            print(res_df[["entry_time", "type", "pnl_pips", "duration"]].to_string())
         else:
-             print("NO TRADES FOUND (Confirmed Live Behavior)")
+            logger.info("No Trades Generated.")
+        logger.info("="*40)
 
 if __name__ == "__main__":
     fb = ForensicBacktest()
