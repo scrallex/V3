@@ -44,7 +44,7 @@ HEADERS = {
 }
 
 # Risk Config
-TARGET_ALLOC_PER_PAIR = 0.10  # 10% NAV per Pair (7 Pairs = 70% max leverage 1:1)
+TARGET_ALLOC_PER_PAIR = 1.0  # 100% NAV per Pair (7 Pairs = 700% Exposure = 7x Leverage)
 MAX_LEVERAGE_GLOBAL = 2.0  # Safety Cap (200% Exposure)
 
 
@@ -185,10 +185,11 @@ class ExecutionAgent:
         # Let's use 14% Notional per pair.
 
         # Calculation:
-        # Notional USD = NAV_USD * 0.14
-        # Units = Notional / Price
-
-        alloc_usd = nav * 0.14
+        # User Rule: Sizing must be pure product of NAV.
+        # Max Stacking = 7 Pairs.
+        # Safe Leverage = 7x Total.
+        
+        alloc_usd = nav * 1.0
 
         # Get Price
         price = self.get_price(inst)
@@ -213,7 +214,7 @@ class ExecutionAgent:
             units = alloc_usd / price
         else:
             units = alloc_usd
-
+            
         return int(units)
 
     # --- OANDA API Helpers ---

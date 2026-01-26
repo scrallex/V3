@@ -15,7 +15,7 @@ sys.path.append("/app") # /app in container
 from scripts.trading.oanda import OandaConnector
 
 PAIRS = ["EUR_USD", "GBP_USD", "USD_JPY", "USD_CHF", "AUD_USD", "USD_CAD", "NZD_USD"]
-LOOKBACK_DAYS = 3
+LOOKBACK_DAYS = 1 # Focus on immediate context
 MODEL_DIR = "/app/models" # Container path
 BIN_PATH = "/app/bin/manifold_generator" # Container path
 OUTPUT_DIR = "/app/logs"
@@ -166,7 +166,7 @@ class ForensicBacktest:
         probs = model.predict_proba(X)[:, 1]
         df["prob"] = probs
         
-        trades = df[df["prob"] > 0.55]
+        trades = df[df["prob"] > 0.65] # Match Live Threshold
         return trades, df
 
 if __name__ == "__main__":
@@ -201,6 +201,13 @@ if __name__ == "__main__":
 
         trades, df_res = fb.run_inference(df_feat, model)
         
-        print(f"{pair:<10} | {len(df_s5):<8} | {len(trades):<6} | {df_res['prob'].max():<8.4f} | {df_res['lambda_hazard'].mean():<8.4f} | {df_res['volatility'].mean():<10.2e}")
+        max_prob = df_res['prob'].max()
+        print(f"{pair:<10} | {len(df_s5):<8} | {len(trades):<6} | {max_prob:<8.4f} | {df_res['lambda_hazard'].mean():<8.4f} | {df_res['volatility'].mean():<10.2e}")
         
+        if not df_res.empty:
+            # Find row with max prob
+            idx = df_res['prob'].idxmax()
+            r = df_res.loc[idx]
+            print(f"   -> PEAK: Prob={r['prob']:.4f} | Haz={r['lambda_hazard']:.4f} | Vol={r['volatility']:.2e} | RSI={r['rsi']:.1f} | Dist={r['dist_ema60']:.2e}")
+            
     print("="*80)

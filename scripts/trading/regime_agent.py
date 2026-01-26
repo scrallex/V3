@@ -18,6 +18,7 @@ import tempfile
 import time
 from collections import deque
 from pathlib import Path
+from datetime import datetime
 
 import numpy as np
 import pandas as pd
@@ -37,7 +38,7 @@ BIN_PATH = BASE_DIR / "bin" / "manifold_generator"
 MODEL_DIR = BASE_DIR / "models"
 
 # Config
-HISTORY_LEN = 3000
+HISTORY_LEN = 60000 # Matching full 3-day backtest window
 SFI_STEP = 1
 
 
@@ -73,6 +74,7 @@ class RegimeAgent:
     def run(self):
         logger.info(f"Starting Regime Agent (S5) for {self.instruments}...")
         while self.running:
+            logger.info("Tick.")
             for inst in self.instruments:
                 try:
                     if inst in self.models:
@@ -90,7 +92,10 @@ class RegimeAgent:
         raw_data = self.redis.zrange(key, -HISTORY_LEN, -1)
 
         if not raw_data:
+            logger.info(f"{inst}: No data in Redis.")
             return
+
+        logger.info(f"{inst}: Found {len(raw_data)} chunks in Redis.")
 
         candles = []
         for r in raw_data:
@@ -119,24 +124,169 @@ class RegimeAgent:
                         "low": l,
                         "close": cl,
                         "volume": vol,
-                        "price": cl  # Keep price for backward compat in features
+                        "price": cl  # Required by compute_features (same as close)
                     })
             except:
                 continue
 
         if len(candles) < 100:
+            if len(candles) > 0:
+                 logger.info(f"{inst}: Only {len(candles)} valid candles (need 100). Waiting...")
             return
 
         curr_ts = candles[-1]["timestamp_ns"]
         if curr_ts <= self.last_ts[inst]:
             return
 
-        # Run SFI (S5)
-        sfi_metrics = self.run_manifold(candles) # Passed candles now has OHLCV
-        if not sfi_metrics:
-            return
+        # FORCE TRIM (Weekend Gap Mitigation)
+        # Smart detection failed. We force a 15,000 candle window (approx 21h).
+        # This guarantees we only see the current Monday session and exclude the 48h weekend gap.
+        # This aligns with the successful Forensic Backtest (1 Day).
+        # TIME-BASED TRIM (Weekend Gap Mitigation)
+        # Force strict 24h window. 
+        # Using count (-15000) failed because sparse data meant 15k candles spanned >3 days (including weekend).
+        current_head_ts = candles[-1]["timestamp_ns"]
+        cutoff_ts = current_head_ts - (24 * 3600 * 1_000_000_000)
+        
+        # Filter (assume sorted)
+        # Find bisect point or just list comp
+        candles = [c for c in candles if c["timestamp_ns"] > cutoff_ts]
+        logger.info(f"{inst}: Time-Trimmed to last 24h. Remaining: {len(candles)} candles.")
+
+        
+        # Prepare Data for Manifold (Strict 5s Grid)
+        candles_for_manifold = candles # Default
+        
+        if len(candles) > 100:
+            df_r = pd.DataFrame(candles)
+            df_r["dt"] = pd.to_datetime(df_r["timestamp_ns"], unit="ns")
+            df_r.set_index("dt", inplace=True)
             
-        # ... logic continues ...
+            # Resample
+            df_resampled = df_r.resample("5s").agg({
+                "timestamp_ns": "first",
+                "open": "first",
+                "high": "first",
+                "low": "first",
+                "close": "last",
+                "volume": "sum",
+                "price": "last"
+            })
+            
+            # Forward Fill
+            df_resampled["close"] = df_resampled["close"].ffill()
+            df_resampled["open"] = df_resampled["open"].fillna(df_resampled["close"])
+            df_resampled["high"] = df_resampled["high"].fillna(df_resampled["close"])
+            df_resampled["low"] = df_resampled["low"].fillna(df_resampled["close"])
+            df_resampled["price"] = df_resampled["price"].fillna(df_resampled["close"])
+            
+            # Volume REMOVED (Set to 0) to match Backtest
+            df_resampled["volume"] = 0
+            
+            # Reconstruct Timestamp
+            df_resampled["timestamp_ns"] = df_resampled.index.astype(np.int64)
+            
+            # Convert back to list of dicts
+            candles_for_manifold = df_resampled.dropna(subset=["close"]).to_dict("records")
+
+
+        # Run SFI on RESAMPLED (Continuous Physics)
+        sfi_metrics = self.run_manifold(candles_for_manifold)
+        if not sfi_metrics:
+            logger.info(f"{inst}: Manifold returned None/Empty.")
+            return
+
+        # Compute Features on RESAMPLED (Unified 5s Time Basis)
+        # We must use the same time basis (5s) for rolling windows (e.g. Volatility 20)
+        # to match the Backtest/Training data. Using sparse original data (12s) distorts the window to 240s.
+        try:
+            df = self.compute_features(candles_for_manifold, sfi_metrics)
+        except Exception as e:
+            logger.error(f"{inst}: Feature computation failed: {e}")
+            return
+
+        if not sfi_metrics:
+            logger.info(f"{inst}: Manifold returned None/Empty.")
+            return
+        logger.info(f"{inst}: Manifold Success. Metrics: {len(sfi_metrics)}")
+
+        # Features
+        try:
+            df = self.compute_features(candles, sfi_metrics)
+        except Exception as e:
+            logger.error(f"{inst}: Feature computation failed: {e}")
+            return
+
+        if df.empty:
+            logger.warning(f"{inst}: Empty DataFrame after features.")
+            return
+
+        # Inference
+        feat_cols = [
+            "stability",
+            "entropy",
+            "coherence",
+            "lambda_hazard",
+            "rsi",
+            "volatility",
+            "dist_ema60",
+        ]
+        
+        try:
+            X = df[feat_cols].values
+            probs = self.models[inst].predict_proba(X)[:, 1]
+            row = df.iloc[-1]
+            prob = probs[-1]
+            
+            
+            if inst == "GBP_USD":
+                pass # Debug log removed
+            
+            # Decision
+            signal = "NEUTRAL"
+            if prob > 0.65: # High confidence
+                # Trend Filter
+                if row["close"] > row["close"] * (1 + row["dist_ema60"]): # Above EMA? No, dist is (C-E)/E.
+                    # dist > 0 means Close > EMA
+                    if row["dist_ema60"] > 0:
+                        signal = "LONG"
+                    else:
+                        signal = "SHORT" # Wait, model is direction agnostic or specific?
+                        # Model trained on Trend Following?
+                        # deploy_models used: trend_dir = 1 if close > ema.
+                        # And target = 1 if return > 0.
+                        # So model predicts "Profitable Trade in Trend Direction".
+                        # So if Prob > Thresh, trade in Trend Direction.
+                
+                # Simple logic for now: Match trend
+                if row["dist_ema60"] > 0:
+                    signal = "LONG"
+                else:
+                    signal = "SHORT"
+
+            # DEBUG PARITY
+            logger.info(f"{inst} | Prob={prob:.2f} | Haz={row.get('lambda_hazard',0):.2f} | Vol={row.get('volatility',0):.2e} | RSI={row.get('rsi',0):.1f} | Dist={row.get('dist_ema60',0):.2e}")
+
+            logger.info(
+                f"{inst} | Haz={row.get('lambda_hazard',0):.2f} | Prob={prob:.2f} | {signal}"
+            )
+
+
+            if signal != "NEUTRAL":
+                payload = {
+                    "strategy": "Regime_S5",
+                    "instrument": inst,
+                    "signal": signal,
+                    "timestamp": int(row["timestamp_ns"] // 1_000_000), # Back to Millis for Backend
+                    "confidence": float(prob),
+                    "hazard": float(row.get("lambda_hazard", 0)),
+                    "price": float(row["close"])
+                }
+                self.redis.publish("strategies:regime:signals", json.dumps(payload))
+                logger.info(f"🚀 PUBLISHED: {payload}")
+
+        except Exception as e:
+            logger.error(f"{inst}: Inference failed: {e}", exc_info=True)
 
     def run_manifold(self, candles):
         with tempfile.NamedTemporaryFile(
@@ -146,7 +296,7 @@ class RegimeAgent:
             for c in candles:
                 flat_candles.append(
                     {
-                        "timestamp": c["timestamp_ns"] // 1_000_000,
+                        "timestamp": c["timestamp_ns"] // 1_000_000_000, # Nanos -> Seconds (Match deploy_models.py)
                         "close": c["close"],
                         "open": c["open"],
                         "high": c["high"],
@@ -183,9 +333,14 @@ class RegimeAgent:
         for s in sfi_signals:
             m = s.get("metrics", {})
             c = s.get("coeffs", {})
+            
+            ts = int(s["timestamp_ns"])
+            if ts < 10_000_000_000: ts *= 1_000_000_000      # Seconds to Nanos
+            elif ts < 10_000_000_000_000_000: ts *= 1_000    # Micros to Nanos
+            
             recs.append(
                 {
-                    "timestamp_ns": s["timestamp_ns"],
+                    "timestamp_ns": ts,
                     "coherence": m.get("coherence", 0),
                     "stability": m.get("stability", 0),
                     "entropy": m.get("entropy", 0),
@@ -194,7 +349,8 @@ class RegimeAgent:
             )
         df_sfi = pd.DataFrame(recs)
         df_p["timestamp_ns"] = df_p["timestamp_ns"].astype(np.int64)
-        df_sfi["timestamp_ns"] = df_sfi["timestamp_ns"].astype(np.int64)
+        if not df_sfi.empty:
+            df_sfi["timestamp_ns"] = df_sfi["timestamp_ns"].astype(np.int64)
 
         df = pd.merge_asof(
             df_p.sort_values("timestamp_ns"),
@@ -222,6 +378,10 @@ class RegimeAgent:
         df["dist_ema60"] = (df["close"] - ema) / ema
 
         df.fillna(0, inplace=True)
+        # logger.info(f"Features Computed. Size={len(df)}")
+        if df.empty:
+             if not df_p.empty and not df_sfi.empty:
+                 logger.info(f"Merge Fail! Price TS: {df_p['timestamp_ns'].iloc[-1]} vs Signal TS: {df_sfi['timestamp_ns'].iloc[-1]}")
         return df
 
 

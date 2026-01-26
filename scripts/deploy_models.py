@@ -14,7 +14,7 @@ import subprocess
 sys.path.append("/app") 
 from scripts.trading.oanda import OandaConnector
 
-PAIRS = ["USD_CHF", "AUD_USD", "USD_CAD", "NZD_USD"]
+PAIRS = ["EUR_USD", "GBP_USD", "USD_JPY", "USD_CHF", "AUD_USD", "USD_CAD", "NZD_USD"]
 LOOKBACK_DAYS = 3 # 2 days train, 1 day test
 BIN_PATH = "/app/bin/manifold_generator"
 MODEL_DIR = "/app/models"
@@ -186,13 +186,20 @@ class Calibrator:
         preds_test = (probs_test > best_thresh).astype(int)
         n_trades = sum(preds_test)
         
+        # Diagnostic Stats
+        avg_haz = np.mean(test["lambda_hazard"])
+        max_prob = np.max(probs_test)
+        avg_prob = np.mean(probs_test)
+        
+        print(f"  -> DIAGNOSTIC: AvgHaz={avg_haz:.2f} | MaxProb={max_prob:.2f} | AvgProb={avg_prob:.2f} | Thresh={best_thresh:.2f}")
+
         if n_trades > 0:
             win_rate = np.mean(y_test[preds_test==1])
             avg_return = np.mean(test.loc[preds_test==1, "target_return"])
             print(f"  -> FOUND: Trades={n_trades} | WR={win_rate:.2%} | Return={avg_return:.5f}")
             return model, best_thresh
         else:
-            print(f"  -> NO TRADES")
+            print(f"  -> NO TRADES (Best Thresh={best_thresh:.2f})")
             return None, None
 
 
