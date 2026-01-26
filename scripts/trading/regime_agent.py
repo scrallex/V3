@@ -272,18 +272,46 @@ class RegimeAgent:
             )
 
 
+
+            # Determine Regime Label for UI
+            haz = float(row.get("lambda_hazard", 0))
+            regime_label = "Hazel"
+            if haz < 0.20: regime_label = "LowVol"
+            elif haz > 0.50: regime_label = "HighVol"
+
+            # Construct Payload (RICH STATE for Dashboard & Execution)
+            payload = {
+                "strategy": "Regime_S5",
+                "instrument": inst,
+                "signal": signal,
+                "timestamp": int(row["timestamp_ns"] // 1_000_000), # Millis
+                "ts_ms": int(row["timestamp_ns"] // 1_000_000),     # UI expects ts_ms
+                "confidence": float(prob),
+                "prob": float(prob),                                # UI expects prob
+                "hazard": haz,
+                "hazard_norm": haz,                                 # UI expects hazard_norm
+                "price": float(row["close"]),
+                "volatility": float(row.get("volatility", 0)),      # UI expects volatility
+                "rsi": float(row.get("rsi", 50)),                   # UI expects rsi
+                "regime": regime_label,                             # UI expects regime
+                "dist_ema60": float(row.get("dist_ema60", 0))
+            }
+
+            # ALWAYS PERSIST STATE (Heartbeat for Dashboard & Execution)
+            # This ensures dashboard shows live data and Execution Agent receives "NEUTRAL" to close trades.
+            self.redis.set(f"gate:last:{inst}", json.dumps(payload))
+            
+            # Publish only significant events or keep chatter low? 
+            # PubSub is cheap, let's publish all for live stream if needed, 
+            # but mainly the KEY set is what matters for the dashboard/poller.
             if signal != "NEUTRAL":
-                payload = {
-                    "strategy": "Regime_S5",
-                    "instrument": inst,
-                    "signal": signal,
-                    "timestamp": int(row["timestamp_ns"] // 1_000_000), # Back to Millis for Backend
-                    "confidence": float(prob),
-                    "hazard": float(row.get("lambda_hazard", 0)),
-                    "price": float(row["close"])
-                }
-                self.redis.publish("strategies:regime:signals", json.dumps(payload))
-                logger.info(f"🚀 PUBLISHED: {payload}")
+                 self.redis.publish("strategies:regime:signals", json.dumps(payload))
+                 logger.info(f"🚀 PUBLISHED: {payload}")
+            else:
+                 # Log heartbeat occasionally?
+                 # logger.debug(f"{inst} Heartbeat: {signal} P={prob:.2f}")
+                 pass
+
 
         except Exception as e:
             logger.error(f"{inst}: Inference failed: {e}", exc_info=True)

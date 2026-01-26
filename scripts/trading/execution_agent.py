@@ -25,6 +25,7 @@ import requests
 logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s %(levelname)s %(name)s :: %(message)s",
+    handlers=[logging.StreamHandler(sys.stdout)]
 )
 logger = logging.getLogger("execution-agent")
 
@@ -57,6 +58,8 @@ class ExecutionAgent:
         self.state = {}  # Local state cache
 
     def run(self):
+        print(f"DEBUG: Starting Execution Agent for {len(self.instruments)} pairs...")
+        print(f"DEBUG: Target Allocation: {TARGET_ALLOC_PER_PAIR*100}% NAV per pair.")
         logger.info(f"Starting Execution Agent for {len(self.instruments)} pairs...")
         logger.info(f"Target Allocation: {TARGET_ALLOC_PER_PAIR*100}% NAV per pair.")
 
@@ -89,7 +92,10 @@ class ExecutionAgent:
         key = f"gate:last:{inst}"
         raw = self.redis.get(key)
         if not raw:
+            # print(f"DEBUG: No key for {inst}")
             return
+        
+        print(f"DEBUG: Found key {key} -> {raw[:50]}...")
 
         gate = json.loads(raw)
         signal_dir = gate.get("signal", "NEUTRAL")  # LONG, SHORT, NEUTRAL

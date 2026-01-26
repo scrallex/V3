@@ -108,35 +108,58 @@ async function updateState() {
 
         // Update Positions Table
         const tbody = document.getElementById('positions-body');
-        // Filter active only
+
+        // Filter active only: strictly filter out positions where BOTH long and short units are 0
         const activePositions = (posData.positions || []).filter(pos => {
             const longUnits = Number(pos.long?.units || 0);
             const shortUnits = Number(pos.short?.units || 0);
-            return longUnits !== 0 || shortUnits !== 0;
+            // Must have non-zero active units
+            return Math.abs(longUnits) > 0 || Math.abs(shortUnits) > 0;
         });
 
         if (activePositions.length === 0) {
             tbody.innerHTML = '<tr class="empty-state"><td colspan="6" style="text-align:center; padding: 2rem; color: var(--text-secondary);">No active positions</td></tr>';
         } else {
             tbody.innerHTML = activePositions.map(pos => {
-                const side = Number(pos.long?.units || 0) > 0 ? 'LONG' : (Number(pos.short?.units || 0) > 0 ? 'SHORT' : 'N/A');
-                const units = side === 'LONG' ? pos.long.units : (side === 'SHORT' ? pos.short.units : 0);
-                const avgPrice = side === 'LONG' ? pos.long.averagePrice : (side === 'SHORT' ? pos.short.averagePrice : 0);
-                const pnl = side === 'LONG' ? pos.long.unrealizedPL : (side === 'SHORT' ? pos.short.unrealizedPL : 0);
+                const rows = [];
+                const longUnits = Number(pos.long?.units || 0);
+                const shortUnits = Number(pos.short?.units || 0);
+                const pair = pos.instrument;
 
-                // Note: Current Price isn't directly in position object usually, assume we fetch it or leave blank for now. 
-                // We'll just show PnL which is more important.
+                // Get Current Price from State Data (Cards)
+                // If stateData is missing or price is missing, use '--'
+                const priceRaw = stateData[pair] && stateData[pair].price;
+                const currentPrice = priceRaw ? formatNumber(priceRaw, 5) : '--';
 
-                return `
-                <tr>
-                    <td><b>${pos.instrument.replace('_', '/')}</b></td>
-                    <td>${Math.abs(units)}</td>
-                    <td><span class="badge ${side === 'LONG' ? 'lowvol' : 'highvol'}">${side}</span></td>
-                    <td>${formatNumber(avgPrice, 5)}</td>
-                    <td>--</td>
-                    <td class="${Number(pnl) >= 0 ? 'text-success' : 'text-danger'} font-weight-bold">${formatCurrency(pnl)}</td>
-                </tr>
-                `;
+                if (Math.abs(longUnits) > 0) {
+                    const pl = Number(pos.long.unrealizedPL);
+                    rows.push(`
+                    <tr>
+                        <td><b>${pair.replace('_', '/')}</b></td>
+                        <td>${Math.abs(longUnits)}</td>
+                        <td><span class="badge lowvol">LONG</span></td>
+                        <td>${formatNumber(pos.long.averagePrice, 5)}</td>
+                        <td>${currentPrice}</td>
+                        <td class="${pl >= 0 ? 'text-success' : 'text-danger'} font-weight-bold">${formatCurrency(pl)}</td>
+                    </tr>
+                    `);
+                }
+
+                if (Math.abs(shortUnits) > 0) {
+                    const pl = Number(pos.short.unrealizedPL);
+                    rows.push(`
+                    <tr>
+                        <td><b>${pair.replace('_', '/')}</b></td>
+                        <td>${Math.abs(shortUnits)}</td>
+                        <td><span class="badge highvol">SHORT</span></td>
+                        <td>${formatNumber(pos.short.averagePrice, 5)}</td>
+                        <td>${currentPrice}</td>
+                        <td class="${pl >= 0 ? 'text-success' : 'text-danger'} font-weight-bold">${formatCurrency(pl)}</td>
+                    </tr>
+                    `);
+                }
+
+                return rows.join('');
             }).join('');
         }
 
@@ -144,6 +167,9 @@ async function updateState() {
         console.error("Failed to fetch state", e);
     }
 }
+
+// Version Stamp
+console.log("SEP Dashboard v2.1.0 Loaded - Active Position Fixes Applied");
 
 // Poll every 2 seconds
 setInterval(updateState, 2000);
