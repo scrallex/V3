@@ -45,8 +45,8 @@ HEADERS = {
 }
 
 # Risk Config
-TARGET_ALLOC_PER_PAIR = 20.0  # 2000% NAV per Pair (20x Leverage)
-MAX_LEVERAGE_GLOBAL = 100.0  # Safety Cap (10000% Exposure)
+TARGET_ALLOC_PER_PAIR = 12.0  # 1200% NAV per Pair (12x Leverage) -> Allows ~4 concurrent trades
+MAX_LEVERAGE_GLOBAL = 45.0  # Safety Cap (Below OANDA 50x Limit)
 
 
 class ExecutionAgent:
@@ -182,20 +182,10 @@ class ExecutionAgent:
         # If Allocation = 10% NAV.
         # Size = (NAV * 0.10) * Leverage?
         # Standard Conservative: Size = NAV * 1.0 (1x Leverage) / 7 pairs ~ 14% each.
-        # Let's target Notional Value = NAV * TARGET_ALLOC_PER_PAIR * LEVERAGE_FACTOR?
-        # Let's assume User wants risk diversification.
-        # Simple Rule: Alloc = NAV * 0.50 (50% of NAV invested per trade?) No, total.
-        # 7 Pairs. If all ON.
-        # Safe: 100% NAV Total Exposure (1x).
-        # Per Pair = 100 / 7 ~ 14%.
-        # Let's use 14% Notional per pair.
-
-        # Calculation:
-        # User Rule: Sizing must be pure product of NAV.
-        # Max Stacking = 7 Pairs.
-        # Safe Leverage = 7x Total.
+        # Let's target Notional Value = NAV * TARGET_ALLOC_PER_PAIR?
         
-        alloc_usd = nav * 1.0
+        # FIX: Actually use the constant for sizing
+        alloc_usd = nav * TARGET_ALLOC_PER_PAIR
 
         # Get Price
         price = self.get_price(inst)

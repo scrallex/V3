@@ -41,6 +41,16 @@ MODEL_DIR = BASE_DIR / "models"
 HISTORY_LEN = 60000 # Matching full 3-day backtest window
 SFI_STEP = 1
 
+# Optimal Thresholds (Data-Driven Grid Search Jan 27)
+# Format: (Entry Threshold, Exit Threshold)
+# Logic: Strict Entry (>0.70) reduces false positives. Wide Exit (<0.45) reduces flutter/churn.
+THRESHOLDS = {
+    "USD_JPY": (0.75, 0.45), # High Volatility needs strict entry
+    "EUR_USD": (0.70, 0.45), # Standard
+    "GBP_USD": (0.60, 0.45), # Looser entry per backtest
+    "DEFAULT": (0.70, 0.45)  # Safe Fallback
+}
+
 
 class RegimeAgent:
     def __init__(self, redis_url, instruments, poll_interval=1.0):
@@ -245,18 +255,23 @@ class RegimeAgent:
             
             # Decision
             # Decision
+            # Decision
             current_signal = self.last_signal.get(inst, "NEUTRAL")
             new_signal = "NEUTRAL"
             
-            # 1. Entry Logic (High Confidence)
-            if prob > 0.65:
+            # Lookup Optimized Thresholds
+            entry_th, exit_th = THRESHOLDS.get(inst, THRESHOLDS["DEFAULT"])
+
+            # 1. Entry Logic
+            if prob > entry_th:
+                # TREND FOLLOWING LOGIC (Restored)
                 if row["dist_ema60"] > 0:
-                    new_signal = "LONG"
+                    new_signal = "LONG"  # Price > EMA -> Buy
                 else:
-                    new_signal = "SHORT"
+                    new_signal = "SHORT" # Price < EMA -> Sell
             
-            # 2. Hold Logic (Hysteresis / Buffer Zone)
-            elif prob > 0.55:
+            # 2. Hold Logic (Hysteresis)
+            elif prob > exit_th:
                 # If we are already in a trade, hold it
                 if current_signal != "NEUTRAL":
                     new_signal = current_signal
@@ -390,7 +405,26 @@ class RegimeAgent:
             direction="backward",
         )
 
-        # S5 Features (NO RESAMPLING)
+        # ---------------------------------------------------------
+        # CRITICAL FIX: Resample to M1 (Match Forensic Backtest)
+        # ---------------------------------------------------------
+        df["dt"] = pd.to_datetime(df["timestamp_ns"], unit="ns")
+        df.set_index("dt", inplace=True)
+        
+        agg = {
+            "price": "last",          # Close price
+            "coherence": "last",
+            "entropy": "last",
+            "stability": "last",
+            "lambda_hazard": "last",
+            "timestamp_ns": "last"
+        }
+        # Resample to 1 minute, matching Backtest "Time Basis"
+        df = df.resample("1min").agg(agg).dropna()
+        
+        # ---------------------------------------------------------
+
+        # M1 Features
         df["close"] = df["price"].astype(float)
 
         # RSI

@@ -192,9 +192,9 @@ class ForensicBacktest:
         position = 0  # 0, 1 (Long), -1 (Short)
         entry_price = 0.0
         entry_time = None
-        
-        threshold_entry = 0.65
-        threshold_exit = 0.55 
+        # Optimized Thresholds (Parameter Sweep 2026-01-26)
+        threshold_entry = 0.55
+        threshold_exit = 0.40 
         
         logger.info("Simulating Trades (Hysteresis Logic: Enter >0.65, Exit <0.55)...")
         
@@ -208,8 +208,9 @@ class ForensicBacktest:
             
             # 1. Entry
             if prob > threshold_entry:
-                 if dist > 0: signal = 1
-                 else: signal = -1
+                 # TREND FOLLOWING LOGIC (Restored)
+                 if dist > 0: signal = 1  # Long
+                 else: signal = -1        # Short
             
             # 2. Exit (if prob drops below exit threshold)
             elif prob < threshold_exit:
