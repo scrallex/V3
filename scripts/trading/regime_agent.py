@@ -41,14 +41,15 @@ MODEL_DIR = BASE_DIR / "models"
 HISTORY_LEN = 60000 # Matching full 3-day backtest window
 SFI_STEP = 1
 
-# Optimal Thresholds (Data-Driven Grid Search Jan 27)
+# Optimal Thresholds (Data-Driven Forensic Jan 27 - Cost Basis 2.0 Pips)
 # Format: (Entry Threshold, Exit Threshold)
-# Logic: Strict Entry (>0.70) reduces false positives. Wide Exit (<0.45) reduces flutter/churn.
+# Logic: Strict Entry (>0.75) required to beat 2.0 Pip Spread/Slippage.
+# EUR/USD is mathematically unprofitable at this timeframe (Gross Edge < Cost).
 THRESHOLDS = {
-    "USD_JPY": (0.75, 0.45), # High Volatility needs strict entry
-    "EUR_USD": (0.70, 0.45), # Standard
-    "GBP_USD": (0.60, 0.45), # Looser entry per backtest
-    "DEFAULT": (0.70, 0.45)  # Safe Fallback
+    "USD_JPY": (0.65, 0.45), # High Volatility Regime Only (>0.0003) -> +433 Pips Efficient
+    "GBP_USD": (1.10, 1.10), # FAILED 7-Day Test (-7 Pips). Disabled.
+    "EUR_USD": (1.10, 1.10), # TOXIC (Disabled)
+    "DEFAULT": (1.10, 1.10)  # DISABLE ALL OTHERS SAFELY
 }
 
 
@@ -59,7 +60,8 @@ class RegimeAgent:
         self.poll_interval = poll_interval
         self.running = True
 
-        self.models = {}
+        self.models = {}         # Primary Models (Direction)
+        self.meta_model = None   # Meta Model (Trade Quality gatekeeper)
         self.load_models()
 
         self.last_ts = {inst: 0 for inst in instruments}
@@ -67,20 +69,34 @@ class RegimeAgent:
 
     def load_models(self):
         logger.info("Loading Gold Standard Models...")
+        # Load Primary Models
         for inst in self.instruments:
-            model_path = MODEL_DIR / f"model_{inst}.json"
-            if model_path.exists():
+            path = MODEL_DIR / f"model_{inst}.json"
+            if path.exists():
                 try:
-                    clf = xgb.XGBClassifier()
-                    clf.load_model(model_path)
-                    self.models[inst] = clf
-                    logger.info(f"Loaded {inst}: {model_path}")
+                    m = xgb.XGBClassifier()
+                    m.load_model(str(path))
+                    self.models[inst] = m
+                    logging.info(f"{inst}: Loaded Primary Model.")
                 except Exception as e:
-                    logger.error(f"Failed to load model for {inst}: {e}")
+                    logging.error(f"{inst}: Model Load Failed: {e}")
             else:
                 logger.warning(
-                    f"No model found for {inst} at {model_path}. Agent will skip."
+                    f"No model found for {inst} at {path}. Agent will skip."
                 )
+                    
+        # Load Meta Model (Added Jan 27)
+        meta_path = MODEL_DIR / "meta_model.json"
+        if meta_path.exists():
+            try:
+                self.meta_model = xgb.XGBClassifier()
+                self.meta_model.load_model(str(meta_path))
+                logging.info("Meta-Model Loaded Successfully (Adaptive Architecture).")
+            except Exception as e:
+                logging.error(f"Meta-Model Load Failed: {e}")
+        else:
+            logger.warning("No meta_model.json found. Meta-model will not be used.")
+
 
     def run(self):
         logger.info(f"Starting Regime Agent (S5) for {self.instruments}...")
@@ -259,11 +275,57 @@ class RegimeAgent:
             current_signal = self.last_signal.get(inst, "NEUTRAL")
             new_signal = "NEUTRAL"
             
-            # Lookup Optimized Thresholds
+            # Lookup Optimized Thresholds (Fallback if Meta-Model fails)
             entry_th, exit_th = THRESHOLDS.get(inst, THRESHOLDS["DEFAULT"])
+            
+            # Context Features for Meta-Model
+            # ["prob", "volatility", "hazard", "rsi", "entropy"]
+            current_vol = row.get("volatility", 0)
+            
+            # META-ADAPTIVE LOGIC
+            meta_approved = False
+            meta_prob = 0.0
+            
+            if self.meta_model:
+                try:
+                    # Construct Feature Vector
+                    # Note: Order MUST match training script!
+                    feats = [
+                        float(prob),
+                        float(current_vol),
+                        float(row.get("lambda_hazard", 0)),
+                        float(row.get("rsi", 50)),
+                        float(row.get("entropy", 0))
+                    ]
+                    # Reshape for XGBoost (1 sample, 5 features)
+                    # We need numpy array usually, but predict_proba handles list often? 
+                    # Safer to list of list
+                    meta_prob = self.meta_model.predict_proba([feats])[0][1]
+                    
+                    # THRESHOLD: 0.55 (Precision bias)
+                    if meta_prob > 0.55:
+                        meta_approved = True
+                        logger.info(f"{inst} | Meta-Check: REQUIRED > 0.55 | ACTUAL: {meta_prob:.4f} | APPROVED")
+                    else:
+                        logger.info(f"{inst} | Meta-Check: REQUIRED > 0.55 | ACTUAL: {meta_prob:.4f} | REJECTED")
+                        
+                except Exception as e:
+                    logger.error(f"Meta-Model Inference Error: {e}")
+                    # Fallback to JPY safe-list? No, risky. 
+                    meta_approved = False 
+            else:
+                # Fallback to Static Rules (JPY Only)
+                if inst == "USD_JPY" and current_vol > 0.0003:
+                    meta_approved = True
+                    logger.warning(f"{inst} | Meta-Model Missing. Using Static Vol Filter.")
+
+            # Decision Logic
+            current_signal = self.last_signal.get(inst, "NEUTRAL")
+            new_signal = "NEUTRAL"
 
             # 1. Entry Logic
-            if prob > entry_th:
+            # We use a LOOSER primary threshold (0.55) because the Meta-Model is the gatekeeper.
+            if prob > 0.55 and meta_approved:
                 # TREND FOLLOWING LOGIC (Restored)
                 if row["dist_ema60"] > 0:
                     new_signal = "LONG"  # Price > EMA -> Buy

@@ -909,13 +909,22 @@ class PortfolioManager(threading.Thread):
         logger.info("Processing bundle hit %s for %s", bundle_hit.get("id"), instrument)
 
         # ------------------------------------------------------------------
-        # V3 Execution Logic (Mean Reversion T=8)
+        # V3 Execution Logic (Simple Trend/Regime Follower)
         # ------------------------------------------------------------------
-        v3_signal = gate_info.get("v3_signal")
+        # Compatibility: Regime Agent sends "signal", Gate sends "v3_signal"
+        v3_signal = gate_info.get("v3_signal") or gate_info.get("signal")
+        
         if decision.tradable and not getattr(self.svc, "kill_switch_enabled", False):
-            if v3_signal in {"LONG", "SHORT"}:
+            if v3_signal == "NEUTRAL":
+                 # Explicit Close on Neutral
+                 if current_units != 0:
+                     logger.info(f"{instrument}: V3 Signal NEUTRAL -> Closing {current_units} units.")
+                     self.svc.close_position(instrument)
+                     # Clear trade state if any
+                     self.trade_state.remove_trades(instrument)
+
+            elif v3_signal in {"LONG", "SHORT"}:
                 # Determine Size (Use standard Risk Sizer)
-                # T=8h -> Hold 28800 seconds
                 v3_dir = 1 if v3_signal == "LONG" else -1
 
                 # Check if we already have this position
@@ -950,18 +959,6 @@ class PortfolioManager(threading.Thread):
                     if trade_units != 0:
                         self.svc.place_order(instrument, trade_units)
                         # We do not use "TradePlanner" here, simple fire.
-                        # We rely on Oanda for hold? No.
-                        # We assume "Mean Reversion" exits on next signal or manually?
-                        # The user asked for "T=8".
-                        # Implementing T=8 expiration is complex in this "Lean" manager without a database of active trades.
-                        # Simplified: V3 Signal is updated every hour/step?
-                        # If Signal flips, we flip.
-                        # If Signal is "NEUTRAL", do we close?
-                        # For "T=8", we strictly hold for 8 hours.
-                        # Managing timed exits requires state.
-                        # Given complexity, I will use "Signal State" execution.
-                        # If Signal says LONG, be LONG.
-                        pass
 
         # V2 Bundle Logic (Legacy)
         if admitted and decision.tradable and requested_side:

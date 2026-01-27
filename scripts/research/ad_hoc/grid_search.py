@@ -14,8 +14,8 @@ import subprocess
 sys.path.append("/app") 
 from scripts.trading.oanda import OandaConnector
 
-PAIRS = ["EUR_USD", "GBP_USD", "USD_JPY"] # Focus on Top 3
-LOOKBACK_DAYS = 2 
+PAIRS = ["USD_JPY", "GBP_USD"] # Focus on potential survivors
+LOOKBACK_DAYS = 7 # 7 Days Deep Dive
 MODEL_DIR = "/app/models"
 BIN_PATH = "/app/bin/manifold_generator"
 ENTRY_COST_PIPS = 2.0
